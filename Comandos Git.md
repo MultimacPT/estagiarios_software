@@ -13,12 +13,12 @@ git status
 
 -------------------- Entrar numa Branch  --------------------
 
- git checkout <nome da branch>
+ git checkout "nome da branch"
 
 
 -------------------- Fazer PUSH --------------------
 
-git add <Nome do Ficheio> 
+git add "Nome do Ficheio" 
 
 git commit -m "Escrever Commit"
 
