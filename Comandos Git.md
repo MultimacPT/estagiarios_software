@@ -18,7 +18,7 @@ git status
 
 -------------------- Fazer PUSH --------------------
 
-git add "Nome do Ficheio" 
+git add "Nome do Ficheiro" 
 
 git commit -m "Escrever Commit"
 
