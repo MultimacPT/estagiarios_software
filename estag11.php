@@ -1,37 +1,7 @@
 <?php
     $b=$_GET['id'];
-
-    $curl = curl_init();
-    curl_setopt_array($curl, [
-      CURLOPT_URL => "https://mx.multimac.pt/mxv5/api/v1/Case/".$b,
-      CURLOPT_RETURNTRANSFER => true,
-      CURLOPT_ENCODING => "",
-      CURLOPT_MAXREDIRS => 10,
-      CURLOPT_TIMEOUT => 30,
-      CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-      CURLOPT_CUSTOMREQUEST => "GET",
-      CURLOPT_POSTFIELDS => "",
-      CURLOPT_HTTPHEADER => ["X-Api-Key: 4551D74F0502A6409445E49961896B49"],
-    ]);
-    
-    // Desactiva o certificado SSL
-    curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
-    curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
-    $response = curl_exec($curl);
-    $err = curl_error($curl);
-    curl_close($curl);
-    
-    if ($err) {
-      echo "cURL Error #:" . $err;
-    } else {
-    
-      $array = json_decode($response,true);
-      foreach($array as $key => $value) {
-        $a[$key] = $value;
-        echo $key . " => " . $value . "<br>";
-      }
-    }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -53,34 +23,118 @@
             s.parentNode.insertBefore(hm, s);
             })();
     </script>
+
+    <link rel="stylesheet" type="text/css" href="index.css" media="screen" />
+
+    <style>.p
+    {
+        text-align: end;
+    }
+    </style>
+
+    <style>.head            
+    {
+    background-color: lightblue;
+    color: black; 
+    padding: 20px;
+    text-align: center;
+    }
+    </style>
+
+    <style>.buttom
+    {
+    background-color: lightblue;             /*  Decoração do botão  */
+    color: black;
+    padding: 20px;
+    text-align: center;
+    }
+    </style>
         
-    <title>Página principal</title>
-</head>
+    <title>Informações</title>
+
+    </head>
 
 <body>
 <div data-role="page">
-    <div data-role="header">
-        <h3>ENCONTRE INFORMAÇÕES</h3>
+    <div class="head">
+        <h3>SUPORTE AO CLIENTE</h3>
     </div>
 
     <div data-role="main" class="ui-content">
         <form method="post" action="demoform.asp">
             <fieldset data-role="controlgroup">
-                <legend>Insira um ID:</legend>
-                    <label for="id">id:</label>
-                    <input type="text" name="id" id="id" placeholder="ex.: 65c9190e1cbfz03fa">
+                <b>Insira um ID:</b>
+                    <label for="id"></label>
+                    <input type="text" name="id" id="id" placeholder="Ex: 65c9190e1cbfz03fa">
+                    <div class="p">
+                        <small>Técnico Responsável: Duarte Barros</small>
+                    </div>
                     <br>
-                    <button onclick="redirect()">Submeter</button>                  
+                    <div class="buttom">
+                    <button style="width: 150px; height: 50px;" onclick="redirect()" >Procurar</button>  
+                    <br>
+                    <button style="width: 150px; height: 50px;" onclick="document.getElementById('id').value=' '">Limpar</button>      
+                    </div>
+                    <br> 
+                    <br>          
                     <script>
                     function redirect() {
                         var id = document.getElementById("id").value;
-                        window.location.href = "http://localhost/p1/estag11.php?id=" + id;
+                        window.location.href = "estag11.php";
                     }
                     </script>                
             </fieldset>
         </form>
+
+        <?php
+
+            $curl = curl_init();
+            if($b != NULL)
+            {
+                curl_setopt_array($curl, 
+                [
+                CURLOPT_URL => "https://mx.multimac.pt/mxv5/api/v1/Case/".$b,
+                CURLOPT_RETURNTRANSFER => true,
+                CURLOPT_ENCODING => "",
+                CURLOPT_MAXREDIRS => 10,
+                CURLOPT_TIMEOUT => 30,
+                CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                CURLOPT_CUSTOMREQUEST => "GET",
+                CURLOPT_POSTFIELDS => "",
+                CURLOPT_HTTPHEADER => ["X-Api-Key: 4551D74F0502A6409445E49961896B49"],
+                ]);
+
+                // Desactiva o certificado SSL
+                curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
+                curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+                $response = curl_exec($curl);
+                $err = curl_error($curl);
+                curl_close($curl);
+
+                    if ($err) 
+                    {
+                    echo "cURL Error #:" . $err;
+                    } 
+                    else 
+                    {
+                    $array = json_decode($response,true);
+
+                    foreach($array as $key => $value) 
+                    {
+                        $a[$key] = $value;
+                        echo $key . " => " . $value . "<br><-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->-<-->--<--><br>";
+                        error_reporting(E_ALL & ~E_WARNING);
+                    }
+                    }
+            }
+            else{}
+
+        ?>
+
     </div>    
 </div>
+
+
 
 </body>
 </html>
