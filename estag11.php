@@ -69,30 +69,10 @@ if ($err) {
     <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 
 
-<script>
-    var _hmt = _hmt || [];
-    (
-        function() 
-        {
-            var hm = document.createElement("script");
-            hm.src = "//hm.baidu.com/hm.js?73c27e26f610eb3c9f3feb0c75b03925";
-            var s = document.getElementsByTagName("script")[0];
-            s.parentNode.insertBefore(hm, s);
-            var hm = document.createElement("script");
-            hm.src = "//hm.baidu.com/hm.js?73c27e26f610eb3c9f3feb0c75b03925";
-            var s = document.getElementsByTagName("script")[0];
-            s.parentNode.insertBefore(hm, s);
-        }
-        var _hmt = _hmt || [];
-
-    )();
-    
-    </script>
-
     <script>
   function idSearch(){
     var URLid = document.getElementById('ID').value;
-    window.location.href = "http://192.168.20.128/p1/estag11.php?id=" + URLid;
+    window.location.href = "estag11.php?id=" + URLid;
   }
   </script>
 
