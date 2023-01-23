@@ -29,10 +29,10 @@
         window.location.href = "estag11.php?id=" + URLid;  
         }
     </script>
-
+   
     <script>
-        function goBack() {
-        window.history.back();
+        function clearInput(){
+        document.getElementById("id").value = "";
         }
     </script>
 
@@ -48,9 +48,10 @@
     <div data-role="main" class="ui-content">
         <form method="post" action="demoform.asp" id="myForm">  
             <legend>Insira um ID:</legend>
-            <input type="text" id="id" placeholder="ex.: 65c9190e1cbfz03fa"> 
+            <input type="text" id="id" placeholder="ex.: 65c9190e1cbfz03fa">
+            <p>teste</p> 
             <button onclick="redirect()">Submeter</button>    
-            <button onclick="goBack()">Limpar</button>      
+            <button onclick="clearInput()">Limpar</button>      
         </form>
         
         <script>
