@@ -49,7 +49,6 @@
         <form method="post" action="demoform.asp" id="myForm">  
             <legend>Insira um ID:</legend>
             <input type="text" id="id" placeholder="ex.: 65c9190e1cbfz03fa">
-            <p>teste</p> 
             <button onclick="redirect()">Submeter</button>    
             <button onclick="clearInput()">Limpar</button>      
         </form>
