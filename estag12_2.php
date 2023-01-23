@@ -100,7 +100,7 @@ foreach ($array as $key => $value) {
 
 <div data-role="header" data-position="fixed"><h1>Ticket information</h1></div>
 <div>
-<a href="estag12.php" class="ui-btn">Voltar</a>
+<a href="estag12.php" class="ui-btn" target="self">Voltar</a>
 </div>
 <div data-role="collapsible">
   <h3><?php echo $ID ?></h3>
