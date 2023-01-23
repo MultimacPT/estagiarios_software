@@ -30,12 +30,6 @@
         }
     </script>
    
-    <script>
-        function clearInput(){
-        document.getElementById("id").value = "";
-        }
-    </script>
-
     <title>Encontre Informações</title>
 </head>
 
@@ -50,7 +44,7 @@
             <legend>Insira um ID:</legend>
             <input type="text" id="id" placeholder="ex.: 65c9190e1cbfz03fa">
             <button onclick="redirect()">Submeter</button>    
-            <button onclick="clearInput()">Limpar</button>      
+            <button onclick="limparInput()">Limpar</button>      
         </form>
         
         <script>
@@ -58,6 +52,12 @@
             var id = document.getElementById("id").value;
             window.location.href = "estag11.php?id=" + id;
             }
+        </script>
+
+        <script type="text/javascript">
+            function limparInput(){
+            document.getElementById("id").value = "";
+            } 
         </script>
         <div data-role="header">
             <?php
