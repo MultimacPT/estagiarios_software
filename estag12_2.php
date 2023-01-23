@@ -53,7 +53,13 @@ if ($err) {
 
         <div style="text-align: right;">
             <h3>Logado como Manuel Pereira</h3>
-        </div>
+        </div> 
+
+        <script>
+            function voltar(){
+            window.location.href = "estag12.php";
+            } 
+        </script>
 
         <div class="ui-field-contain">
             <button>Ticket</button>
@@ -150,6 +156,8 @@ if ($err) {
                 <input type="text" id="dentroSla" value="<?= $a["dentroSla"] ?>" readonly>
                 <br>
             </div>
+
+            <button style="width: 150px; height: 50px" onclick="voltar()">Voltar</button>
 
         </div>
     </div> 
