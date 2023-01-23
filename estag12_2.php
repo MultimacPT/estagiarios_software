@@ -98,10 +98,10 @@ foreach ($array as $key => $value) {
 
 <body>
 
-
-</script>
-
 <div data-role="header" data-position="fixed"><h1>Ticket information</h1></div>
+<div>
+<a href="estag12.php" class="ui-btn">Voltar</a>
+</div>
 <div data-role="collapsible">
   <h3><?php echo $ID ?></h3>
 <table data-role="table" data-mode="reflow" class="ui-responsive">
