@@ -114,7 +114,7 @@ if ($err) {
                     <script>
                     function redirect() {
                         var id = document.getElementById("id").value;
-                        window.location.href = "http://localhost/p1/pag2.php?id=" + id;
+                        window.location.href = "estag11.php?id=" + id;
                     }
                     </script>                
             </fieldset>
