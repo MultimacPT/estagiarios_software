@@ -31,7 +31,7 @@ if ($err) {
 } else {
   //$xml = simplexml_load_string($response, "SimpleXMLElement", LIBXML_NOCDATA);
   echo $response;
- echo "-------------------------------------------------------------------------------------------------------------------";
+  echo "-------------------------------------------------------------------------------------------------------------------";
   $json = json_encode($response);
   $array = json_decode($json,TRUE);
   echo $array;
