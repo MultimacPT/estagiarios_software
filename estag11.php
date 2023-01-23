@@ -54,9 +54,11 @@
             }
         </script>
 
-        <script type="text/javascript">
+        <script>
             function limparInput(){
             document.getElementById("id").value = "";
+            var id = document.getElementById("id").value;
+            window.location.href = "estag11.php";
             } 
         </script>
         <div data-role="header">
