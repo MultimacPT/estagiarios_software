@@ -56,7 +56,6 @@
 
         <script>
             function limparInput(){
-            document.getElementById("id").value = "";
             var id = document.getElementById("id").value;
             window.location.href = "estag11.php";
             } 
@@ -89,10 +88,21 @@
                 } 
                 else {
                     $array = json_decode($response,true);
+                    
                     foreach($array as $key => $value) {
                     $a[$key] = $value;
-                    echo $key . " <=> " . $value . "<br>...................................................................................................................................................................................................................................................................................................................................<br>";
-                    error_reporting(E_ALL & ~E_WARNING);
+                    if(empty($value)){
+                        echo $key . " => " . "0" . "<br>";
+                    }
+                    else{
+                        if(!is_array($value)){
+                        echo $key . " => " . $value . "<br>";    
+                        }
+                        else{
+                            $array1 = json_encode($value, true);
+                            echo $key . " => " . $array1 . "<br>";
+                        }
+                    }
                     }
                 }    
             }else{
