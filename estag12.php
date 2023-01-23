@@ -26,7 +26,7 @@
                     <script>
                         function redirect() {
                         var id = document.getElementById("id").value;
-                        window.location.href = "http://localhost/p1/estagiarios_software/estag12_2.php?id=" + id;
+                        window.location.href = "estag12_2.php?id=" + id;
                         }
                     </script>                
                 </fieldset>
