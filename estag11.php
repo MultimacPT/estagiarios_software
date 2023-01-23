@@ -80,7 +80,7 @@
                     <script>
                     function redirect() {
                         var id = document.getElementById("id").value;
-                        window.location.href = "estag11.php";
+                        window.location.href = "estag11.php?id= ";
                     }
                     </script>                
             </fieldset>
