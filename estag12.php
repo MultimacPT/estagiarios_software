@@ -34,17 +34,18 @@
     {
     background-color: lightblue;
     color: black; 
+    top: 0;
     padding: 20px;
-    background-size:1px;
     text-align: center;
     }
     </style>
 
     <style>.buttom
     {
-    background-color: lightblue;             /*  Decoração do botão  */
-    color: black;
-    padding: 20px;
+    background-color: lightgray; 
+    align-items: center;            /*  Decoração do botão  */
+    color: red;
+    padding: 20px; 
     text-align: center;
     }
     </style>
@@ -79,7 +80,7 @@
                     <script>
                     function redirect() {
                         var id = document.getElementById("id").value;
-                        window.location.href = "192.168.20.83/p1/estagiarios_software/estag12.2.php?id=" + id;
+                        window.location.href = "http://192.168.20.83:8080/p1/estagiarios_software/estag12.2.php?id=" + id;
                     }
                     </script>                
             </fieldset>
