@@ -43,7 +43,6 @@
     <style>.buttom
     {
     align-items: center;            /*  Decoração do botão  */
-    color: red;
     padding: 20px; 
     text-align: center;
     }
@@ -70,9 +69,9 @@
                     </div>
                     <br>
                     <div class="buttom">
-                    <button style="width: 150px; height: 50px; background-color: lightgray;" onclick="redirect()" >Procurar</button>  
+                    <button style="width: 150px; height: 50px; background-color: rgba(102, 255, 102, 0.4);" onclick="redirect()" >Procurar</button>  
                     <br>
-                    <button style="width: 150px; height: 50px; background-color: lightgray;" onclick="document.getElementById('id').value=' '">Limpar</button>      
+                    <button style="width: 150px; height: 50px; background-color: rgba(255, 77, 77, 0.4);" onclick="document.getElementById('id').value=' '">Limpar</button>      
                     </div>
                     <br> 
                     <br>          

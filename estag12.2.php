@@ -27,6 +27,12 @@
     }
     </style>
 
+    <style>.p
+    {
+        text-align: end;
+    }
+    </style>
+
     
 </head>
 <body>
@@ -36,7 +42,17 @@
             <h1>Informações</h1>
 
         </div>        
-        <br><br><br><br><br>
+        <br>
+        <br>
+        <br>
+        <br>
+
+        <div class="p">
+            <small>Criado por: Duarte Barros</small>
+        </div>
+
+
+        <br>
 
         <ul>
                 <li style=" background-color:rgba(102, 204, 255, 0.4); text-align:left; width: 100px; height: 20px; ">Identificação</li>
@@ -116,6 +132,11 @@
             <input type="text" style="background-color:rgba(102, 204, 255, 0.4); border-style:solid; width: 700px; height: 25px; border-width:1px;" id="accountName" value="<?=  $a["accountName"] ?>"readonly>
             </div>
             <br>
+            <label for="accountId "><b>ID da Conta:</b></label>
+            <div class="inf">
+            <input type="text" style="background-color:rgba(102, 204, 255, 0.4); border-style:solid; width: 700px; height: 25px; border-width:1px;" id="accountId " value="<?=  $a["accountId "] ?>"readonly>
+            </div>
+            <br>
             <label for="modifiedByName "><b>Nome Modified:</b></label>
             <div class="inf">
             <input type="text" style="background-color:rgba(102, 204, 255, 0.4); border-style:solid; width: 700px; height: 25px; border-width:1px;" id="modifiedByName " value="<?=  $a["modifiedByName "] ?>"readonly>
@@ -136,18 +157,155 @@
             <input type="text" style="background-color:rgba(102, 204, 255, 0.4); border-style:solid; width: 700px; height: 25px; border-width:1px;" id="assignedUserId " value="<?=  $a["assignedUserId "] ?>"readonly>
             </div>
             <br>
-            
-            
-            
-            <label for="id">ID Modified:</label>
+            <br>
+            <br>
+            <label for="cP"><b>Código Postal:</b></label>
             <div class="inf">
-            <input type="text" style="background-color:whitesmoke; border-style:solid; width: 700px; height: 25px; border-width:1px;" id="id" value="<?=  $a["id"] ?>"readonly>
+            <input type="text" style="background-color:rgba(255, 77, 77, 0.4); border-style:solid; width: 700px; height: 25px; border-width:1px;" id="cP" value="<?=  $a["cP"] ?>"readonly>
             </div>
             <br>
-            <label for="id">ID Modified:</label>
+            <label for="acaddressStreet  "><b>Rua:</b></label>
             <div class="inf">
-            <input type="text" style="background-color:whitesmoke; border-style:solid; width: 700px; height: 25px; border-width:1px;" id="id" value="<?=  $a["id"] ?>"readonly>
+            <input type="text" style="background-color:rgba(255, 77, 77, 0.4); border-style:solid; width: 700px; height: 25px; border-width:1px;" id="acaddressStreet  " value="<?=  $a["acaddressStreet  "] ?>"readonly>
             </div>
+            <br>
+            
+            <label for="acaddressCity  "><b>Cidade:</b></label>
+            <div class="inf">
+            <input type="text" style="background-color:rgba(255, 77, 77, 0.4); border-style:solid; width: 700px; height: 25px; border-width:1px;" id="acaddressCity  " value="<?=  $a["acaddressCity  "] ?>"readonly>
+            </div>
+            <br>
+            
+            <label for="acaddressState  "><b>Estado:</b></label>
+            <div class="inf">
+            <input type="text" style="background-color:rgba(255, 77, 77, 0.4); border-style:solid; width: 700px; height: 25px; border-width:1px;" id="acaddressState  " value="<?=  $a["acaddressState  "] ?>"readonly>
+            </div>
+            <br>
+            
+            <label for="acaddressCountry  "><b>País:</b></label>
+            <div class="inf">
+            <input type="text" style="background-color:rgba(255, 77, 77, 0.4); border-style:solid; width: 700px; height: 25px; border-width:1px;" id="acaddressCountry  " value="<?=  $a["acaddressCountry  "] ?>"readonly>
+            </div>
+            <br>
+            
+            <label for="maps  "><b>Localização no Mapa:</b></label>
+            <div class="inf">
+            <input type="text" style="background-color:rgba(255, 77, 77, 0.4); border-style:solid; width: 700px; height: 25px; border-width:1px;" id="maps  " value="<?=  $a["maps  "] ?>"readonly>
+            </div>
+            <br>
+            <br>
+            <br>
+            
+            <label for="number  "><b>Ticket:</b></label>
+            <div class="inf">
+            <input type="text" style="background-color:rgba(102, 255, 102, 0.4); border-style:solid; width: 700px; height: 25px; border-width:1px;" id="number  " value="<?=  $a["number  "] ?>"readonly>
+            </div>
+            <br>
+            
+            <label for="status  "><b>Status:</b></label>
+            <div class="inf">
+            <input type="text" style="background-color:rgba(102, 255, 102, 0.4); border-style:solid; width: 700px; height: 25px; border-width:1px;" id="status  " value="<?=  $a["status  "] ?>"readonly>
+            </div>
+            <br>
+            
+            <label for="priority  "><b>Prioridade:</b></label>
+            <div class="inf">
+            <input type="text" style="background-color:rgba(102, 255, 102, 0.4); border-style:solid; width: 700px; height: 25px; border-width:1px;" id="priority  " value="<?=  $a["priority  "] ?>"readonly>
+            </div>
+            <br>
+            
+            <label for="type  "><b>Tipo:</b></label>
+            <div class="inf">
+            <input type="text" style="background-color:rgba(102, 255, 102, 0.4); border-style:solid; width: 700px; height: 25px; border-width:1px;" id="type  " value="<?=  $a["type  "] ?>"readonly>
+            </div>
+            <br>
+            
+            <label for="description  "><b>Descrição:</b></label>
+            <div class="inf">
+            <input type="text" style="background-color:rgba(102, 255, 102, 0.4); border-style:solid; width: 700px; height: 25px; border-width:1px;" id="description  " value="<?=  $a["description  "] ?>"readonly>
+            </div>
+            <br>
+            
+            <label for="createdAt  "><b>Criação At:</b></label>
+            <div class="inf">
+            <input type="text" style="background-color:rgba(102, 255, 102, 0.4); border-style:solid; width: 700px; height: 25px; border-width:1px;" id="createdAt  " value="<?=  $a["createdAt  "] ?>"readonly>
+            </div>
+            <br>
+            
+            <label for="modifiedAt   "><b>Modificação At:</b></label>
+            <div class="inf">
+            <input type="text" style="background-color:rgba(102, 255, 102, 0.4); border-style:solid; width: 700px; height: 25px; border-width:1px;" id="modifiedAt  " value="<?=  $a["modifiedAt  "] ?>"readonly>
+            </div>
+            <br>
+
+            <label for="assignedUserId "><b>Data e Hora de Fecho:</b></label>
+            <div class="inf">
+            <input type="text" style="background-color:rgba(102, 255, 102, 0.4); border-style:solid; width: 700px; height: 25px; border-width:1px;" id="assignedUserId " value="<?=  $a["assignedUserId "] ?>"readonly>
+            </div>
+            <br>
+            
+            <label for="descprob  "><b>Equipa:</b></label>
+            <div class="inf">
+            <input type="text" style="background-color:rgba(102, 255, 102, 0.4); border-style:solid; width: 700px; height: 25px; border-width:1px;" id="descprob  " value="<?=  $a["descprob  "] ?>"readonly>
+            </div>
+            <br>
+
+            <label for="area  "><b>Área:</b></label>
+            <div class="inf">
+            <input type="text" style="background-color:rgba(102, 255, 102, 0.4); border-style:solid; width: 700px; height: 25px; border-width:1px;" id="area  " value="<?=  $a["area  "] ?>"readonly>
+            </div>
+            <br>
+
+            <label for="sla  "><b>SLA:</b></label>
+            <div class="inf">
+            <input type="text" style="background-color:rgba(102, 255, 102, 0.4); border-style:solid; width: 700px; height: 25px; border-width:1px;" id="sla  " value="<?=  $a["sla  "] ?>"readonly>
+            </div>
+            <br>
+
+            <label for="criticidade  "><b>Criticidade:</b></label>
+            <div class="inf">
+            <input type="text" style="background-color:rgba(102, 255, 102, 0.4); border-style:solid; width: 700px; height: 25px; border-width:1px;" id="criticidade  " value="<?=  $a["criticidade  "] ?>"readonly>
+            </div>
+            <br>
+            
+            <label for="ticketlife  "><b>Expiração do Ticket:</b></label>
+            <div class="inf">
+            <input type="text" style="background-color:rgba(102, 255, 102, 0.4); border-style:solid; width: 700px; height: 25px; border-width:1px;" id="ticketlife  " value="<?=  $a["ticketlife  "] ?>"readonly>
+            </div>
+            <br>
+            
+            <label for="userAT "><b>User AT:</b></label>
+            <div class="inf">
+            <input type="text" style="background-color:rgba(102, 255, 102, 0.4); border-style:solid; width: 700px; height: 25px; border-width:1px;" id="userAT " value="<?=  $a["userAT "] ?>"readonly>
+            </div>
+            <br>
+
+            <label for="passwordAT  "><b>Password AT: </b></label>
+            <div class="inf">
+            <input type="text" style="background-color:rgba(102, 255, 102, 0.4); border-style:solid; width: 700px; height: 25px; border-width:1px;" id="passwordAT  " value="<?=  $a["passwordAT  "] ?>"readonly>
+            </div>
+            <br>
+
+            <label for="licenca  "><b>Licenca: </b></label>
+            <div class="inf">
+            <input type="text" style="background-color:rgba(102, 255, 102, 0.4); border-style:solid; width: 700px; height: 25px; border-width:1px;" id="licenca  " value="<?=  $a["licenca  "] ?>"readonly>
+            </div>
+            <br>
+
+            <label for="temInternet   "><b>Tem Internet: </b></label>
+            <div class="inf">
+            <input type="text" style="background-color:rgba(102, 255, 102, 0.4); border-style:solid; width: 700px; height: 25px; border-width:1px;" id="temInternet   " value="<?=  $a["temInternet   "] ?>"readonly>
+            </div>
+            <br>
+
+            <label for="validacao   "><b>Validação: </b></label>
+            <div class="inf">
+            <input type="text" style="background-color:rgba(102, 255, 102, 0.4); border-style:solid; width: 700px; height: 25px; border-width:1px;" id="validacao   " value="<?=  $a["validacao   "] ?>"readonly>
+            </div>
+            <br>
+
+            
+            
 
 
    
