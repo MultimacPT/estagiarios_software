@@ -45,7 +45,7 @@
 
     <div data-role="header" data-position="fixed">
 
-    <h1>Método de pesquisas super fixe 3000</h1>
+    <h1>MÉTODO DE PESQUISAS</h1>
 
     </div>
 
