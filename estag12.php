@@ -80,7 +80,7 @@
                     <script>
                     function redirect() {
                         var id = document.getElementById("id").value;
-                        window.location.href = "http://192.168.20.83:8080/p1/estagiarios_software/estag12.2.php?id=" + id;
+                        window.location.href = "http://192.168.1.101:8080/p1/estagiarios_software/estag12.2.php?id=" + id;
                     }
                     </script>                
             </fieldset>
