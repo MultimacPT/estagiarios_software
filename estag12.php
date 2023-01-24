@@ -32,7 +32,7 @@
 
     <style>.head            
     {
-    background-color: lightblue;
+    background-color: lightgray;
     color: black; 
     top: 0;
     padding: 20px;
@@ -42,7 +42,6 @@
 
     <style>.buttom
     {
-    background-color: lightgray; 
     align-items: center;            /*  Decoração do botão  */
     color: red;
     padding: 20px; 
@@ -71,9 +70,9 @@
                     </div>
                     <br>
                     <div class="buttom">
-                    <button style="width: 150px; height: 50px;" onclick="redirect()" >Procurar</button>  
+                    <button style="width: 150px; height: 50px; background-color: lightgray;" onclick="redirect()" >Procurar</button>  
                     <br>
-                    <button style="width: 150px; height: 50px;" onclick="document.getElementById('id').value=' '">Limpar</button>      
+                    <button style="width: 150px; height: 50px; background-color: lightgray;" onclick="document.getElementById('id').value=' '">Limpar</button>      
                     </div>
                     <br> 
                     <br>          

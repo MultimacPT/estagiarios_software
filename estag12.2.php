@@ -10,26 +10,22 @@
 
     <style>.h1
     {
-        background: lightblue;
+        background: lightgray;
         text-align: center;
         position: fixed;
         top: 0;
         left: 0;
         width: 100%;
         z-index: 999px;
-        box-shadow: 0px 0px 6px 0px rgba(0, 255, 255, 0.5);
     }
     </style>
 
-<style>.inf
-    {
-        
-        text-align: center;
-
+    <style>.inf
+    {  
+        text-align: left;
+        margin: 1px;
     }
     </style>
-
-
 
     
 </head>
@@ -42,16 +38,28 @@
         </div>        
         <br><br><br><br><br>
 
+        <ul>
+                <li style=" background-color:rgba(102, 204, 255, 0.4); text-align:left; width: 100px; height: 20px; ">Identificação</li>
+                <br>
+                <li style=" background-color:rgba(255, 77, 77, 0.4); text-align:left; width: 100px; height: 20px; ">Morada</li>
+                <br>
+                <li style=" background-color:rgba(102, 255, 102, 0.4); text-align:left; width: 100px; height: 20px; ">Ticket</li>
+                <br>
+                <li style=" background-color:rgba(255, 255, 102, 0.4); text-align:left; width: 100px; height: 20px; ">Outros</li>
+        </ul>
+
+        <br>
 
 
 
-        <label for="id">ID:</label>
-        <div class="inf">
+
+       
 
 <?php
                 $id=$_GET['id'];
 
-                if($id != NULL){
+            if($id != NULL)
+            {
                 $curl = curl_init();
                 curl_setopt_array($curl, [
                 CURLOPT_URL => "https://mx.multimac.pt/mxv5/api/v1/Case/".$id,
@@ -72,26 +80,75 @@
                 $err = curl_error($curl);
                 curl_close($curl);
                     
-                if ($err) {
-                    echo "cURL Error #:" . $err;
+                if ($err) 
+                {
+                  echo "cURL Error #:" . $err;
+                  echo $key . " => " . $value . "<br>";
+
                 } 
                 else 
                 {
-                    $array = json_decode($response,true);
-                    
-                    foreach($array as $key => $value) 
-                    {
-                        $a[$key] = $value;
-                        error_reporting(E_ALL & ~E_WARNING);
-                    }
+                  $array = json_decode($response,true);
+                
+                  foreach($array as $key => $value) 
+                  {
+                    $a[$key] = $value;
+                    echo $key . " => " . $value . "<br>";
+                    error_reporting(E_ALL & ~E_WARNING);
+                  }
                 }
-            }else{
             }
+            else{}
 ?>
 
+            <label for="id"><b>ID:</b></label>
+            <div class="inf">
+            <input type="text" style="background-color:rgba(102, 204, 255, 0.4); border-style:solid; width: 700px; height: 25px; border-width:1px;" id="id" value="<?=  $a["id"] ?>"readonly>
+            </div>
+            <br>
+            <label for="name "><b>Nome:</b></label>
+            <div class="inf">
+            <input type="text" style="background-color:rgba(102, 204, 255, 0.4); border-style:solid; width: 700px; height: 25px; border-width:1px;" id="name " value="<?=  $a["name "] ?>"readonly>
+            </div>
+            <br>
+            <label for="accountName"><b>Nome da Conta:</b></label>
+            <div class="inf">
+            <input type="text" style="background-color:rgba(102, 204, 255, 0.4); border-style:solid; width: 700px; height: 25px; border-width:1px;" id="accountName" value="<?=  $a["accountName"] ?>"readonly>
+            </div>
+            <br>
+            <label for="modifiedByName "><b>Nome Modified:</b></label>
+            <div class="inf">
+            <input type="text" style="background-color:rgba(102, 204, 255, 0.4); border-style:solid; width: 700px; height: 25px; border-width:1px;" id="modifiedByName " value="<?=  $a["modifiedByName "] ?>"readonly>
+            </div>
+            <br>
+            <label for="modifiedById "><b>ID Modified:</b></label>
+            <div class="inf">
+            <input type="text" style="background-color:rgba(102, 204, 255, 0.4); border-style:solid; width: 700px; height: 25px; border-width:1px;" id="modifiedById " value="<?=  $a["modifiedById "] ?>"readonly>
+            </div>
+            <br>
+            <label for="modifiedByName "><b>Nome de Utizador Modified:</b></label>
+            <div class="inf">
+            <input type="text" style="background-color:rgba(102, 204, 255, 0.4); border-style:solid; width: 700px; height: 25px; border-width:1px;" id="modifiedByName " value="<?=  $a["modifiedByName "] ?>"readonly>
+            </div>
+            <br>
+            <label for="assignedUserId "><b>ID de Utilizador Modified:</b></label>
+            <div class="inf">
+            <input type="text" style="background-color:rgba(102, 204, 255, 0.4); border-style:solid; width: 700px; height: 25px; border-width:1px;" id="assignedUserId " value="<?=  $a["assignedUserId "] ?>"readonly>
+            </div>
+            <br>
+            
+            
+            
+            <label for="id">ID Modified:</label>
+            <div class="inf">
+            <input type="text" style="background-color:whitesmoke; border-style:solid; width: 700px; height: 25px; border-width:1px;" id="id" value="<?=  $a["id"] ?>"readonly>
+            </div>
+            <br>
+            <label for="id">ID Modified:</label>
+            <div class="inf">
+            <input type="text" style="background-color:whitesmoke; border-style:solid; width: 700px; height: 25px; border-width:1px;" id="id" value="<?=  $a["id"] ?>"readonly>
+            </div>
 
-        <input type="text" id="id" value="<?=  $a["id"] ?>"readonly>
-        </div>
 
    
     
