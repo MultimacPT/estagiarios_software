@@ -3,7 +3,7 @@
 
 //header("Location: estag12.php");
 
-$ID=$_GET['id']; 
+$ID=$_GET['id'];
 
 
 
@@ -57,29 +57,6 @@ if ($err) {
   $array = json_decode($response,true);
 }
 
-/*$i = 0;
-
-foreach ($array as $key => $value) {
-  //$a[$key] = $value;
-  if (!is_string($key)) {
-    $key = json_encode($key);
-  }
-  if (!is_string($value)) {
-    $value = json_encode($value);
-  }
-  if ($value == "" or $value == "null" or empty($value) == true or $value == "[]") {
-    $value = "0";
-    $T1[$i] = $key;
-    $T2[$i] = $value;
-    $i += 1;
-  } else {
-    $T1[$i] = $key;
-    $T2[$i] = $value;
-    $i += 1;
-  }
-}*/
-
-
 ?>
 
 <!DOCTYPE html>
@@ -88,23 +65,86 @@ foreach ($array as $key => $value) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulário</title>
+    <link rel="stylesheet" href="css/themes/formulario_themes.css" />
+    <link rel="stylesheet" href="css/themes/formulario_themes.min.css" />
+    <link rel="stylesheet" href="css/themes/jquery.mobile.icons.min.css" />
     <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css"> 
     <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
     <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <link href="estag12.php" rel="import" />
 
 
 </head>
 
-<body>
 
-<div data-role="header" data-position="fixed"><h1>Ticket information</h1></div>
-<div>
-<a href="estag12.php" class="ui-btn" target="self">Voltar</a>
+
+<body>
+<!--
+<div data-role="panel" id="uInfo" data-position="left">
+  <ul>
+    ?php foreach($array as $key => $value){
+      if($value == "true"){
+        $value = "Sim";
+      }
+      if(empty($value) == true or $value == "0"){
+        $value == "Null";
+      }
+      if ($key == "temInternet" or $key == "userAT" or $key == "passwordAT" or $key == "licenca" or $key == "cP" or $key == "accountName") {
+        echo "<label>" . $key ." ==> " . $value . "</label>" . "<br>";
+      }
+    } ?>
+  </ul>
 </div>
-<div data-role="collapsible">
+<div data-role="panel" id="pInfo" data-position="left">
+  <ul>
+    ?php foreach($array as $key => $value){
+      if($value == "true"){
+        $value = "Sim";
+      }
+      if(empty($value) == true or $value == "0"){
+        $value == "Null";
+      }
+      if ($key == "temInternet" or $key == "userAT" or $key == "passwordAT" or $key == "licenca" or $key == "cP") {
+        echo "<label>" . $key ." ==> " . $value . "</label>" . "<br>";
+      }
+    } ?>
+  </ul>
+</div>
+<div data-role="panel" id="pInfo" data-position="left"></div>
+<div data-role="panel" id="lInfo" data-position="left"></div>
+<div data-role="panel" id="tInfo" data-position="left"></div>
+
+<div data-role="panel" id="select_panel" data-position="right">
+<a href="#uInfo" class="ui-btn ui-btn-icon-left ui-icon-user" id="User">Personal information</a>
+<a href="#pInfo" class="ui-btn ui-btn-icon-left ui-icon-phone" id="Phone">Contact information</a>
+<a href="#lInfo" class="ui-btn ui-btn-icon-left ui-icon-location" id="Location">Location information</a>
+<a href="#tInfo" class="ui-btn ui-btn-icon-left ui-icon-tag" id="Ticket">Ticket information</a>
+</div>
+  -->
+
+<style>
+  #arroz{
+    width:80%;
+    margin: auto;
+  }
+  #backBtn{
+    margin-left: 80%;
+    width: 50px;
+    height: 5px;
+    text-align: center;
+    padding-top: 3.5px;
+    color: white;
+    background-color: black;
+  }
+</style>
+
+
+<div data-role="header" data-position="fixed" data-theme="b"><h1>Ticket information</h1></div>
+<!--<a href="#select_panel" class="ui-btn ui-btn-inline">View-only settings</a> -->
+<a href="estag12.php" data-transition="fade" class="ui-btn ui-btn-inline" id="backBtn">Voltar</a>
+<div data-role="collapsible" data-mini="true" id="arroz">
   <h3><?php echo $ID ?></h3>
-<table data-role="table" data-mode="reflow" class="ui-responsive">
+<table data-role="table" data-mode="reflow" id="table" class="ui-responsive">
                 <thead>
                   <tr>
                   <th data-priority="1">Key</th>
