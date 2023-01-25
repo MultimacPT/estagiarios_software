@@ -1,66 +1,38 @@
-<?php
-    $b=$_GET['id'];
-?>
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
-
-    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
-    <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-
-    <script>
-        var _hmt = _hmt || [];
-            (function() {
-            var hm = document.createElement("script");
-            var s = document.getElementsByTagName("script")[0];
-            s.parentNode.insertBefore(hm, s);
-            })();
-    </script>
-
-    <style>.p
-    {
-        text-align: end;
-    }
-    </style>
-
-    <style>.head            
-    {
-    background-color: lightgray;
-    color: black; 
-    top: 0;
-    padding: 20px;
-    text-align: center;
-    }
-    </style>
-
-    <style>.buttom
-    {
-    align-items: center;            /*  Decoração do botão  */
-    padding: 20px; 
-    text-align: center;
-    }
-    </style>
-        
     <title>Informações</title>
+    <?php include"incl_jq_head.php"; ?>       
 
-    </head>
+</head>
 
 <body>
-<div data-role="page">
-    <div class="head">
-        <h3>SUPORTE AO CLIENTE</h3>
-    </div>
 
-    <div data-role="main" class="ui-content">
-        <form method="post" action="demoform.asp">
-            <fieldset data-role="controlgroup">
+<div data-role="page">
+
+	<div style="background-color: lightskyblue;" data-role="header">
+		<h1>SUPORTE AO CLIENTE</h1>
+	</div><!-- /header -->
+    <br><br>
+	<div role="main" class="ui-content">
+        <form action="estag12_2.php" method="get">
+
+            <label for="id">Insira o ID:</label>
+            <input type="text" id="id" name="id"><br><br>
+            <input type="submit" value="Submit">
+
+        </form>
+	</div><!-- /content -->
+    <br><br>
+	<div data-role="footer">
+		<h4>By:Duarte Barros</h4>
+	</div><!-- /footer -->
+</div>
+
+</body>
+</html>
+
+            <!--fieldset data-role="controlgroup">
                 <b>Insira um ID:</b>
                     <label for="id"></label>
                     <input type="text" name="id" id="id" placeholder="Ex: 65c9190e1cbfz03fa">
@@ -81,13 +53,25 @@
                         window.location.href = "http://192.168.1.101:8080/p1/estagiarios_software/estag12.2.php?id=" + id;
                     }
                     </script>                
-            </fieldset>
-        </form>
+            </fieldset-->
 
-    </div>    
-</div>
+            <!--label for="select-choice-8" class="select">Multi-select with optgroups, custom icon and position:</label>
+            <select name="select-choice-8" id="select-choice-8" multiple="multiple" data-native-menu="false" data-icon="grid" data-iconpos="left">
+            <option>Choose a few options:</option>
+            <optgroup label="USPS">
+                <option value="standard" selected="">Standard: 7 day</option>
+                <option value="rush">Rush: 3 days</option>
+                <option value="express">Express: next day</option>
+                <option value="overnight">Overnight</option>
+            </optgroup>
+            <optgroup label="FedEx">
+                <option value="firstOvernight">First Overnight</option>
+                <option value="expressSaver">Express Saver</option>
+                <option value="ground">Ground</option>
+            </optgroup>
+            </select-->
+ 
 
 
 
-</body>
-</html>
+
