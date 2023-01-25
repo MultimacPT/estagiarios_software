@@ -92,7 +92,7 @@
                     foreach($array as $key => $value) {
                     $a[$key] = $value;
                     if(empty($value)){
-                        echo $key . " => " . "0" . "<br>";
+                        echo $key . " => " . "EMPTY" . "<br>";
                     }
                     else{
                         if(!is_array($value)){
