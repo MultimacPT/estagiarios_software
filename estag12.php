@@ -1,5 +1,3 @@
-<?php $b=$_GET['id']; ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,21 +14,12 @@
         </div>
 
         <div data-role="main" class="ui-content">
-            <form method="post" action="demoform.asp">
-                <fieldset data-role="controlgroup">
-                    <legend>Insira um ID:</legend>
-                    <label for="id">id:</label>
-                    <input type="text" name="id" id="id" placeholder="ex.: 65c9190e1cbfz03fa">
-                    <br>
-                    <button onclick="redirect()">Submeter</button>                  
-                    <script>
-                        function redirect() {
-                        var id = document.getElementById("id").value;
-                        window.location.href = "estag12_2.php?id=" + id;
-                        }
-                    </script>                
-                </fieldset>
-            </form>
+        <form action="estag12_2.php" method="get">
+            <label for="id">Insira o ID:</label>
+            <input type="text" id="id" name="id" placeholder="ex.: 63b3150e9cbcc01fb">
+            <br>
+            <input type="submit" value="Submeter" class="ui-shadow">
+        </form>
         </div>    
     </div>
 

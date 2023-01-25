@@ -30,14 +30,14 @@ if ($err) {
     $a[$key] = $value;
     //echo $key . " => " . $value . "<br>";
     //echo '<input type="text" name="nome" id="nome" value="' . $key . " => " . $value . '" readonly><br>';
-    error_reporting(E_ALL & ~E_WARNING);
+    //error_reporting(E_ALL & ~E_WARNING);
   }
 }
 
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
 <head>
 
     <?php include "incl_jg_head.php" ?>
@@ -51,8 +51,8 @@ if ($err) {
             <h3>RESULTADOS</h3>
         </div>
 
-        <div style="text-align: right;">
-            <h3>Logado como Manuel Pereira</h3>
+        <div style="text-align: center;">
+            <h3>Técnico: M. Pereira</h3>
         </div> 
 
         <script>
@@ -62,8 +62,8 @@ if ($err) {
         </script>
 
         <div class="ui-field-contain">
-            <button>Ticket</button>
-            <div class="ui-field-contain">  
+            <div data-role="collapsible" class="ui-field-contain">
+            <h3>Ticket</h3>  
                 <label for="id">Id:</label>
                 <input type="text" id="id" value="<?= $a["id"] ?>" readonly>
                 <br>
@@ -93,8 +93,8 @@ if ($err) {
                 <br>
             </div>
 
-            <button>Local</button>
-            <div class="ui-field-contain">
+            <div data-role="collapsible" class="ui-field-contain">
+            <h3>Local</h3>  
                 <label for="cP">Código Postal:</label>
                 <input type="text" id="cP" value="<?= $a["cP"] ?>" readonly>
                 <br>
@@ -103,8 +103,8 @@ if ($err) {
                 <br>
             </div>
 
-            <button>Conta</button>
-            <div class="ui-field-contain">
+            <div data-role="collapsible" class="ui-field-contain">
+            <h3>Conta</h3>  
                 <label for="accountId">Id de Conta:</label>
                 <input type="text" id="accountId" value="<?= $a["accountId"] ?>" readonly>
                 <br>
@@ -119,8 +119,8 @@ if ($err) {
                 <br>
             </div>
 
-            <button>Responsáveis</button>
-            <div class="ui-field-contain">
+            <div data-role="collapsible" class="ui-field-contain">
+            <h3>Responsável</h3>  
                 <label for="createdById">Id de criação:</label>
                 <input type="text" id="createdById" value="<?= $a["createdById"] ?>" readonly> 
                 <br>
@@ -135,8 +135,8 @@ if ($err) {
                 <br>
             </div>
 
-            <button>Outros</button>
-            <div class="ui-field-contain">
+            <div data-role="collapsible" class="ui-field-contain">
+            <h3>Outros</h3>  
                 <label for="area">Área:</label>
                 <input type="text" id="area" value="<?= $a["area"] ?>" readonly>
                 <br>
@@ -157,8 +157,9 @@ if ($err) {
                 <br>
             </div>
 
-            <button style="width: 150px; height: 50px" onclick="voltar()">Voltar</button>
-
+            <a data-icon="back" data-role="button" data-theme="b" data-rel="back" data-mini="true" data-transition="pop" class="ui-link ui-btn ui-btn-b ui-icon-back ui-btn-icon-left ui-shadow ui-corner-all ui-mini" role="button">
+                Voltar</a>
+            
         </div>
     </div> 
 
