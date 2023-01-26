@@ -48,7 +48,7 @@
 <html lang="pt">
 <head>
     <title>Informações</title>
-    <?php //include"incl_jq_head.php"; ?>     
+    <?php include"incl_jq_head.php"; ?>     
     
 
 
@@ -65,18 +65,18 @@
     <div role="main" class="ui-content">
         <div data-role="collapsible">
             <h4><?= $a['accountName'] ?></h4>
-            <p><?= $a['assignedUserName'] ?></p>
-            <p><?= $a['assignedUserId'] ?></p>
-            <p><?= $a['modifiedByName'] ?></p>
-            <p><?= $a['modifiedById'] ?></p>
-            <p><?= $a['createdByName'] ?></p>
-            <p><?= $a['createdById'] ?></p>
+            <p>Assigned User Name:   <?= $a['assignedUserName'] ?></p>
+            <p>Assigned User Id:     <?= $a['assignedUserId'] ?></p>
+            <p>Modified By Name:     <?= $a['modifiedByName'] ?></p>
+            <p>Modified By Id:       <?= $a['modifiedById'] ?></p>
+            <p>Created By Name:      <?= $a['createdByName'] ?></p>
+            <p>Created By Id:        <?= $a['createdById'] ?></p>
         </div>
 	</div>
 
     <div role="main" class="ui-content">
         <div data-role="collapsible">
-            <h4>                     <?= $a['acaddressPostalCode'] ?></h4>
+            <h4>Morada:              <?= $a['acaddressPostalCode'] ?></h4>
             <p>Rua:                  <?= $a['acaddressStreet'] ?></p>
             <p>Localização no Mapa:  <?= $a['maps'] ?></p>
 
@@ -84,6 +84,7 @@
 	</div>
 
     <div role="main" class="ui-content">
+
         <div data-role="collapsible">
             <h4>Ticket:              <?=$a['number'] ?></h4>
             <p>Status:               <?= $a['status'] ?></p>
@@ -103,8 +104,9 @@
             <p>Licença:              <?= $a['licenca'] ?></p>
         </div>
 	</div>
-    
-    <br><br>
+    <br>
+    <input type="button" value="Voltar" onClick="history.go(-1)">
+    <br><br><br><br>
 	<div data-role="footer">
 		<h4>By:Duarte Barros</h4>
 	</div>
@@ -222,17 +224,6 @@
     </div>
 </div-->
 
-
-    <br><br>
-	<div data-role="footer">
-		<h4>By:Duarte Barros</h4>
-	</div>
-</div>
-
-
-</body>
-</html>
-        
 
             <!--label for="id"><b>ID:</b></label>
             <div class="inf">
@@ -420,6 +411,37 @@
             <input type="text" style="background-color:rgba(102, 255, 102, 0.4); border-style:solid; width: 700px; height: 25px; border-width:1px;" id="validacao   " value="<?=  $a["validacao   "] ?>"readonly>
             </div>
             <br-->
+
+
+            <!--br> if ($err) 
+                {
+                  echo "cURL Error #:" . $err;
+                  //echo $key . " => " . $value . "<br>";
+
+                } 
+                else 
+                {
+                  $array = json_decode($response,true);
+                
+                  foreach($array as $key => $value) 
+                  {
+                    $a[$key]=$value;
+                    if(empty($value))
+                    {
+                        echo $key . "0". "<br>";
+                    }
+                    else
+                    {
+                        $array1=json_decode($value, true);
+                        echo $key . $value . "<br>";
+                    }
+                    //$a[$key] = $value;
+                    //echo $key . " => " . $value . "<br>";
+                    //error_reporting(E_ALL & ~E_WARNING);
+                  }     
+                }
+            }
+            else{};<br-->
 
             
             
