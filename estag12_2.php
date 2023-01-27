@@ -193,7 +193,7 @@ foreach ($array as $key => $value) {
 
 <div>
 
-<a href="estag12.php" class="ui-btn" target="_self" data-transition="flip">Voltar</a>
+<a href="estag12.php" class="ui-btn" target="blank" data-transition="flip">Voltar</a>
 
 </div>
 
