@@ -174,8 +174,6 @@ foreach ($array as $key => $value) {
 
     <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
 
-    <link href="estag12.php" rel="import" />
-
     <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 
     <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
@@ -195,7 +193,7 @@ foreach ($array as $key => $value) {
 
 <div>
 
-<a href="estag12.php" class="ui-btn" target="self" data-transition="flip">Voltar</a>
+<a href="estag12.php" class="ui-btn" target="_self" data-transition="flip">Voltar</a>
 
 </div>
 
