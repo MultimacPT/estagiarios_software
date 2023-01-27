@@ -205,7 +205,7 @@ foreach ($array as $key => $value) {
 
   <h3><?php echo $ID ?></h3>
 
-<table data-role="table" data-mode="reflow" class="ui-responsive">
+<table data-role="table" data-mode="reflow" class="ui-responsive" data-theme="a">
 
                 <thead>
 
