@@ -201,11 +201,11 @@ foreach ($array as $key => $value) {
 
 </div>
 
-<div data-role="collapsible">
+<div data-role="collapsible" data-theme="a">
 
   <h3><?php echo $ID ?></h3>
 
-<table data-role="table" data-mode="reflow" class="ui-responsive" data-theme="a">
+<table data-role="table" data-mode="reflow" class="ui-responsive">
 
                 <thead>
 
