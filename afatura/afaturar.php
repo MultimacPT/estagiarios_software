@@ -63,6 +63,7 @@ $z = 3;
 $x = 0;
 $showMore = "true";// = true;
 $dataS;
+$idSelect;
 //--------------------------------------------FOREACH FOR EACH ID---------------------------------------------------
 foreach ($list as $item) {
   $ID = $item['id'];
@@ -123,6 +124,7 @@ if ($errID) {
 }
 
 if(isset($_POST['btn1'])){
+
   $numIt = $_POST['itN'];
   $codg = $_POST['Cod'];
   $modelo = $_POST['Mod'];
@@ -134,7 +136,11 @@ if(isset($_POST['btn1'])){
   $desc = $_POST['Desc'];
   $totalF = $desloc + $pecas + $cons + $inter;
 
+  echo "<script type='javascript'>alert('Email enviado com Sucesso!');";
+  echo "javascript:window.location='index.php';</script>";
+
   log($numIt);
+
 
   $curlS = curl_init();
 
@@ -146,7 +152,7 @@ if(isset($_POST['btn1'])){
     CURLOPT_TIMEOUT => 30,
     CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
     CURLOPT_CUSTOMREQUEST => "POST",
-    CURLOPT_POSTFIELDS => "{\"assignedUserId\":\"63bbf945cfbab4a54\",\"assignedUserName\":\"rsebastiao\",\"teamsIds\":[\"63bbf88d567391e32\"],\"teamsNames\":{\"63bbf88d567391e32\":\"Estagiarios\"},\"itnumero\":$numIt,\"codigo\":$codg,\"modelo\":\"$modelo\",\"serie\":\"$serie\",\"intervencao\":$inter,\"intervencaoCurrency\":\"EUR\",\"pecas\":$pecas,\"pecasCurrency\":\"EUR\",\"deslocacao\":$desloc,\"deslocacaoCurrency\":\"EUR\",\"consumiveis\":$cons,\"consumiveisCurrency\":\"EUR\",\"total\":$totalF,\"totalCurrency\":\"EUR\",\"description\":\"$desc\"}",
+    CURLOPT_POSTFIELDS => "{\"assignedUserId\":\"63bbf945cfbab4a54\",\"assignedUserName\":\"rsebastiao\",\"teamsIds\":[\"63bbf88d567391e32\"],\"teamsNames\":{\"63bbf88d567391e32\":\"Estagiarios\"},\"itnumero\":".$numIt.",\"codigo\":". $codg .",\"modelo\":\"". $modelo ."\",\"serie\":\"". $serie ."\",\"intervencao\":". $inter .",\"intervencaoCurrency\":\"EUR\",\"pecas\":". $pecas .",\"pecasCurrency\":\"EUR\",\"deslocacao\":". $desloc .",\"deslocacaoCurrency\":\"EUR\",\"consumiveis\":". $cons .",\"consumiveisCurrency\":\"EUR\",\"total\":". $totalF .",\"totalCurrency\":\"EUR\",\"description\":\"". $desc ."\"}",
     CURLOPT_HTTPHEADER => [
       "Accept: application/json, text/javascript, */*; q=0.01",
       "Accept-Encoding: gzip, deflate, br",
@@ -180,7 +186,7 @@ if(isset($_POST['btn2'])){
 
 
   curl_setopt_array($curlE, [
-    CURLOPT_URL => "https://mx.multimac.pt/mxv5/api/v1/Afaturar/63d7a1f71c432d039",
+    CURLOPT_URL => "https://mx.multimac.pt/mxv5/api/v1/Afaturar/".$idSelect,
     CURLOPT_RETURNTRANSFER => true,
     CURLOPT_ENCODING => "",
     CURLOPT_MAXREDIRS => 10,
@@ -212,6 +218,10 @@ if(isset($_POST['btn2'])){
   } else {
     echo $responseE;
   }
+}
+
+if(isset($_POST['getIdBtn'])){
+  $idSelect = $_POST['getIdBtn'];
 }
 
 ?>
@@ -267,12 +277,10 @@ if(isset($_POST['btn2'])){
     padding-left: 10px;
   }
 </style>
-
                 <div data-role="header" id="header" data-position="fixed">
                 <form>
                   <button href="#mxmainpage" id="image" class="ui-btn ui-icon-myicon ui-btn-icon-notext ui-corner-all ui-shadow">MainMenu</a>
                   <button href="" class="ui-btn ui-corner-all ui-shadow">Menu</button>
-                  <input  type="submit" name="btn2" value="Editar" />
                   <a href="#criarF" data-position-to="window" data-rel="popup" id="criarBtn" class="ui-btn ui-corner-all ui-shadow">Criar</a>
                 </form>
                 </div>
@@ -287,6 +295,8 @@ if(isset($_POST['btn2'])){
                       for ($x; $x < $i; $x++) {
                         echo "<div data-role='collapsible' data-mini='true' id='faturaI' data-theme='b' data-content-theme='b'>";
                         echo "<h3>" . $ID_display[$x] . "</h3>";
+                        //echo "<a href='#editarF' data-position-to='window' data-rel='popup'><input type='submit' name='getIdBtn' value='<?php $ID_display[$x]'></input></a>";
+                        //echo "<a href='#editarF' data-position-to='window' data-rel='popup' id='editarBtn' class='ui-btn ui-corner-all ui-shadow'>Editar</a>";
                         echo "<table data-role='table' data-mode='reflow' id='table' class='ui-responsive' >";
                         echo "<thead>" . "<tr>" . "<th data-priority='1'>Key</th>" . "<th data-priority='2'>Value</th>" . "</tr>" . "</thead>" . "<tbody>";
 
@@ -318,42 +328,79 @@ if(isset($_POST['btn2'])){
                     ?>
                     
                   </div>
-                    <?php echo $numIt?>
+                   
                  <div data-role="popup" data-history="false" id="criarF" class="ui-corner-all">
                   <form method="post" action="">
                     <div>
                       <h3>Create</h3>
                       <div class="ui-grid-a">
                       <div class="ui-block-a"><label for="itN">ItNumero:</label>
-                      <input type="text" id="itN"></div>
+                      <input type="text" name="itN"></div>
                       <div class="ui-block-b"><label for="Cod">Codigo:</label>
-                      <input type="text" id="Cod"></div>
+                      <input type="text" name="Cod"></div>
                     </div> 
                     <div class="ui-grid-a">
                       <div class="ui-block-a"><label for="Mod">Modelo:</label>
-                      <input type="text" id="Mod"></div>
+                      <input type="text" name="Mod"></div>
                       <div class="ui-block-b"><label for="Ser">Serie:</label>
-                      <input type="text" id="Ser"></div>
+                      <input type="text" name="Ser"></div>
                     </div>
                     <div id="DescDiv">
                     <label for="Desc">Descrição</label>
-                    <input type="text" id="Desc"></input>
+                    <input type="text" name="Desc"></input>
                   </div><br><br>
                   <div class="ui-grid-a">
                       <div class="ui-block-a"><label for="Inter">Intervencao:</label>
-                      <input type="text" id="Inter"></div>
+                      <input type="text" name="Inter"></div>
                       <div class="ui-block-b"><label for="Desloc">Deslocacao:</label>
-                      <input type="text" id="Desloc"></div>
+                      <input type="text" name="Desloc"></div>
                     </div>
                     <div class="ui-grid-a">
                       <div class="ui-block-a"><label for="Pec">Pecas:</label>
-                      <input type="text" id="Pec"></div>
+                      <input type="text" name="Pec"></div>
                       <div class="ui-block-b"><label for="Cons">Consumiveis:</label>
-                      <input type="text" id="Cons"></div>
+                      <input type="text" name="Cons"></div>
                     </div>
                     <input type="submit" name="btn1" value="Submeter" />
                    </div>
                   </form>
                   </div>
+
+                 <!-- <div data-role="popup" data-history="false" id="editarF" class="ui-corner-all">
+                  <form method="post" action="">
+                    <div>
+                      <h3>Edit <?php echo $idSelect ?></h3>
+                      <div class="ui-grid-a">
+                      <div class="ui-block-a"><label for="itNE">ItNumero:</label>
+                      <input type="text" name="itNE"></div>
+                      <div class="ui-block-b"><label for="CodE">Codigo:</label>
+                      <input type="text" name="CodE"></div>
+                    </div> 
+                    <div class="ui-grid-a">
+                      <div class="ui-block-a"><label for="ModE">Modelo:</label>
+                      <input type="text" name="ModE"></div>
+                      <div class="ui-block-b"><label for="SerE">Serie:</label>
+                      <input type="text" name="SerE"></div>
+                    </div>
+                    <div id="DescDiv">
+                    <label for="DescE">Descrição</label>
+                    <input type="text" name="DescE"></input>
+                  </div><br><br>
+                  <div class="ui-grid-a">
+                      <div class="ui-block-a"><label for="InterE">Intervencao:</label>
+                      <input type="text" name="InterE"></div>
+                      <div class="ui-block-b"><label for="DeslocE">Deslocacao:</label>
+                      <input type="text" name="DeslocE"></div>
+                    </div>
+                    <div class="ui-grid-a">
+                      <div class="ui-block-a"><label for="PecE">Pecas:</label>
+                      <input type="text" name="PecE"></div>
+                      <div class="ui-block-b"><label for="ConsE">Consumiveis:</label>
+                      <input type="text" name="ConsE"></div>
+                    </div>
+                    <input  type="submit" name="btn2" value="Editar"/>
+                   </div>
+                  </form>
+                  </div>-->
 </body>
 </html>
