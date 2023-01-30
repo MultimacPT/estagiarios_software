@@ -123,7 +123,18 @@ if ($errID) {
 }
 
 if(isset($_POST['btn1'])){
-  //$num = "92849";
+  $numIt = $_POST['itN'];
+  $codg = $_POST['Cod'];
+  $modelo = $_POST['Mod'];
+  $serie = $_POST['Ser'];
+  $inter = $_POST['Inter'];
+  $desloc = $_POST['Desloc'];
+  $pecas = $_POST['Pec'];
+  $cons = $_POST['Cons'];
+  $desc = $_POST['Desc'];
+  $totalF = $desloc + $pecas + $cons + $inter;
+
+  log($numIt);
 
   $curlS = curl_init();
 
@@ -135,7 +146,7 @@ if(isset($_POST['btn1'])){
     CURLOPT_TIMEOUT => 30,
     CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
     CURLOPT_CUSTOMREQUEST => "POST",
-    CURLOPT_POSTFIELDS => "{\"assignedUserId\":\"63bbf945cfbab4a54\",\"assignedUserName\":\"rsebastiao\",\"teamsIds\":[\"63bbf88d567391e32\"],\"teamsNames\":{\"63bbf88d567391e32\":\"Estagiarios\"},\"itnumero\":9999,\"codigo\":20000,\"modelo\":\"MX\",\"serie\":\"Mx2\",\"intervencao\":10,\"intervencaoCurrency\":\"EUR\",\"pecas\":20,\"pecasCurrency\":\"EUR\",\"deslocacao\":30,\"deslocacaoCurrency\":\"EUR\",\"consumiveis\":40,\"consumiveisCurrency\":\"EUR\",\"total\":100,\"totalCurrency\":\"EUR\",\"description\":\"Teste de api\"}",
+    CURLOPT_POSTFIELDS => "{\"assignedUserId\":\"63bbf945cfbab4a54\",\"assignedUserName\":\"rsebastiao\",\"teamsIds\":[\"63bbf88d567391e32\"],\"teamsNames\":{\"63bbf88d567391e32\":\"Estagiarios\"},\"itnumero\":$numIt,\"codigo\":$codg,\"modelo\":\"$modelo\",\"serie\":\"$serie\",\"intervencao\":$inter,\"intervencaoCurrency\":\"EUR\",\"pecas\":$pecas,\"pecasCurrency\":\"EUR\",\"deslocacao\":$desloc,\"deslocacaoCurrency\":\"EUR\",\"consumiveis\":$cons,\"consumiveisCurrency\":\"EUR\",\"total\":$totalF,\"totalCurrency\":\"EUR\",\"description\":\"$desc\"}",
     CURLOPT_HTTPHEADER => [
       "Accept: application/json, text/javascript, */*; q=0.01",
       "Accept-Encoding: gzip, deflate, br",
@@ -240,14 +251,29 @@ if(isset($_POST['btn2'])){
   .ui-icon-myicon:after {
 	background-image: url("mxLogo.png");
   }
+  #criarF{
+    width: 90vw;
+    height: 90vh;
+  }
+  .ui-block-a,.ui-block-b{
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+  #Desc{
+    line-height: 50px;
+  }
+  #DescDiv{
+    padding-right: 10px;
+    padding-left: 10px;
+  }
 </style>
 
                 <div data-role="header" id="header" data-position="fixed">
-                <form method="post">
+                <form>
                   <button href="#mxmainpage" id="image" class="ui-btn ui-icon-myicon ui-btn-icon-notext ui-corner-all ui-shadow">MainMenu</a>
                   <button href="" class="ui-btn ui-corner-all ui-shadow">Menu</button>
                   <input  type="submit" name="btn2" value="Editar" />
-                  <input  type="submit" name="btn1" value="Submeter" />
+                  <a href="#criarF" data-position-to="window" data-rel="popup" id="criarBtn" class="ui-btn ui-corner-all ui-shadow">Criar</a>
                 </form>
                 </div>
 
@@ -290,10 +316,44 @@ if(isset($_POST['btn2'])){
                       "<input type='submit' value='Mostrar mais' onclick='showDisappear()'>" . "</form>" . "</div>";
                     $showMore = $_GET;
                     ?>
-                    <?php
-                  
-                 ?>
-                 </div>
-
+                    
+                  </div>
+                    <?php echo $numIt?>
+                 <div data-role="popup" data-history="false" id="criarF" class="ui-corner-all">
+                  <form method="post" action="">
+                    <div>
+                      <h3>Create</h3>
+                      <div class="ui-grid-a">
+                      <div class="ui-block-a"><label for="itN">ItNumero:</label>
+                      <input type="text" id="itN"></div>
+                      <div class="ui-block-b"><label for="Cod">Codigo:</label>
+                      <input type="text" id="Cod"></div>
+                    </div> 
+                    <div class="ui-grid-a">
+                      <div class="ui-block-a"><label for="Mod">Modelo:</label>
+                      <input type="text" id="Mod"></div>
+                      <div class="ui-block-b"><label for="Ser">Serie:</label>
+                      <input type="text" id="Ser"></div>
+                    </div>
+                    <div id="DescDiv">
+                    <label for="Desc">Descrição</label>
+                    <input type="text" id="Desc"></input>
+                  </div><br><br>
+                  <div class="ui-grid-a">
+                      <div class="ui-block-a"><label for="Inter">Intervencao:</label>
+                      <input type="text" id="Inter"></div>
+                      <div class="ui-block-b"><label for="Desloc">Deslocacao:</label>
+                      <input type="text" id="Desloc"></div>
+                    </div>
+                    <div class="ui-grid-a">
+                      <div class="ui-block-a"><label for="Pec">Pecas:</label>
+                      <input type="text" id="Pec"></div>
+                      <div class="ui-block-b"><label for="Cons">Consumiveis:</label>
+                      <input type="text" id="Cons"></div>
+                    </div>
+                    <input type="submit" name="btn1" value="Submeter" />
+                   </div>
+                  </form>
+                  </div>
 </body>
 </html>
