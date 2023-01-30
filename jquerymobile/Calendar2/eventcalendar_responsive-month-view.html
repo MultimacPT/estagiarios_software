@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script>
+        // Ignore this in your implementation
+        window.isMbscDemo = true;
+    </script>
+
+    <title>
+        Responsive
+    </title>
+
+    <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+
+    <!-- Mobiscroll JS and CSS Includes -->
+    <link rel="stylesheet" href="css/mobiscroll.jquery.min.css">
+    <script src="js/mobiscroll.jquery.min.js"></script>
+
+    <style type="text/css">
+            body {
+        margin: 0;
+        padding: 0;
+    }
+
+    body,
+    html {
+        height: 100%;
+    }
+
+    </style>
+
+</head>
+
+<body>
+
+    <div mbsc-page class="demo-responsive-month-view">
+        <div style="height:100%">
+                <div id="demo-responsive-month-view"></div>
+        </div>
+    </div>
+
+    <script>
+        
+            mobiscroll.setOptions({
+        locale: mobiscroll.localePtPT,    // Specify language like: locale: mobiscroll.localePl or omit setting to use default
+        theme: 'ios',                     // Specify theme like: theme: 'ios' or omit setting to use default
+            themeVariant: 'light'         // More info about themeVariant: https://docs.mobiscroll.com/5-21-2/eventcalendar#opt-themeVariant
+    });
+    
+    $(function () {
+    
+        var inst = $('#demo-responsive-month-view').mobiscroll().eventcalendar({
+            
+            responsive: {   // More info about responsive: https://docs.mobiscroll.com/5-21-2/eventcalendar#opt-responsive
+                xsmall: {
+                    view: {               // More info about view: https://docs.mobiscroll.com/5-21-2/eventcalendar#opt-view
+                        calendar: {
+                            type: 'week',
+                        },
+                        agenda: {
+                            type: 'day'
+                        }
+                    }
+                },
+                custom: { // Custom breakpoint
+                    breakpoint: 600,
+                    view: {               // More info about view: https://docs.mobiscroll.com/5-21-2/eventcalendar#opt-view
+                        calendar: {
+                            labels: true  // More info about labels: https://docs.mobiscroll.com/5-21-2/eventcalendar#opt-labels
+                        }
+                    }
+                }
+            }
+        }).mobiscroll('getInst');
+    
+        $.getJSON('https://trial.mobiscroll.com/events/?vers=5&callback=?', function (events) {
+            inst.setEvents(events);
+        }, 'jsonp');
+    
+    });
+    </script>
+
+</body>
+
+</html>
