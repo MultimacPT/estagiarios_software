@@ -1,91 +1,79 @@
-/*<!DOCTYPE html>
+
+<!DOCTYPE html>
 <html>
+     
 <head>
-    <title>Teste</title>
+    <title>
+        How to call PHP function
+        on the click of a Button ?
+    </title>
 </head>
-<body>
+ 
+<body style="text-align:center;">
+     
+    <h1 style="color:green;">
+        GeeksforGeeks
+    </h1>
+     
+    <h4>
+        How to call PHP function
+        on the click of a Button ?
+    </h4>
+ 
+    <?php
+     
+        if(isset($_POST['button1'])) {
+            echo "This is Button1 that is selected";
+        }
+        if(isset($_POST['button3'])) {
+            echo "Enviado com sucesso";
+     // ------------------------------------- Meter PHP post aqui -----------------------------------------------
+     $curl = curl_init();
 
-<form>
-
-    <fieldset style="width: 650px">
-        <legend>Cotação</legend>
-        <br/>
-        <table frame="border" style="text-align: left;">
-            <tr>
-                <div>
-                    <td width="25">
-                        <h4>Item</h4>
-                    </td>
-                </div>
-
-                <div>
-                    <td width="300">
-                        <h4>Descrição</h4>
-                    </td>
-                </div>
-
-                <div>
-                    <td width="25">
-                        <h4>QTD</h4>
-                    </td>
-                </div>
-                <td>
-                    <h4>Valor Unit</h4>
-                </td>
-                <td>
-                    <h4>Valor Total</h4>
-                </td>
-            </tr>
-
-            <?php
-            $x = 0;
-                while ($x < 7)
-                {   
-                        $x ++;  
-
-
-                        echo '
-                            <tr style="text-align: left;">
-                                <td>
-                                    <input style="width: 25px" type="text" name="item" value="'.$x.'">
-                                </td>
-                                <td width="300">
-                                    <input style="width: 300px" type="text" name="nome">
-                                </td>
-                                <td width="25" style="text-align: center;">
-                                    <input style="width: 60px" type="number" name="quantidade">
-                                </td>
-                                <td>
-                                    <input style="width: 120px" type="number" name="valorUnit">
-                                </td>
-                                <td>
-                                    <input style="width: 120px" type="number" name="Valor">
-                                </td>
-                            </tr> ';
-                };
-
-            ?>
-        </table>
-        <br/>
-        <fieldset style="width: 638px">
-        <br/>
-            <input type="submit" name="Enviar" <?php echo "<h5>  Respondidos $x </5>" ?>
-            <br/>
-            <br/>
+     curl_setopt_array($curl, [
+       CURLOPT_URL => "https://mx.multimac.pt/mxv5/api/v1/Assiduidade",
+       CURLOPT_RETURNTRANSFER => true,
+       CURLOPT_ENCODING => "",
+       CURLOPT_MAXREDIRS => 10,
+       CURLOPT_TIMEOUT => 30,
+       CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+       CURLOPT_CUSTOMREQUEST => "POST",
+       CURLOPT_POSTFIELDS => "{\"assignedUserId\":\"63bbf8d572c41d87d\",\"assignedUserName\":\"dbarros\",\"teamsIds\":[\"63bbf88d567391e32\"],\"teamsNames\":{\"63bbf88d567391e32\":\"Estagiarios\"},\"name\":\"nova_entrada\",\"tipo\":\"nova_entrada\",\"description\":\"nova_entrada\"}",
+       CURLOPT_HTTPHEADER => [
+         "Accept: application/json, text/javascript, */*; q=0.01",
+         "Accept-Encoding: gzip, deflate, br",
+         "Accept-Language: pt-PT,pt;q=0.8,en;q=0.5,en-US;q=0.3",
+         "Content-Type: application/json",
+         "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/109.0",
+         "X-Api-Key: 4551D74F0502A6409445E49961896B49"
+       ],
+     ]);
 
 
+  // Desactiva o certificado SSL
+  curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
+  curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+$response = curl_exec($curl);
+$err = curl_error($curl);
 
-        <br/>
-    </fieldset>
+curl_close($curl);
 
-    </fieldset>
-</form>
-</body>
-</html>*/
+if ($err) {
+  echo "cURL Error #:" . $err;
+} else {
+  echo $response;
+}
 
-
-
-
-
-<label for="id">ID:</label>
-        <input type="text" id="id" value="<?= $a["id"]?>"readonly>
+        }
+    ?>
+     
+    <form method="post">
+        <input type="submit" name="button1"
+                value="Button1"/>
+         
+        <input type="submit" name="button3"
+                value="Button3"/>
+    </form>
+</head>
+ 
+</html>

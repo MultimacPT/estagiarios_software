@@ -108,7 +108,7 @@
     <input type="button" value="Voltar" onClick="history.go(-1)">
     <br><br><br><br>
 	<div data-role="footer">
-		<h4>By:Duarte Barros</h4>
+		<h4></h4>
 	</div>
 </div>
 
