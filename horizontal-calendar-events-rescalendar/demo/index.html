@@ -46,6 +46,31 @@
             .greyClass{
                 background: grey;
             }
+            .yellowClass{
+                background: yellow;
+            }
+            .blackClass{
+                background: black;
+            }
+            .purpleClass{
+                background: purple;
+            }
+            .orangeClass{
+                background: orange;
+            }
+            .brownClass{
+                background: brown;
+            }
+            .pinkClass{
+                background: pink;
+            }
+            .chocolateClass{
+                background: chocolate;
+            }
+            .limeClass{
+                background: lime;
+            }
+            .
 
         </style>
 
@@ -98,9 +123,9 @@ src="https://pagead2.googlesyndication.com/pagead/show_ads.js">
                 $('#my_calendar1').rescalendar({
                     id: 'my_calendar1',
                     format: 'DD/MM/YYYY',
-                    jumpSize: 15,
+                    jumpSize: 30,
                     locale: 'pt',
-                    refDate: '12/07/2005',
+                    refDate: '01/01/2023',
                     lang: {
                         'today': 'Hoje',
                     },
@@ -135,108 +160,72 @@ src="https://pagead2.googlesyndication.com/pagead/show_ads.js">
                             endDate: '13/09/2023',
                             customClass: 'greyClass',
                         },
+                        {
+                            id: 5,
+                            name: 'Ano Novo',
+                            startDate: '01/01/2023',
+                            endDate: '01/01/2023',
+                            customClass: 'yellowClass',
+                        },
+                        {
+                            id: 6,
+                            name: 'Dia dos Reis',
+                            startDate: '06/01/2023',
+                            endDate: '06/01/2023',
+                            customClass: 'blackClass',
+                        },
+                        {
+                            id: 7,
+                            name: 'Dia dos Namorados',
+                            startDate: '14/02/2023',
+                            endDate: '14/02/2023',
+                            customClass: 'purpleClass',
+                        },
+                        {
+                            id: 8,
+                            name: 'Dia Internacional da Mulher',
+                            startDate: '08/03/2023',
+                            endDate: '08/03/2023',
+                            customClass: 'orangeClass',
+                        },
+                        {
+                            id: 9,
+                            name: 'Dia do Pai',
+                            startDate: '19/03/2023',
+                            endDate: '19/03/2023',
+                            customClass: 'brownClass',
+                        },
+                        {
+                            id: 10,
+                            name: 'Sexta-Feira Santa',
+                            startDate: '07/04/2023',
+                            endDate: '07/04/2023',
+                            customClass: 'pinkClass',
+                        },
+                        {
+                            id: 11,
+                            name: 'Dia da Liberdade',
+                            startDate: '25/04/2023',
+                            endDate: '25/04/2023',
+                            customClass: 'chocolateClass',
+                        },
+                        {
+                            id: 12,
+                            name: 'Dia do Trabalhador',
+                            startDate: '01/05/2023',
+                            endDate: '01/05/2023',
+                            customClass: 'limeClass',
+                        },
+                        
+                        
+                        
                       
                     ],
 
                     dataKeyField: 'name',
-                    dataKeyValues: ['Estágio', 'Páscoa', 'Carnaval', 'Verão']
+                    dataKeyValues: ['Estágio', 'Páscoa', 'Carnaval', 'Verão', 'Ano Novo', 'Dia dos Reis', 'Dia dos Namorados', 'Dia Internacional da Mulher', 'Dia do Pai', 'Sexta-Feira Santa', 'Dia da Liberdade', 'Dia do Trabalhador', ]
 
                 });
-
-                $('#my_calendar_en').rescalendar({
-                    id: 'my_calendar_en',
-                    format: 'YYYY-MM-DD',
-                    refDate: '2023-01-30',
-                    jumpSize: 15,
-                    disabledDays: ['2019-01-01', '2019-01-07', '2019-04-18', '2019-04-19', '2019-05-01', '2019-05-02', '2019-05-13', '2019-08-15', '2019-10-12', '2019-11-01', '2019-12-06', '2019-12-09', '2019-12-20', '2019-12-24', '2019-12-25', '2019-12-31'],
-                    disabledWeekDays: [5,6],
-                    data: [
-                        {
-                            id: 1,
-                            name: 'item1',
-                            startDate: '2019-03-01',
-                            endDate: '2019-03-03',
-                            customClass: 'greenClass'
-                        },
-                        {
-                            id: 2,
-                            name: 'item2',
-                            startDate: '2019-03-05',
-                            endDate: '2019-03-15',
-                            customClass: 'blueClass',
-                            title: 'Title 2 en'
-                        },
-                        {
-                            id: 3,
-                            name: 'item3',
-                            startDate: '2019-03-05',
-                            endDate: '2019-03-15',
-                            customClass: 'blueClass',
-                            title: 'Title 2 en'
-                        },
-                        {
-                            id: 4,
-                            name: 'item4',
-                            startDate: '2019-03-05',
-                            endDate: '2019-03-15',
-                            customClass: 'blueClass',
-                            title: 'Title 2 en'
-                        },
-                        {
-                            id: 5,
-                            name: 'item5',
-                            startDate: '2019-03-05',
-                            endDate: '2019-03-08',
-                            customClass: 'greenClass'
-                        }
-                    ],
-
-                    dataKeyField: 'name',
-                    dataKeyValues: ['item1', 'item2', 'item3','item4','item5']
-
-                });
-
-                $('#my_calendar_simple').rescalendar({
-                    id: 'my_calendar_simple',
-                    dataKeyField: 'name',
-                    dataKeyValues: ['Data de Hoje']
-                });
-
-                $('#my_calendar_calSize').rescalendar({
-                    id: 'my_calendar_calSize',
-                    jumpSize: 5,
-                    calSize: 10,
-                    data: [
-                        {
-                            id: 1,
-                            name: 'item1',
-                            startDate: '2019-03-01',
-                            endDate: '2019-03-03',
-                            customClass: 'greenClass'
-                        },
-                        {
-                            id: 2,
-                            name: 'item2',
-                            startDate: '2019-03-05',
-                            endDate: '2019-03-15',
-                            customClass: 'blueClass',
-                            title: 'Title 2 en'
-                        },
-                        {
-                            id: 3,
-                            name: 'item5',
-                            startDate: '2019-03-05',
-                            endDate: '2019-03-08',
-                            customClass: 'greenClass'
-                        }
-                    ],
-
-                    dataKeyField: 'name',
-                    dataKeyValues: ['item1', 'item2', 'item3','item4','item5']
-                });
-
-
-
 
             });
 
