@@ -64,6 +64,8 @@ $x = 0;
 $showMore = "true";// = true;
 $dataS;
 $idSelect;
+$numclick = 0;
+$numEdit = 0;
 //--------------------------------------------FOREACH FOR EACH ID---------------------------------------------------
 foreach ($list as $item) {
   $ID = $item['id'];
@@ -220,9 +222,12 @@ if(isset($_POST['btn2'])){
   }
 }
 
-if(isset($_POST['getIdBtn'])){
-  $idSelect = $_POST['getIdBtn'];
-}
+//if(isset($_POST['getIdBtn'])){
+//  $idSelect = $_POST['getIdBtn'];
+//}
+
+
+
 
 ?>
 
@@ -241,6 +246,10 @@ if(isset($_POST['getIdBtn'])){
 </head>
 <body>
 
+
+<script>
+  
+</script>
 
 <style>
   table{
@@ -265,23 +274,38 @@ if(isset($_POST['getIdBtn'])){
     width: 90vw;
     height: 90vh;
   }
+  #editarBtn{
+    text-decoration: none;
+  }
   .ui-block-a,.ui-block-b{
     padding-right: 10px;
     padding-left: 10px;
   }
   #Desc{
-    line-height: 50px;
+    overflow: hidden;
+    height: 40px;
   }
   #DescDiv{
     padding-right: 10px;
     padding-left: 10px;
+  }
+  #descView{
+    overflow: hidden;
+    height: 40px;
+  }
+  ::placeholder{
+    color: white !important;
+    opacity: 1 !important;
+  }
+  #totalView{
+    float: right;
   }
 </style>
                 <div data-role="header" id="header" data-position="fixed">
                 <form>
                   <button href="#mxmainpage" id="image" class="ui-btn ui-icon-myicon ui-btn-icon-notext ui-corner-all ui-shadow">MainMenu</a>
                   <button href="" class="ui-btn ui-corner-all ui-shadow">Menu</button>
-                  <a href="#criarF" data-position-to="window" data-rel="popup" id="criarBtn" class="ui-btn ui-corner-all ui-shadow">Criar</a>
+                  <a href="#criarF" data-prefetch data-position-to="window" data-rel="popup" id="criarBtn" class="ui-btn ui-corner-all ui-shadow">Criar</a>
                 </form>
                 </div>
 
@@ -290,15 +314,21 @@ if(isset($_POST['getIdBtn'])){
                 //while($x < $i) {
                   ?>
                   <?php
-                    if ($showMore == "true") {
+                    //if ($showMore == "true") {
                       //$z = 3;
-                      for ($x; $x < $i; $x++) {
+                      for ($x; $x < 5; $x=$x) {
+                        if(empty($ID_display[$x])){
+                      break;
+                        }
                         echo "<div data-role='collapsible' data-mini='true' id='faturaI' data-theme='b' data-content-theme='b'>";
                         echo "<h3>" . $ID_display[$x] . "</h3>";
                         //echo "<a href='#editarF' data-position-to='window' data-rel='popup'><input type='submit' name='getIdBtn' value='<?php $ID_display[$x]'></input></a>";
-                        //echo "<a href='#editarF' data-position-to='window' data-rel='popup' id='editarBtn' class='ui-btn ui-corner-all ui-shadow'>Editar</a>";
-                        echo "<table data-role='table' data-mode='reflow' id='table' class='ui-responsive' >";
-                        echo "<thead>" . "<tr>" . "<th data-priority='1'>Key</th>" . "<th data-priority='2'>Value</th>" . "</tr>" . "</thead>" . "<tbody>";
+                        echo /*"<a href='#editarF' data-position-to='window' data-rel='popup' id='editarBtn'>*/"<form method='post' action='' data-prefetch>
+                              <input type='hidden' name='editIdT' value='" . $ID_display[$x] . "'>
+                              <input type='submit' name='getIdBtn' value='Editar' class='ui-btn ui-corner-all ui-shadow'></a></form>";
+                        //echo "<table data-role='table' data-mode='reflow' id='table' class='ui-responsive' >";
+                        //echo "<thead>" . "<tr>" . "<th data-priority='1'>Key</th>" . "<th data-priority='2'>Value</th>" . "</tr>" . "</thead>" . "<tbody>";
+                    echo "<div class='ui-grid-b'>"; 
 
                         foreach ($fID[$x] as $key => $value) {
                           //$a[$key] = $value;
@@ -312,19 +342,36 @@ if(isset($_POST['getIdBtn'])){
 
                           }
                           if ($value == "" or $value == "null" or empty($value) == true or $value == "[]") {
-                            $value = "0";
-                            echo "<tr>" . "<th>" . $key . "</th>" . "<td>" . $value . "</td>" . "</tr>";
-                          } else {
-                            echo "<tr>" . "<th>" . $key . "</th>" . "<td>" . $value . "</td>" . "</tr>";
+                            $value = "Sem informação";
+                            //echo "<tr>" . "<th>" . $key . "</th>" . "<td>" . $value . "</td>" . "</tr>";
                           }
+                          
                         }
-                        echo "</tbody>" . "</table>" . "</div>";
+                    $totalV = $fID[$x]['intervencao'] + $fID[$x]['deslocacao'] + $fID[$x]['pecas'] + $fID[$x]['consumiveis'];
+                    echo "<div class='ui-grid-a'><div class='ui-block-a'><label>"."Itnumero:"."</label><input type='text' placeholder='".$fID[$x]['itnumero']."'disabled></div>";
+                    echo "<div class='ui-block-b'><label>"."Codigo:"."</label><input type='text' placeholder='".$fID[$x]['codigo']."'disabled></div></div>";
+                    echo "<div class='ui-grid-a'><div class='ui-block-a'><label>"."modelo:"."</label><input type='text' placeholder='".$fID[$x]['modelo']."'disabled></div>";
+                    echo "<div class='ui-block-b'><label>"."Serie:"."</label><input type='text' placeholder='".$fID[$x]['serie']."'disabled></div></div>";
+                    echo "<div class='ui-grid-a'><div class='ui-block-a'><label>" . "Description"."</label><input type='text' name='descView' placeholder='".$fID[$x]['description']."'disabled></div></div>";
+                    echo "<div class='ui-grid-a'><div class='ui-block-a'><label>"."Intervencao:"."</label><input type='text' placeholder='".$fID[$x]['intervencao']."'disabled></div>";
+                    echo "<div class='ui-block-b'><label>"."Deslocacao:"."</label><input type='text' placeholder='".$fID[$x]['deslocacao']."'disabled></div></div>";
+                    echo "<div class='ui-grid-a'><div class='ui-block-a'><label>"."Pecas:"."</label><input type='text' placeholder='".$fID[$x]['pecas']."'disabled></div>";
+                    echo "<div class='ui-block-b'><label>"."Consumiveis:"."</label><input type='text' placeholder='".$fID[$x]['consumiveis']."'disabled></div></div>";
+                    echo "<div class='ui-grid-a'><div class='ui-block-a' id='totalView'><label>Total:</label><input type='text' placeholder='".$totalV."'disabled></div></div>";
+
+                        //echo "</tbody>" . "</table>" . "</div>";
+                        $x += 1;
+                    echo "</div></div>";
                       }
-                  $showMore = "false";
-                    }
-                    echo "<div id='showBtn'>" . "<form action='afaturar.php' method='post'>" . "<input type='hidden' name='show+' value='arroz'>" .
-                      "<input type='submit' value='Mostrar mais' onclick='showDisappear()'>" . "</form>" . "</div>";
-                    $showMore = $_GET;
+                  //$showMore = "false";
+                    //}
+                    if(empty($ID_display[$x])){
+
+                    } else {
+                    echo "<div id='showBtn'>" . "<form action='' id='showMore' method='post' data-prefetch>" .
+                      "<input type='submit' name='showMoreBtn0' value='Mostrar mais'>" . "</form>" . "</div>";
+                  }
+                    //$showMore = $_GET;
                     ?>
                     
                   </div>
@@ -366,7 +413,22 @@ if(isset($_POST['getIdBtn'])){
                   </form>
                   </div>
 
-                 <!-- <div data-role="popup" data-history="false" id="editarF" class="ui-corner-all">
+
+                      <script>
+                        $('input[name="editIdT"]').on('click', function(){
+                            $('#editarF').popup('open', {
+                            x: 50,
+                            y: 50,
+                            });
+                            });
+                      </script>
+
+                      <?php if(isset($_POST['getIdBtn'])){
+                            $idSelect = $_POST['editIdT'];
+                        echo "<h3>".$idSelect."</h3>";
+                      }?>
+
+                  <div data-role="popup" data-history="false" id="editarF" class="ui-corner-all">
                   <form method="post" action="">
                     <div>
                       <h3>Edit <?php echo $idSelect ?></h3>
@@ -401,6 +463,54 @@ if(isset($_POST['getIdBtn'])){
                     <input  type="submit" name="btn2" value="Editar"/>
                    </div>
                   </form>
-                  </div>-->
+                  </div>
+
+
+                  <?php 
+
+                  if(isset($_POST['showMoreBtn'.$numclick])){
+
+                    if ($numclick > 0) {
+                      echo "<style>" . "#showMore" . $numclick . "{ display: none;}" . "</style>";
+                    }
+                    else{
+                      echo "<style>" . "#showMore" . "{ display: none;}" . "</style>";
+                    }
+                    //$numclick += 1;
+                    //$x3 = 3;
+                    //$x3 += 3;
+
+                    for ($x; $x < $i; $x++) {
+                      echo "<div data-role='collapsible' data-mini='true' id='faturaI' data-theme='b' data-content-theme='b'>";
+                      echo "<h3>" . $ID_display[$x] . "</h3>";
+                      //echo "<a href='#editarF' data-position-to='window' data-rel='popup'><input type='submit' name='getIdBtn' value='<?php $ID_display[$x]'></input></a>";
+                      echo "<a href='#editarF' data-prefetch data-position-to='window' data-rel='popup' id='editarBtn' class='ui-btn ui-corner-all ui-shadow'>Editar</a>";
+                      echo "<table data-role='table' data-mode='reflow' id='table' class='ui-responsive' >";
+                      echo "<thead>" . "<tr>" . "<th data-priority='1'>Key</th>" . "<th data-priority='2'>Value</th>" . "</tr>" . "</thead>" . "<tbody>";
+                  
+                      foreach ($fID[$x] as $key => $value) {
+                        //$a[$key] = $value;
+                        if (!is_string($key)) {
+                          $key = json_encode($key);
+                        }
+                        if (!is_string($value)) {
+                          $value = json_encode($value);
+                        }
+                        if (!is_string($key) and !is_string($value)) {
+                  
+                        }
+                        if ($value == "" or $value == "null" or empty($value) == true or $value == "[]") {
+                          $value = "0";
+                          echo "<tr>" . "<th>" . $key . "</th>" . "<td>" . $value . "</td>" . "</tr>";
+                        } else {
+                          echo "<tr>" . "<th>" . $key . "</th>" . "<td>" . $value . "</td>" . "</tr>";
+                        }
+                      }
+                      echo "</tbody>" . "</table>" . "</div>";
+                    }
+                    //echo "<div id='showBtn'>" . "<form action='' id='showMore" . $numclick . "'method='post'>" .
+                    //"<input type='submit' name='showMoreBtn" . $numclick . "' value='Mostrar mais'>" . "</form>" . "</div>";
+                  }
+                  ?>
 </body>
 </html>
