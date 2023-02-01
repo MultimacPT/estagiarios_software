@@ -241,6 +241,7 @@ if(isset($_POST['btn2'])){
     <link rel="stylesheet" href="themes/formulario_themes.min.css" />
     <link rel="stylesheet" href="themes/jquery.mobile.icons.min.css" />
     <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css"> 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
     <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 </head>
@@ -460,10 +461,10 @@ if(isset($_POST['btn2'])){
                       }?>
 
 <script>
-/*$(document).ready(function(){
+$(document).ready(function(){
     $("#getIdBtn").click(function(){
         $.ajax({
-            url: "afaturar.php",
+            url: "teste.txt",
             type: "POST",
             data: {
                 editIdT: $("#editIdT").val()
@@ -473,15 +474,13 @@ if(isset($_POST['btn2'])){
             }
         });
     });
-});*/
+});
 </script>
 
 <?php 
 /*if ($_POST['editIdT']) {
-  // Retrieve data from database based on editIdT
   $data = getDataFromDatabase($_POST['editIdT']);
 
-  // Return data as JSON
   echo json_encode($data);
 }*/
 ?>
@@ -585,21 +584,16 @@ if(isset($_POST['btn2'])){
     var valid = true;
     var v = 1;
 
-    //loop through all input fields
     $('input').each(function() {
-      //check if the field is empty
       if ($(this).val() == '') {
         valid[v] = false;
       }
       v += 1;
     });
 
-    //check if the form is valid
     if (valid) {
       return true;
     } else {
-      //show an alert if the form is not valid
-      alert('Please fill out all required fields!');
       return false;
     }
   }
