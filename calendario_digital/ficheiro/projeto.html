@@ -11,6 +11,11 @@
         <!-- CSS -->
         <link rel="stylesheet" href="../src/css/rescalendar.css">
 
+        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+        <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+        <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+
         <style>
 
             body{
@@ -88,6 +93,12 @@
             .tanClass{
                 background: tan;
             }
+            .goldClass{
+                background: gold;
+            }
+            .violetClass{
+                background: violet;
+            }
 
         </style>
 
@@ -111,10 +122,9 @@ src="https://pagead2.googlesyndication.com/pagead/show_ads.js">
 <div class="jquery-script-clear"></div>
 </div>
 </div>
-        <h1>MULTIMAC Calendário de Trabalhadores</h1>
+
         <div class="wrapper">
 
-            <h4>Calendário Português</h4>
             <div class="rescalendar" id="my_calendar1"></div>
 
             <!--<h4>English calendar</h4>
@@ -275,11 +285,25 @@ src="https://pagead2.googlesyndication.com/pagead/show_ads.js">
                             endDate: '11/11/2023',
                             customClass: 'tanClass',
                         },
+                        {
+                            id: 19,
+                            name: 'Natal',
+                            startDate: '25/12/2023',
+                            endDate: '25/12/2023',
+                            customClass: 'goldClass',
+                        },
+                        {
+                            id: 20,
+                            name: 'Restauração da Independência',
+                            startDate: '01/12/2023',
+                            endDate: '01/12/2023',
+                            customClass: 'violetClass',
+                        },
                         
                     ],
 
                     dataKeyField: 'name',
-                    dataKeyValues: ['Estágio', 'Páscoa', 'Carnaval', 'Verão', 'Ano Novo', 'Dia dos Reis', 'Dia dos Namorados', 'Dia Internacional da Mulher', 'Dia do Pai', 'Sexta-Feira Santa', 'Dia da Liberdade', 'Dia do Trabalhador', 'Dia da Mãe', 'Dia da Criança', 'Dia do Trabalhador', 'Dia de Portugal', 'Implantação da República', 'Dia de São Martinho']
+                    dataKeyValues: ['Estágio', 'Páscoa', 'Carnaval', 'Verão', 'Ano Novo', 'Dia dos Reis', 'Dia dos Namorados', 'Dia Internacional da Mulher', 'Dia do Pai', 'Sexta-Feira Santa', 'Dia da Liberdade', 'Dia do Trabalhador', 'Dia da Mãe', 'Dia da Criança', 'Dia do Trabalhador', 'Dia de Portugal', 'Implantação da República', 'Dia de São Martinho', 'Natal', 'Restauração da Independência']
 
                 });
 
@@ -288,6 +312,11 @@ src="https://pagead2.googlesyndication.com/pagead/show_ads.js">
         </script>
 
     </body>
+
+    <div data-role="footer">
+		<h4>De João Catita</h4>
+    </div>
+
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -300,6 +329,7 @@ src="https://pagead2.googlesyndication.com/pagead/show_ads.js">
     ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
   })();
+
 
 </script>
 </html>
