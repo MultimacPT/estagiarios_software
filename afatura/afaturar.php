@@ -303,7 +303,7 @@ if(isset($_POST['btn2'])){
 </style>
                 <div data-role="header" id="header" data-position="fixed">
                 <form>
-                  <button href="#mxmainpage" id="image" class="ui-btn ui-icon-myicon ui-btn-icon-notext ui-corner-all ui-shadow">MainMenu</a>
+                  <button href="#mxmainpage" id="image" class="ui-btn ui-icon-myicon ui-btn-icon-notext "></button>
                   <button href="" class="ui-btn ui-corner-all ui-shadow">Menu</button>
                   <a href="#criarF" data-prefetch data-position-to="window" data-rel="popup" id="criarBtn" class="ui-btn ui-corner-all ui-shadow">Criar</a>
                 </form>
@@ -323,9 +323,11 @@ if(isset($_POST['btn2'])){
                         echo "<div data-role='collapsible' data-mini='true' id='faturaI' data-theme='b' data-content-theme='b'>";
                         echo "<h3>" . $ID_display[$x] . "</h3>";
                         //echo "<a href='#editarF' data-position-to='window' data-rel='popup'><input type='submit' name='getIdBtn' value='<?php $ID_display[$x]'></input></a>";
-                        echo /*"<a href='#editarF' data-position-to='window' data-rel='popup' id='editarBtn'>*/"<form method='post' action='' data-prefetch>
-                              <input type='hidden' name='editIdT' value='" . $ID_display[$x] . "'>
-                              <input type='submit' name='getIdBtn' value='Editar' class='ui-btn ui-corner-all ui-shadow'></a></form>";
+                    echo /*"<a href='#editarF' data-position-to='window' data-rel='popup' id='editarBtn'>*/"<form method='post' action='' data-prefetch>
+                              "//<a href='#editarF' data-position-to='window' id='editarR' data-rel='popup'>Editar</a>
+                              ."<input type='hidden' name='editIdT' id='editIdT' value='" . $ID_display[$x] . "'>
+                              <input type='submit' name='getIdBtn' value='Editar' class='ui-btn ui-corner-all ui-shadow'></form>";
+                              
                         //echo "<table data-role='table' data-mode='reflow' id='table' class='ui-responsive' >";
                         //echo "<thead>" . "<tr>" . "<th data-priority='1'>Key</th>" . "<th data-priority='2'>Value</th>" . "</tr>" . "</thead>" . "<tbody>";
                     echo "<div class='ui-grid-b'>"; 
@@ -377,36 +379,36 @@ if(isset($_POST['btn2'])){
                   </div>
                    
                  <div data-role="popup" data-history="false" id="criarF" class="ui-corner-all">
-                  <form method="post" action="">
+                  <form method="post" action="" onsubmit="return validateForm()">
                     <div>
                       <h3>Create</h3>
                       <div class="ui-grid-a">
                       <div class="ui-block-a"><label for="itN">ItNumero:</label>
-                      <input type="text" name="itN"></div>
+                      <input type="text" name="itN" pattern="[0-9]{6,8}" title="Digite entre 6 a 8 digitos" required></div>
                       <div class="ui-block-b"><label for="Cod">Codigo:</label>
-                      <input type="text" name="Cod"></div>
+                      <input type="text" name="Cod" pattern="[0-9]{6,8}" title="Digite entre 6 a 8 digitos" required></div>
                     </div> 
                     <div class="ui-grid-a">
                       <div class="ui-block-a"><label for="Mod">Modelo:</label>
-                      <input type="text" name="Mod"></div>
+                      <input type="text" name="Mod" pattern="[a-zA-Z0-9]{0,10}" title="Máximo de 10 caracteres" required></div>
                       <div class="ui-block-b"><label for="Ser">Serie:</label>
-                      <input type="text" name="Ser"></div>
+                      <input type="text" name="Ser" pattern="[a-zA-Z0-9]{0,8}" title="Máximo de 8 caracteres" required></div>
                     </div>
                     <div id="DescDiv">
                     <label for="Desc">Descrição</label>
-                    <input type="text" name="Desc"></input>
+                    <input type="text" name="Desc" pattern="[a-zA-Z0-9\s]{0,100}" title="Máximo de 100 caracteres" ></input>
                   </div><br><br>
                   <div class="ui-grid-a">
                       <div class="ui-block-a"><label for="Inter">Intervencao:</label>
-                      <input type="text" name="Inter"></div>
+                      <input type="text" name="Inter" pattern="[0-9]{0,10}" title="Digite um valor válido" required></div>
                       <div class="ui-block-b"><label for="Desloc">Deslocacao:</label>
-                      <input type="text" name="Desloc"></div>
+                      <input type="text" name="Desloc" pattern="[0-9]{0,10]" title="Digite um valor válido" required></div>
                     </div>
                     <div class="ui-grid-a">
                       <div class="ui-block-a"><label for="Pec">Pecas:</label>
-                      <input type="text" name="Pec"></div>
+                      <input type="text" name="Pec" pattern="[0-9]{0,10}" title="Digite um valor válido" required></div>
                       <div class="ui-block-b"><label for="Cons">Consumiveis:</label>
-                      <input type="text" name="Cons"></div>
+                      <input type="text" name="Cons" pattern="[0-9]{0,10}" title="Digite um valor válido" required></div>
                     </div>
                     <input type="submit" name="btn1" value="Submeter" />
                    </div>
@@ -414,24 +416,81 @@ if(isset($_POST['btn2'])){
                   </div>
 
 
-                      <script>
-                        $('input[name="editIdT"]').on('click', function(){
-                            $('#editarF').popup('open', {
-                            x: 50,
-                            y: 50,
-                            });
-                            });
-                      </script>
 
                       <?php if(isset($_POST['getIdBtn'])){
                             $idSelect = $_POST['editIdT'];
                         echo "<h3>".$idSelect."</h3>";
+
+                       /*echo "
+                  <form method='post' action=''>
+                    <div>
+                      <h3>Edit</h3>
+                      <div class='ui-grid-a'>
+                      <div class='ui-block-a'><label for='itNE'>ItNumero:</label>
+                      <input type='text' name='itNE'></div>
+                      <div class='ui-block-b'><label for='CodE'>Codigo:</label>
+                      <input type='text' name='CodE'></div>
+                    </div> 
+                    <div class='ui-grid-a'>
+                      <div class='ui-block-a'><label for='ModE'>Modelo:</label>
+                      <input type='text' name='ModE'></div>
+                      <div class='ui-block-b'><label for='SerE'>Serie:</label>
+                      <input type='text' name='SerE'></div>
+                    </div>
+                    <div id='DescDiv'>
+                    <label for='DescE'>Descrição</label>
+                    <input type='text' name='DescE'></input>
+                  </div><br><br>
+                  <div class='ui-grid-a'>
+                      <div class='ui-block-a'><label for='InterE'>Intervencao:</label>
+                      <input type='text' name='InterE'></div>
+                      <div class='ui-block-b'><label for='DeslocE'>Deslocacao:</label>
+                      <input type='text' name='DeslocE'></div>
+                    </div>
+                    <div class='ui-grid-a'>
+                      <div class='ui-block-a'><label for='PecE'>Pecas:</label>
+                      <input type='text' name=PecE'></div>
+                      <div class='ui-block-b'><label for='ConsE'>Consumiveis:</label>
+                      <input type='text' name='ConsE'></div>
+                    </div>
+                    <input  type='submit' name='btn2' value='Editar'/>
+                   </div>
+                  </form>
+                  </div>";*/
                       }?>
+
+<script>
+/*$(document).ready(function(){
+    $("#getIdBtn").click(function(){
+        $.ajax({
+            url: "afaturar.php",
+            type: "POST",
+            data: {
+                editIdT: $("#editIdT").val()
+            },
+            success: function(data) {
+                $("#editarF").show();
+            }
+        });
+    });
+});*/
+</script>
+
+<?php 
+/*if ($_POST['editIdT']) {
+  // Retrieve data from database based on editIdT
+  $data = getDataFromDatabase($_POST['editIdT']);
+
+  // Return data as JSON
+  echo json_encode($data);
+}*/
+?>
 
                   <div data-role="popup" data-history="false" id="editarF" class="ui-corner-all">
                   <form method="post" action="">
                     <div>
-                      <h3>Edit <?php echo $idSelect ?></h3>
+                      <h3>Edit <?php $idSelect = $_GET['id'];
+                      echo $idSelect ?></h3>
                       <div class="ui-grid-a">
                       <div class="ui-block-a"><label for="itNE">ItNumero:</label>
                       <input type="text" name="itNE"></div>
@@ -479,15 +538,14 @@ if(isset($_POST['btn2'])){
                     //$numclick += 1;
                     //$x3 = 3;
                     //$x3 += 3;
-
+                  
                     for ($x; $x < $i; $x++) {
                       echo "<div data-role='collapsible' data-mini='true' id='faturaI' data-theme='b' data-content-theme='b'>";
                       echo "<h3>" . $ID_display[$x] . "</h3>";
                       //echo "<a href='#editarF' data-position-to='window' data-rel='popup'><input type='submit' name='getIdBtn' value='<?php $ID_display[$x]'></input></a>";
                       echo "<a href='#editarF' data-prefetch data-position-to='window' data-rel='popup' id='editarBtn' class='ui-btn ui-corner-all ui-shadow'>Editar</a>";
-                      echo "<table data-role='table' data-mode='reflow' id='table' class='ui-responsive' >";
-                      echo "<thead>" . "<tr>" . "<th data-priority='1'>Key</th>" . "<th data-priority='2'>Value</th>" . "</tr>" . "</thead>" . "<tbody>";
-                  
+                      echo "<div class='ui-grid-b'>";
+
                       foreach ($fID[$x] as $key => $value) {
                         //$a[$key] = $value;
                         if (!is_string($key)) {
@@ -497,20 +555,55 @@ if(isset($_POST['btn2'])){
                           $value = json_encode($value);
                         }
                         if (!is_string($key) and !is_string($value)) {
-                  
+
                         }
                         if ($value == "" or $value == "null" or empty($value) == true or $value == "[]") {
-                          $value = "0";
-                          echo "<tr>" . "<th>" . $key . "</th>" . "<td>" . $value . "</td>" . "</tr>";
-                        } else {
-                          echo "<tr>" . "<th>" . $key . "</th>" . "<td>" . $value . "</td>" . "</tr>";
+                          $value = "Sem informação";
                         }
                       }
-                      echo "</tbody>" . "</table>" . "</div>";
-                    }
+                      $totalV = $fID[$x]['intervencao'] + $fID[$x]['deslocacao'] + $fID[$x]['pecas'] + $fID[$x]['consumiveis'];
+                        echo "<div class='ui-grid-a'><div class='ui-block-a'><label>" . "Itnumero:" . "</label><input type='text' placeholder='" . $fID[$x]['itnumero'] . "'disabled></div>";
+                        echo "<div class='ui-block-b'><label>" . "Codigo:" . "</label><input type='text' placeholder='" . $fID[$x]['codigo'] . "'disabled></div></div>";
+                        echo "<div class='ui-grid-a'><div class='ui-block-a'><label>" . "modelo:" . "</label><input type='text' placeholder='" . $fID[$x]['modelo'] . "'disabled></div>";
+                        echo "<div class='ui-block-b'><label>" . "Serie:" . "</label><input type='text' placeholder='" . $fID[$x]['serie'] . "'disabled></div></div>";
+                        echo "<div class='ui-grid-a'><div class='ui-block-a'><label>" . "Description" . "</label><input type='text' name='descView' placeholder='" . $fID[$x]['description'] . "'disabled></div></div>";
+                        echo "<div class='ui-grid-a'><div class='ui-block-a'><label>" . "Intervencao:" . "</label><input type='text' placeholder='" . $fID[$x]['intervencao'] . "'disabled></div>";
+                        echo "<div class='ui-block-b'><label>" . "Deslocacao:" . "</label><input type='text' placeholder='" . $fID[$x]['deslocacao'] . "'disabled></div></div>";
+                        echo "<div class='ui-grid-a'><div class='ui-block-a'><label>" . "Pecas:" . "</label><input type='text' placeholder='" . $fID[$x]['pecas'] . "'disabled></div>";
+                        echo "<div class='ui-block-b'><label>" . "Consumiveis:" . "</label><input type='text' placeholder='" . $fID[$x]['consumiveis'] . "'disabled></div></div>";
+                        echo "<div class='ui-grid-a'><div class='ui-block-a' id='totalView'><label>Total:</label><input type='text' placeholder='" . $totalV . "'disabled></div></div>";
+                        echo "</div></div>";
+                      }
                     //echo "<div id='showBtn'>" . "<form action='' id='showMore" . $numclick . "'method='post'>" .
                     //"<input type='submit' name='showMoreBtn" . $numclick . "' value='Mostrar mais'>" . "</form>" . "</div>";
                   }
                   ?>
+
+
+<!--<script>
+  function validateForm() {
+    var valid = true;
+    var v = 1;
+
+    //loop through all input fields
+    $('input').each(function() {
+      //check if the field is empty
+      if ($(this).val() == '') {
+        valid[v] = false;
+      }
+      v += 1;
+    });
+
+    //check if the form is valid
+    if (valid) {
+      return true;
+    } else {
+      //show an alert if the form is not valid
+      alert('Please fill out all required fields!');
+      return false;
+    }
+  }
+</script>-->
+
 </body>
 </html>
