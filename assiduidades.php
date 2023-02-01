@@ -17,7 +17,8 @@ $hem = $_POST['horario1'];
 $hsm = $_POST['horario2'];
 $het = $_POST['horario3'];
 $hst = $_POST['horario4'];
-
+$data=$_POST['data'];
+$obs=$_POST['obs'];
 // ------------------------------------- Meter PHP post aqui -----------------------------------------------
         $curl = curl_init();
 
@@ -30,7 +31,7 @@ $hst = $_POST['horario4'];
         CURLOPT_TIMEOUT => 30,
         CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
         CURLOPT_CUSTOMREQUEST => "POST",
-        CURLOPT_POSTFIELDS => "{\"assignedUserId\":\"63bbf8d572c41d87d\",\"assignedUserName\":\"dbarros\",\"teamsIds\":[\"63bbf88d567391e32\"],\"teamsNames\":{\"63bbf88d567391e32\":\"Estagiarios\"},\"loja\":\"".$loja."\",\"fincionario\":\"".$funcionario."\",\"tipo\":\"".$tipo."\",\"horario1\":\"".$hem."\",\"horario2\":\"".$hsm."\",\"horario3\":\"".$het."\",\"horario4\":\"".$hst."\",\"description\":\"nova_entrada\"}",
+        CURLOPT_POSTFIELDS => "{\"assignedUserId\":\"63bbf8d572c41d87d\",\"assignedUserName\":\"dbarros\",\"teamsIds\":[\"63bbf88d567391e32\"],\"teamsNames\":{\"63bbf88d567391e32\":\"Estagiarios\"},\"loja\":\"".$loja."\",\"fincionario\":\"".$funcionario."\",\"tipo\":\"".$tipo."\",\"horario1\":\"".$hem."\",\"horario2\":\"".$hsm."\",\"horario3\":\"".$het."\",\"horario4\":\"".$hst."\",\"data\":\"".$data."\",\"obs\":\"".$obs."\"}",
         CURLOPT_HTTPHEADER => [
         "Accept: application/json, text/javascript, */*; q=0.01",
         "Accept-Encoding: gzip, deflate, br",
@@ -73,6 +74,8 @@ $hst = $_POST['horario4'];
                 <input type="text" name="loja"><br>
                 <label>Funcionário:</label>
                 <input type="text" name="funcionario"><br>
+                <label>Observações:</label>
+                <input type="text" name="obs" />
                 <label>Tipo:</label>
                 <input type="text" name="tipo"><br>
                 <h4>Parte da Manhã</h4>
