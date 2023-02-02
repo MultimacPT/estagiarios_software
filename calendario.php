@@ -21,10 +21,12 @@ curl 'https://mx.multimac.pt/mxv5/api/v1/PeriodoFerias?select=assignedUserId%2Ca
 ";
 //header("Location: estag12.php");
 $ID="639df22a8d7e751b3";
+$ID="3";
+$curlUrl="https://mx.multimac.pt/mxv5/api/v1/PeriodoFerias?select=assignedUserId%2CassignedUserName%2CferiasId%2CferiasName%2CdateStart%2CdateStartDate%2CdateEnd%2CdateEndDate%2Cdiasuteis%2Cmeiodia%2CaprovacaoChefia%2CaprovadoporChefe%2CaprovChefiaEm%2Caprovadirecao%2CaprovadoporDiretor%2CaprovDirEm%2CconferidoDAF%2CcreatedById%2CcreatedByName&maxSize=25&offset=0&orderBy=assignedUser&order=desc&where%5B0%5D%5Btype%5D=equals&where%5B0%5D%5Battribute%5D=assignedUserId&where%5B0%5D%5Bvalue%5D=";
 $curl = curl_init();
 
 curl_setopt_array($curl, [
-  CURLOPT_URL => "https://mx.multimac.pt/mxv5/api/v1/PeriodoFerias/".$ID,
+  CURLOPT_URL => $curlUrl.$ID,
   CURLOPT_RETURNTRANSFER => true,
   CURLOPT_ENCODING => "",
   CURLOPT_MAXREDIRS => 10,
@@ -61,8 +63,43 @@ if ($err) {
 
 $response = json_encode($response);
 
-  $array = json_decode($response,true);
+  $array = json_decode($response, true);
 
 }
 
-echo $array;
+//echo $array;
+
+$out=json_decode($array, true);
+
+/*
+echo $out['total'];
+echo "<br><br>";
+echo $out['list'][0]['id'];
+echo "<br><br>";
+echo $out['list'][1]['id'];
+echo "<br><br>";*/
+$dados="";
+
+foreach($out['list'] as $v){
+    echo $v['id'], $v['assignedUserName'],"<br>";
+    $dados = $dados."
+    {
+        id: 1,
+        name: '".$v['assignedUserName']."',
+        startDate: '".substr($v['dateStart'],0,10)."',
+        endDate: '".substr($v['dateEnd'],0,10)."',
+        customClass: 'greenClass',
+        title: 'Title 1'
+    },";
+}
+$name="";
+if ($name==""){
+    $name = $v['assignedUserName'];
+}
+else{
+    $name = $name . ',' . $v['assignedUserName'];
+}
+
+//echo $dados;
+//print_r($out);
+?>
