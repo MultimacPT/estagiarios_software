@@ -1,0 +1,122 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+body {
+    font: 14px/1.4 "Lucida Console", Monaco, monospace;
+}
+
+
+
+/*
+Generic Styling, for Desktops/Laptops
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+            /*
+Generic Styling, for Desktops/Laptops
+*/
+/*
+            html, body{
+                margin:0;
+                padding:0;
+                height:100%;
+            }
+*/
+section {
+    position: relative;
+    border: 0px solid white;
+    padding-top: 19px;
+    background: gray;
+}
+
+.container {
+    overflow-y: auto;
+    height: 240px;
+    margin:0;
+    padding:0;
+}
+.contpad {
+    margin:0;
+    padding:0;
+}
+table {
+    border-spacing: 0;
+    width:100%;
+    border-collapse: collapse;
+}
+td + td {
+    border-left:1px solid #ccc;
+}
+/**********afecta cabecalho*****
+th {
+    height: 0;
+    line-height: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    color: transparent;
+    border: none;
+    white-space: nowrap;
+}
+/**********afecta cabecalho fim*****/
+th div{
+    position: absolute;
+    background: transparent;
+    color: white;
+    padding: 2px 0px;
+    top: 0;
+    margin-left: -1px;
+    line-height: normal;
+    border-left: 1px solid #ccc;
+}
+th:first-child div{
+    border: none;
+}
+
+/* Zebra striping
+tr:nth-of-type(odd) {
+    background: #eee;
+}
+th {
+    background: grey;
+    color: white;
+    font-weight: bold;
+}
+td, th {
+    padding: 1px;
+    border: 1px solid #ccc;
+    text-align: left;
+}
+/* Zebra striping */
+/*res tab end*/
+/*********************************************************/
+
+
+
+td {
+    padding: 0px;
+    border: 1px solid yellow;
+    text-align: left;
+}
+tr:nth-of-type(odd) {
+    background: #eee;
+}
+tr:nth-of-type(even) {
+    background: white;
+}
+/******************************************************************/
+/*********** importante para  ficha id e cliente fundo cinza****/
+th {
+    background: grey;
+    color: white;
+    font-weight: bold;
+}
+/*********** importante para  ficha id e cliente fundo cinza****/
+/**********centra ficha id e cliente ***************/
+td, th {
+    padding: 0px;
+    border: 1px solid #ccc;
+    text-align: left;
+}
+/**********centra ficha id e cliente ***************/
