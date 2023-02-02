@@ -3,11 +3,24 @@
 //$ID=$_GET['id'];
 
 
+
+$itnumero = filter_input(INPUT_GET, 'itnumero', FILTER_SANITIZE_STRING);
+//$itnumero = 22;
+//$maqnumero = $_GET['maqcod'];
+$maqnumero = 55;
+if (!isset($itnumero)) {
+  @$itnumero;
+  $zz = "Afaturar?select=itnumero&orderBy=createdAt&order=desc&where%5B0%5D%5Btype%5D=equals&where%5B0%5D%5Battribute%5D=codigo&where%5B0%5D%5Bvalue%5D=".$maqnumero;
+}
+else{
+  $zz = "Afaturar?select=itnumero&orderBy=createdAt&order=desc&where%5B0%5D%5Btype%5D=equals&where%5B0%5D%5Battribute%5D=codigo&where%5B0%5D%5Bvalue%5D=".$maqnumero."&where%5B0%5D%5Battribute%5D=itnumero&where%5B0%5D%5Bvalue%5D=".$itnumero;
+}
+
 $curl = curl_init();
 
 curl_setopt_array($curl, [
 
-  CURLOPT_URL => "https://mx.multimac.pt/mxv5/api/v1/Afaturar",
+  CURLOPT_URL => "https://mx.multimac.pt/mxv5/api/v1/".$zz,
 
   CURLOPT_RETURNTRANSFER => true,
 
@@ -241,7 +254,12 @@ if(isset($_POST['btn2'])){
     <link rel="stylesheet" href="themes/formulario_themes.min.css" />
     <link rel="stylesheet" href="themes/jquery.mobile.icons.min.css" />
     <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css"> 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script type="text/javascript">
+    $(document).bind("mobileinit", function () {
+        $.mobile.ajaxEnabled = false;
+    });
+    </script>
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>-->
     <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
     <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 </head>
@@ -253,9 +271,6 @@ if(isset($_POST['btn2'])){
 </script>
 
 <style>
-  table{
-    color:white;
-  }
   #faturaI{
     padding-left: 10%;
     padding-right: 10%;
@@ -265,11 +280,11 @@ if(isset($_POST['btn2'])){
   }
   #image{
     position: absolute;
-    left: 0px;
-    top: 0px;
-  }
-  .ui-icon-myicon:after {
-	background-image: url("mxLogo.png");
+    left: 3%;
+    top: 0%;
+    width: 10%;
+    height: 100%;
+    border-radius: 5%;
   }
   #criarF{
     width: 90vw;
@@ -296,21 +311,39 @@ if(isset($_POST['btn2'])){
   }
   ::placeholder{
     color: white !important;
-    opacity: 1 !important;
   }
   #totalView{
     float: right;
   }
+  #editITN,#editCOD,#editMOD,#editSER,#editDESC,#editINT,#editDESLOC,#editPECAS,#editCONS,#editTOTAL{
+    pointer-events: none;
+  }
+  #searchForm{
+    padding-left: 10%;
+    padding-right: 10%;
+  }
+  #searchBar::placeholder{
+    color: black !important;
+    opacity: 0.7;
+  }
 </style>
                 <div data-role="header" id="header" data-position="fixed">
                 <form>
-                  <button href="#mxmainpage" id="image" class="ui-btn ui-icon-myicon ui-btn-icon-notext "></button>
-                  <button href="" class="ui-btn ui-corner-all ui-shadow">Menu</button>
+                  <a href="#mxmainpage" data-ajax='false'><image src='mxLogo.png' id='image' alt='image'></a>
+                  <button href="" data-ajax='false' class="ui-btn ui-corner-all ui-shadow">Menu</button>
                   <a href="#criarF" data-prefetch data-position-to="window" data-rel="popup" id="criarBtn" class="ui-btn ui-corner-all ui-shadow">Criar</a>
                 </form>
                 </div>
 
                 <div>
+                  <?php 
+                  if(isset($itnumero)){
+                    echo "<button onclick='javascript:history.back()' class='ui-btn ui-corner-all ui-shadow'>Retroceder</button>";
+                  }
+                  ?>
+                  <form method='get' id='searchForm' action='afaturar.php'>
+                    <input type='search' id='searchBar' name='itnumero' placeholder='Pesquisar por intervenção' data-mini='true'>
+                  </form>
                 <?php
                 //while($x < $i) {
                   ?>
@@ -324,10 +357,11 @@ if(isset($_POST['btn2'])){
                         echo "<div data-role='collapsible' data-mini='true' id='faturaI' data-theme='b' data-content-theme='b'>";
                         echo "<h3>" . $ID_display[$x] . "</h3>";
                         //echo "<a href='#editarF' data-position-to='window' data-rel='popup'><input type='submit' name='getIdBtn' value='<?php $ID_display[$x]'></input></a>";
-                    echo /*"<a href='#editarF' data-position-to='window' data-rel='popup' id='editarBtn'>*/"<form method='post' action='' data-prefetch>
+                    echo /*"<a href='#editarF' data-position-to='window' data-rel='popup' id='editarBtn'>*/"<form method='post' action='afaturar.php' data-ajax='false' data-prefetch>
                               "//<a href='#editarF' data-position-to='window' id='editarR' data-rel='popup'>Editar</a>
-                              ."<input type='hidden' name='editIdT' id='editIdT' value='" . $ID_display[$x] . "'>
-                              <input type='submit' name='getIdBtn' value='Editar' class='ui-btn ui-corner-all ui-shadow'></form>";
+                              .//"<input type='hidden' name='editIdT' value='" . $ID_display[$x] . "'>
+                              "<input type='hidden' name='editIDV' value='". $fID[$x]['itnumero'] ."'>
+                              <input type='submit' name='getIdBtn' id='sizeTest' value='Editar' class='ui-btn ui-corner-all ui-shadow'>";
                               
                         //echo "<table data-role='table' data-mode='reflow' id='table' class='ui-responsive' >";
                         //echo "<thead>" . "<tr>" . "<th data-priority='1'>Key</th>" . "<th data-priority='2'>Value</th>" . "</tr>" . "</thead>" . "<tbody>";
@@ -351,17 +385,17 @@ if(isset($_POST['btn2'])){
                           
                         }
                     $totalV = $fID[$x]['intervencao'] + $fID[$x]['deslocacao'] + $fID[$x]['pecas'] + $fID[$x]['consumiveis'];
-                    echo "<div class='ui-grid-a'><div class='ui-block-a'><label>"."Itnumero:"."</label><input type='text' placeholder='".$fID[$x]['itnumero']."'disabled></div>";
-                    echo "<div class='ui-block-b'><label>"."Codigo:"."</label><input type='text' placeholder='".$fID[$x]['codigo']."'disabled></div></div>";
-                    echo "<div class='ui-grid-a'><div class='ui-block-a'><label>"."modelo:"."</label><input type='text' placeholder='".$fID[$x]['modelo']."'disabled></div>";
-                    echo "<div class='ui-block-b'><label>"."Serie:"."</label><input type='text' placeholder='".$fID[$x]['serie']."'disabled></div></div>";
-                    echo "<div class='ui-grid-a'><div class='ui-block-a'><label>" . "Description"."</label><input type='text' name='descView' placeholder='".$fID[$x]['description']."'disabled></div></div>";
-                    echo "<div class='ui-grid-a'><div class='ui-block-a'><label>"."Intervencao:"."</label><input type='text' placeholder='".$fID[$x]['intervencao']."'disabled></div>";
-                    echo "<div class='ui-block-b'><label>"."Deslocacao:"."</label><input type='text' placeholder='".$fID[$x]['deslocacao']."'disabled></div></div>";
-                    echo "<div class='ui-grid-a'><div class='ui-block-a'><label>"."Pecas:"."</label><input type='text' placeholder='".$fID[$x]['pecas']."'disabled></div>";
-                    echo "<div class='ui-block-b'><label>"."Consumiveis:"."</label><input type='text' placeholder='".$fID[$x]['consumiveis']."'disabled></div></div>";
-                    echo "<div class='ui-grid-a'><div class='ui-block-a' id='totalView'><label>Total:</label><input type='text' placeholder='".$totalV."'disabled></div></div>";
-
+                    echo "<div class='ui-grid-a'><div class='ui-block-a'><label>"."Itnumero:"."</label><input type='text' id='editITN' placeholder='".$fID[$x]['itnumero']."'></div>";
+                    echo "<div class='ui-block-b'><label>"."Codigo:"."</label><input type='text' id='editCOD' placeholder='".$fID[$x]['codigo']."'></div></div>";
+                    echo "<div class='ui-grid-a'><div class='ui-block-a'><label>"."modelo:"."</label><input type='text' id='editMOD' placeholder='".$fID[$x]['modelo']."'></div>";
+                    echo "<div class='ui-block-b'><label>"."Serie:"."</label><input type='text'id='editSER' placeholder='".$fID[$x]['serie']."'></div></div>";
+                    echo "<div class='ui-grid-a'><div class='ui-block-a'><label>" . "Description"."</label><input type='text' id='editDESC' placeholder='".$fID[$x]['description']."'></div></div>";
+                    echo "<div class='ui-grid-a'><div class='ui-block-a'><label>"."Intervencao:"."</label><input type='text' id='editINT' placeholder='".$fID[$x]['intervencao']."'></div>";
+                    echo "<div class='ui-block-b'><label>"."Deslocacao:"."</label><input type='text' id='editDESLOC' placeholder='".$fID[$x]['deslocacao']."'></div></div>";
+                    echo "<div class='ui-grid-a'><div class='ui-block-a'><label>"."Pecas:"."</label><input type='text' id='editPECAS' placeholder='".$fID[$x]['pecas']."'></div>";
+                    echo "<div class='ui-block-b'><label>"."Consumiveis:"."</label><input type='text' id='editCONS' placeholder='".$fID[$x]['consumiveis']."'></div></div>";
+                    echo "<div class='ui-grid-a'><div class='ui-block-a' id='totalView'><label>Total:</label><input type='text' id='editTOTAL' placeholder='".$totalV."'></div></div>";
+                    echo "</form>";
                         //echo "</tbody>" . "</table>" . "</div>";
                         $x += 1;
                     echo "</div></div>";
@@ -371,7 +405,7 @@ if(isset($_POST['btn2'])){
                     if(empty($ID_display[$x])){
 
                     } else {
-                    echo "<div id='showBtn'>" . "<form action='' id='showMore' method='post' data-prefetch>" .
+                    echo "<div id='showBtn'>" . "<form action='' data-ajax='false' id='showMore' method='post' data-prefetch>" .
                       "<input type='submit' name='showMoreBtn0' value='Mostrar mais'>" . "</form>" . "</div>";
                   }
                     //$showMore = $_GET;
@@ -380,7 +414,7 @@ if(isset($_POST['btn2'])){
                   </div>
                    
                  <div data-role="popup" data-history="false" id="criarF" class="ui-corner-all">
-                  <form method="post" action="" onsubmit="return validateForm()">
+                  <form method="post" data-ajax='false' action="" onsubmit="return validateForm()">
                     <div>
                       <h3>Create</h3>
                       <div class="ui-grid-a">
@@ -419,71 +453,17 @@ if(isset($_POST['btn2'])){
 
 
                       <?php if(isset($_POST['getIdBtn'])){
-                            $idSelect = $_POST['editIdT'];
-                        echo "<h3>".$idSelect."</h3>";
+                            //$idSelect = $_POST['editID'];
+                            
+                        echo "<style>
+                        #editITN,#editCOD,#editMOD,#editSER,#editDESC,#editINT,#editDESLOC,#editPECAS,#editCONS,#editTOTAL
+                        {pointer-events: auto}
+                        </style>";
 
-                       /*echo "
-                  <form method='post' action=''>
-                    <div>
-                      <h3>Edit</h3>
-                      <div class='ui-grid-a'>
-                      <div class='ui-block-a'><label for='itNE'>ItNumero:</label>
-                      <input type='text' name='itNE'></div>
-                      <div class='ui-block-b'><label for='CodE'>Codigo:</label>
-                      <input type='text' name='CodE'></div>
-                    </div> 
-                    <div class='ui-grid-a'>
-                      <div class='ui-block-a'><label for='ModE'>Modelo:</label>
-                      <input type='text' name='ModE'></div>
-                      <div class='ui-block-b'><label for='SerE'>Serie:</label>
-                      <input type='text' name='SerE'></div>
-                    </div>
-                    <div id='DescDiv'>
-                    <label for='DescE'>Descrição</label>
-                    <input type='text' name='DescE'></input>
-                  </div><br><br>
-                  <div class='ui-grid-a'>
-                      <div class='ui-block-a'><label for='InterE'>Intervencao:</label>
-                      <input type='text' name='InterE'></div>
-                      <div class='ui-block-b'><label for='DeslocE'>Deslocacao:</label>
-                      <input type='text' name='DeslocE'></div>
-                    </div>
-                    <div class='ui-grid-a'>
-                      <div class='ui-block-a'><label for='PecE'>Pecas:</label>
-                      <input type='text' name=PecE'></div>
-                      <div class='ui-block-b'><label for='ConsE'>Consumiveis:</label>
-                      <input type='text' name='ConsE'></div>
-                    </div>
-                    <input  type='submit' name='btn2' value='Editar'/>
-                   </div>
-                  </form>
-                  </div>";*/
+                      
                       }?>
 
-<script>
-$(document).ready(function(){
-    $("#getIdBtn").click(function(){
-        $.ajax({
-            url: "teste.txt",
-            type: "POST",
-            data: {
-                editIdT: $("#editIdT").val()
-            },
-            success: function(data) {
-                $("#editarF").show();
-            }
-        });
-    });
-});
-</script>
 
-<?php 
-/*if ($_POST['editIdT']) {
-  $data = getDataFromDatabase($_POST['editIdT']);
-
-  echo json_encode($data);
-}*/
-?>
 
                   <div data-role="popup" data-history="false" id="editarF" class="ui-corner-all">
                   <form method="post" action="">
@@ -542,7 +522,9 @@ $(document).ready(function(){
                       echo "<div data-role='collapsible' data-mini='true' id='faturaI' data-theme='b' data-content-theme='b'>";
                       echo "<h3>" . $ID_display[$x] . "</h3>";
                       //echo "<a href='#editarF' data-position-to='window' data-rel='popup'><input type='submit' name='getIdBtn' value='<?php $ID_display[$x]'></input></a>";
-                      echo "<a href='#editarF' data-prefetch data-position-to='window' data-rel='popup' id='editarBtn' class='ui-btn ui-corner-all ui-shadow'>Editar</a>";
+                      //echo "<a href='#editarF' data-prefetch data-position-to='window' data-rel='popup' id='editarBtn' class='ui-btn ui-corner-all ui-shadow'>Editar</a>";
+                      echo "<form method='post' action='' data-prefetch> <input type='hidden' name='editIdT' id='editIdT' value='" . $ID_display[$x] . "'>
+                              <input type='submit' name='getIdBtn' value='Editar' class='ui-btn ui-corner-all ui-shadow'></form>";
                       echo "<div class='ui-grid-b'>";
 
                       foreach ($fID[$x] as $key => $value) {
@@ -556,7 +538,7 @@ $(document).ready(function(){
                         if (!is_string($key) and !is_string($value)) {
 
                         }
-                        if ($value == "" or $value == "null" or empty($value) == true or $value == "[]") {
+                        if ($value == "" or $value == "null" or empty($value) == true or $value == "[]" or isset($value)==false) {
                           $value = "Sem informação";
                         }
                       }
@@ -578,26 +560,12 @@ $(document).ready(function(){
                   }
                   ?>
 
-
-<!--<script>
-  function validateForm() {
-    var valid = true;
-    var v = 1;
-
-    $('input').each(function() {
-      if ($(this).val() == '') {
-        valid[v] = false;
-      }
-      v += 1;
-    });
-
-    if (valid) {
-      return true;
-    } else {
-      return false;
-    }
+<script>
+  function search(){
+    var urlITN = document.getElementById('searchBar').value;
+    window.location.href = "estag11.php?itnumero=" + urlITN;
   }
-</script>-->
+</script>
 
 </body>
 </html>
