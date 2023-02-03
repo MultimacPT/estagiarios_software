@@ -260,6 +260,7 @@ src="https://pagead2.googlesyndication.com/pagead/show_ads.js">
                     format: 'YYYY/MM/DD',
                     jumpSize: 30,
                     locale: 'pt',
+                    disabledWeekDays: [6,0],
                     refDate: '<?= $inicio ?>',
                     lang: {
                         'today': 'Hoje',
