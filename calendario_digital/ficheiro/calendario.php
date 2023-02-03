@@ -1,6 +1,6 @@
 <?php
 $aaa=" 
-curl 'https://mx.multimac.pt/mxv5/api/v1/PeriodoFerias?select=assignedUserId%2CassignedUserName%2CferiasId%2CferiasName%2CdateStart%2CdateStartDate%2CdateEnd%2CdateEndDate%2Cdiasuteis%2Cmeiodia%2CaprovacaoChefia%2CaprovadoporChefe%2CaprovChefiaEm%2Caprovadirecao%2CaprovadoporDiretor%2CaprovDirEm%2CconferidoDAF%2CcreatedById%2CcreatedByName&maxSize=25&offset=0&orderBy=assignedUser&order=desc&where%5B0%5D%5Btype%5D=equals&where%5B0%5D%5Battribute%5D=assignedUserId&where%5B0%5D%5Bvalue%5D=3' \
+curl 'https://mx.multimac.pt/mxv5/api/v1/Assiduidade?select=assignedUserId%2CassignedUserName%2Centrada%2Csaida&maxSize=25&offset=0&orderBy=createdAt&order=desc' \
 -H 'Accept: application/json, text/javascript, */*; q=0.01' \
 -H 'Accept-Language: pt-PT,pt;q=0.9,en-US;q=0.8,en;q=0.7,es;q=0.6,it;q=0.5' \
 -H 'Authorization: Basic amNhdGl0YTo2ZWM5YmNlNmFhOWRkZjEyNDIxMjI3MmE5MzlhOTg4Yw==' \
@@ -22,7 +22,7 @@ curl 'https://mx.multimac.pt/mxv5/api/v1/PeriodoFerias?select=assignedUserId%2Ca
 //header("Location: estag12.php");
 $ID="639df22a8d7e751b3";
 $ID="3";
-$curlUrl="https://mx.multimac.pt/mxv5/api/v1/PeriodoFerias?select=assignedUserId%2CassignedUserName%2CferiasId%2CferiasName%2CdateStart%2CdateStartDate%2CdateEnd%2CdateEndDate%2Cdiasuteis%2Cmeiodia%2CaprovacaoChefia%2CaprovadoporChefe%2CaprovChefiaEm%2Caprovadirecao%2CaprovadoporDiretor%2CaprovDirEm%2CconferidoDAF%2CcreatedById%2CcreatedByName&maxSize=25&offset=0&orderBy=assignedUser&order=asc&where%5B0%5D%5Btype%5D=equals&where%5B0%5D%5Battribute%5D=assignedUserId&where%5B0%5D%5Bvalue%5D=";
+$curlUrl="https://mx.multimac.pt/mxv5/api/v1/Assiduidade?select=assignedUserId%2CassignedUserName%2Centrada%2Csaida&maxSize=25&offset=0&orderBy=createdAt&order=desc";
 $curl = curl_init();
 
 curl_setopt_array($curl, [
@@ -82,24 +82,33 @@ $dados="";
 $name="";
 $counter = 0;
 $inicio="";
+
 foreach($out['list'] as $v){
     $counter++;
-    echo $v['id'], $v['assignedUserName'],"<br>";
+    //echo $v['id'], $v['assignedUserName'],"<br>";
     $dados = $dados."
     {
         id: ".$counter.",
-        name: '".$counter.$v['assignedUserName']."',
-        startDate: '".str_replace("-", "/", substr($v['dateStart'],0,10))."',
-        endDate: '".substr($v['dateEnd'],0,10)."',
+        name: '".$v['assignedUserName']."',
+        startDate: '".str_replace("-", "/", substr($v['entrada'],0,10))."',
+        endDate: '".substr($v['saida'],0,10)."',
         customClass: 'greenClass',
         title: 'Title 1'
     },";
+    //if ($name==""){
+    $inicio=str_replace("-", "/", substr($v['entrada'],0,10));
+    $nm[$v['assignedUserName']]=true;
+        //$name = "'".$counter.$v['assignedUserName']."'";
+    //}
+    //else{
+        //$name = $name . ", '" . $counter.$v['assignedUserName']."'";
+    //}
+}
+foreach($nm as $k=>$v){
     if ($name==""){
-        $inicio=str_replace("-", "/", substr($v['dateStart'],0,10));
-        $name = "'".$counter.$v['assignedUserName']."'";
-    }
-    else{
-        $name = $name . ", '" . $counter.$v['assignedUserName']."'";
+        $name = "'".$k."'";
+    }else{
+        $name = $name . ",'".$k."'";
     }
 }
 
@@ -156,57 +165,6 @@ foreach($out['list'] as $v){
             .redClass{
                 background: red;
             }
-            .greyClass{
-                background: grey;
-            }
-            .yellowClass{
-                background: yellow;
-            }
-            .blackClass{
-                background: black;
-            }
-            .purpleClass{
-                background: purple;
-            }
-            .orangeClass{
-                background: orange;
-            }
-            .brownClass{
-                background: brown;
-            }
-            .pinkClass{
-                background: pink;
-            }
-            .chocolateClass{
-                background: chocolate;
-            }
-            .limeClass{
-                background: lime;
-            }
-            .salmonClass{
-                background: salmon;
-            }
-            .tomatoClass{
-                background: tomato;
-            }
-            .magentaClass{
-                background: magenta;
-            }
-            .tealClass{
-                background: teal;
-            }
-            .navyClass{
-                background: navy;
-            }
-            .tanClass{
-                background: tan;
-            }
-            .goldClass{
-                background: gold;
-            }
-            .violetClass{
-                background: violet;
-            }
 
         </style>
 
@@ -258,7 +216,7 @@ src="https://pagead2.googlesyndication.com/pagead/show_ads.js">
                 $('#my_calendar1').rescalendar({
                     id: 'my_calendar1',
                     format: 'YYYY/MM/DD',
-                    jumpSize: 30,
+                    jumpSize: 15,
                     locale: 'pt',
                     disabledWeekDays: [6,0],
                     refDate: '<?= $inicio ?>',
