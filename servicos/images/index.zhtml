@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+#bg {
+  position: fixed; 
+  width: 100%; 
+  height: 100%;
+}
+#bg img {
+
+
+  width: 100%; 
+  height: 100%;
+
+}
+</style>
+</head>
+<body>
+<div id="bg">
+  <img src="../imagens/craniumcreations.jpg" alt="">
+</div>
+</body>
+</html>
