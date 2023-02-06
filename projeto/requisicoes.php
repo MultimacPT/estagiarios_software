@@ -135,7 +135,7 @@ foreach ($list as $item) {
         }
     }
     ?>
-    <form action="requisicoes.php" method="get">
+    <form id="form1" action="requisicoes.php" method="get">
         <header>
             <div class="ui-grid-c" style="padding-right: 20px;">
                 <div class="ui-block-a" style="display:table; margin:0 auto;">
@@ -152,7 +152,7 @@ foreach ($list as $item) {
                         </font>
                     </span>
                 </div>
-
+                
                 <div class="ui-block-b">
                     <a href="" data-role="button" data-mini="true" class="ui-link ui-btn ui-btn-a ui-shadow ui-corner-all ui-mini" role="button" data-theme="a">Menu</a>
                 </div>
@@ -162,70 +162,80 @@ foreach ($list as $item) {
                 </div>
 
                 <div class="ui-block-d">
-                    <input type="submit" name="submit" value="Submeter" data-mini="true" data-theme="c" class=" ui-btn ui-btn-c ui-shadow ui-corner-all ui-mini" style="padding: 0.7em 3em;">
+                    <input type="hidden" name="submit" value="Submeter" />
+                    <button type="submit" form="form1" value="submit" data-mini="true" data-theme="c" class=" ui-btn ui-btn-c ui-shadow ui-corner-all ui-mini">Submeter</button>
                 </div>
             </div>
         </header>
 
-        <div data-role="page" style="background-color: lightgray; margin-top:70px !important;">    
-            <?php
-            for ($x; $x < $i; $x++) {
+        <div data-role="page" style="background-color: #C6D0E2; margin-top:70px !important;">
+            <div class="parentx">    
+                <?php
+                for ($x; $x < $i; $x++) {
 
-                foreach ($fID[$x] as $key => $value) {
-                    if (!is_string($key)) {
-                        $key = json_encode($key);
+                    foreach ($fID[$x] as $key => $value) {
+                        if (!is_string($key)) {
+                            $key = json_encode($key);
+                        }
+                        if (!is_string($value)) {
+                            $value = json_encode($value);
+                        }
+                        if (!is_string($key) and !is_string($value)) {
+                        }
+                        if ($key == "id" or $key == "name" or $key == "description" or $key == "modelo") {
+                        }
+                        if ($key == "productId") {
+                            $prodidInpt[$i]=$value;
+                        }    
                     }
-                    if (!is_string($value)) {
-                        $value = json_encode($value);
-                    }
-                    if (!is_string($key) and !is_string($value)) {
-                    }
-                    if ($key == "id" or $key == "name" or $key == "description" or $key == "modelo") {
-                    }
-                    if ($key == "productId") {
-                        $prodidInpt[$i]=$value;
-                    }    
+
+                    echo "
+                    <div class='normn' style='margin-top: -5px; border: 1px solid #ffa50000; background-color: #0000ff00; padding: 0px;'>
+                        <div class='ui-grid-solo'>
+                            <div class='ui-block-a'>
+                                <div style='margin-left: 5px !important;' data-role='collapsible' data-theme='c' data-content-theme='b' data-mini='true'>
+                                    <h6>
+                                        <span style='margin-left: 1.5%'>PEÇA ". $x+1 ." </span>
+                                        <br><br><br>
+                                        <div class='ui-li-count' style='margin-top: -0.5em !important; width: 35% !important; font-size: 11px; right: auto !important; left: 10% !important; background-color:lightgreen; color:black;'>
+                                            Id : ". $ID_display[$x] ." 
+                                        </div>
+                                        <div class='ui-li-count' style='margin-top: -0.5em !important; width: 25% !important; font-size: 11px; right: auto !important; left: 49% !important; background-color:lightgreen; color:black;'>
+                                            Nome : ". $name_display[$x] ." 
+                                        </div>
+                                        <div class='ui-li-count' style='margin-top: 1.5em !important; width: 35% !important; font-size: 11px; right: auto !important; left: 10% !important; background-color:lightgreen; color:black;'>
+                                            Peça : ". $desc_display[$x] ." 
+                                        </div>
+                                        <div class='ui-li-count' style='margin-top: 1.5em !important; width: 25% !important; font-size: 11px; right: auto !important; left: 49% !important; background-color:lightgreen; color:black;'>
+                                            Modelo : ". $mod_display[$x] ." 
+                                        </div>
+                                        &nbsp;
+                                        <span class='ui-li-count' style='width: 14% !important; margin-top: 1.1em !important;font-size: 12px; right: 8px !important; left: auto !important; background-color:lightgrey; color:black;'>
+                                            &nbsp;&nbsp;Total: 4 &nbsp;&nbsp;
+                                        </span>
+                                    </h6>
+                                    <h6 class='ui-collapsible-heading'>
+                                        <table>
+                                            <tr>
+                                                <td> <input type='text' id='id" . $ID_display[$x] . "' name='nmqt" . $prodidInpt[$i] . "' data-theme='a' data-content='a' placeholder='Quant.'> <td>
+                                                <td> <input type='checkbox' name='nmop" . $ID_display[$x] . "' style='margin: -1.26em 0;'> </td>
+                                            </tr>
+                                        </table>
+                                    </h6>
+                                    <script>
+                                        function limparInput(){
+                                        var id = document.getElementById('id" . $ID_display[$x] . "').value;
+                                        window.location.href = 'requisicoes.php';
+                                        } 
+                                    </script>
+                                </div>
+                            </div>
+                        </div>
+                    </div>"; 
                 }
-
-                echo    "<div style='top: 79% !important; margin-left: 5px !important;' data-role='collapsible' data-theme='c' data-content-theme='b' data-mini='true'>
-                                <h6>
-                                    <span style='margin-left:10px'>PEÇA ". $x+1 ." </span>
-                                    <br><br><br>
-                                    <div class='ui-li-count' style='margin-top: -0.5em !important; width: 130px !important; font-size: 11px; right: auto !important; left: 40px !important; background-color:lightgreen; color:black;'>
-                                        Id : ". $ID_display[$x] ." 
-                                    </div>
-                                    <div class='ui-li-count' style='margin-top: -0.5em !important; width: 90px !important; font-size: 11px; right: auto !important; left: 190px !important; background-color:lightgreen; color:black;'>
-                                        Nome : ". $name_display[$x] ." 
-                                    </div>
-                                    <div class='ui-li-count' style='margin-top: 1.5em !important; width: 130px !important; font-size: 11px; right: auto !important; left: 40px !important; background-color:lightgreen; color:black;'>
-                                        Peça : ". $desc_display[$x] ." 
-                                    </div>
-                                    <div class='ui-li-count' style='margin-top: 1.5em !important; width: 90px !important; font-size: 11px; right: auto !important; left: 190px !important; background-color:lightgreen; color:black;'>
-                                        Modelo : ". $mod_display[$x] ." 
-                                    </div>
-                                    &nbsp;
-                                    <span class='ui-li-count' style='width: 60px !important; margin-top: 1.1em !important;font-size: 12px; right: 8px !important; left: auto !important; background-color:lightgrey; color:black;'>
-                                        &nbsp;&nbsp;Total: 4 &nbsp;&nbsp;
-                                    </span>
-                                </h6>
-                                <h6 class='ui-collapsible-heading'>
-                                    <table>
-                                        <tr>
-                                            <td> <input type='text' id='id" . $ID_display[$x] . "' name='nmqt" . $prodidInpt[$i] . "' data-theme='a' data-content='a' placeholder='Quant.'> <td>
-                                            <td> <input type='checkbox' name='nmop" . $ID_display[$x] . "' style='margin: -1.26em 0;'> </td>
-                                        </tr>
-                                    </table>
-                                </h6>
-                                <script>
-                                    function limparInput(){
-                                    var id = document.getElementById('id" . $ID_display[$x] . "').value;
-                                    window.location.href = 'requisicoes.php';
-                                    } 
-                                </script>
-                            </div>"; 
-            }
-            ?>
-            <br>
+                ?>
+                <br>
+            </div>
         </div>
     </form>
 </body>
