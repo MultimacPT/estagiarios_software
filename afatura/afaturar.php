@@ -2,12 +2,10 @@
 
 //$ID=$_GET['id'];
 
-
-
 $itnumero = filter_input(INPUT_GET, 'itnumero', FILTER_SANITIZE_STRING);
 //$itnumero = 22;
 //$maqnumero = $_GET['maqcod'];
-$maqnumero = 55;
+$maqnumero = filter_input(INPUT_GET, 'maqcod', FILTER_SANITIZE_STRING);
 if (!isset($itnumero)) {
   @$itnumero;
   $zz = "Afaturar?select=itnumero&orderBy=createdAt&order=desc&where%5B0%5D%5Btype%5D=equals&where%5B0%5D%5Battribute%5D=codigo&where%5B0%5D%5Bvalue%5D=".$maqnumero;
@@ -250,9 +248,11 @@ if(isset($_POST['btn2'])){
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="themes/formulario_themes.css" />
-    <link rel="stylesheet" href="themes/formulario_themes.min.css" />
-    <link rel="stylesheet" href="themes/jquery.mobile.icons.min.css" />
+    <link rel="shortcut icon" type="../../../servicos/images/x-icon" href="../../../servicos/images/mx2.ico">
+    <link rel="icon" type="image/png" href="../../../servicos/images/mxtech01.png">
+    <link rel="stylesheet" href="../../../servicos/jqmobile1.4.5/themes/tema4.css" />
+    <link rel="stylesheet" href="../../../servicos/jqmobile1.4.5/themes/tema4.min.css" />
+    <link rel="stylesheet" href="../../../servicos/jqmobile1.4.5/themes/jquery.mobile.icons.min.css" />
     <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css"> 
     <script type="text/javascript">
     $(document).bind("mobileinit", function () {
@@ -262,36 +262,63 @@ if(isset($_POST['btn2'])){
     <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>-->
     <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
     <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+    <link rel="stylesheet" href="../../../servicos/css/font-awesome-animation.css">
+    <script src="https://use.fontawesome.com/7c524b6728.js"></script>
+    <link href="https://use.fontawesome.com/7c524b6728.css" media="all" rel="stylesheet">
 </head>
-<body>
 
 
-<script>
-  
-</script>
+<body  class="ui-mobile-viewport ui-overlay-a" cz-shortcut-listen="true" data-content-theme='b'>
+
 
 <style>
+  .wrapper {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  .signature-pad {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 200px;
+    background-color: white;
+  }
+
+  .ui-page {
+    background: #C6D0E2;
+  }
+  .normn, .cleart {
+    float: left;
+    min-width: 50%;
+  }
+  @media screen and (max-width:700px) {
+  .cleart {
+    clear: both;
+    width: 100%;
+  }
+  .normn {
+    width: 100%;
+  }
   #faturaI{
     padding-left: 10%;
     padding-right: 10%;
-  }
-  #header{
-    text-align: right;
-  }
-  #image{
-    position: absolute;
-    left: 3%;
-    top: 0%;
-    width: 10%;
-    height: 100%;
-    border-radius: 5%;
   }
   #criarF{
     width: 90vw;
     height: 90vh;
   }
-  #editarBtn{
-    text-decoration: none;
+  #mainDiv{
+    background-color: white;
+    border-radius: 5%;
+    padding: 0.2%;
   }
   .ui-block-a,.ui-block-b{
     padding-right: 10px;
@@ -310,7 +337,7 @@ if(isset($_POST['btn2'])){
     height: 40px;
   }
   ::placeholder{
-    color: white !important;
+    color: black !important;
   }
   #totalView{
     float: right;
@@ -327,45 +354,57 @@ if(isset($_POST['btn2'])){
     opacity: 0.7;
   }
 </style>
-                <div data-role="header" id="header" data-position="fixed">
-                <form>
-                  <a href="#mxmainpage" data-ajax='false'><image src='mxLogo.png' id='image' alt='image'></a>
-                  <button href="" data-ajax='false' class="ui-btn ui-corner-all ui-shadow">Menu</button>
-                  <a href="#criarF" data-prefetch data-position-to="window" data-rel="popup" id="criarBtn" class="ui-btn ui-corner-all ui-shadow">Criar</a>
-                </form>
+<div data-role="page" data-url="servicos/mx/its_atribuido?vl=1&amp;vg=1&amp;vt=" tabindex="0"
+        class="ui-page ui-page-theme-a ui-page-active" style="">
+<header data-theme='b' data-content-theme='a'>
+            <div class="ui-grid-c" style="padding-right: 20px;">
+                <div class="ui-block-a" style="display:table; margin:0 auto;">
+                    <span style="display:table; margin:0 auto; font-size: 10px;text-align: center;">
+                        <br>
+                        <img src="../../../servicos/images/mxtechnovo.png" style="width: 60px">
+                        <br>
+                    </span>
                 </div>
 
+                <div class="ui-block-b">
+                <button onclick='javascript:history.back()' data-theme='c' class='ui-btn ui-corner-all ui-shadow ui-mini'>Voltar</button>
+                </div>
+                <div class="ui-block-c">
+                    <!--a data-ajax="true" href="javascript:location.reload(true);" data-role="button" data-mini="true" data-theme="a">Actualiza</a-->
+                    <!--a href="temp.php?v=_" data-role="button" data-mini="true" data-theme="a" >Actualiza</a-->
+                    <a href="temp?v=" data-ajax="false"
+                        class="ui-link-inherit ui-link ui-btn ui-btn-a ui-shadow ui-corner-all ui-mini"
+                        data-role="button" data-mini="true" data-theme="a" role="button">Actualiza</a>
+
+                </div>
+                <div class="ui-block-d">
+                <a href="#criarF" data-prefetch data-position-to="window" data-theme="c" data-rel="popup" id="criarBtn" class="ui-btn ui-corner-all ui-shadow ui-mini">Criar</a>
+                </div>
+            </div>
+</header>
                 <div>
-                  <?php 
-                  if(isset($itnumero)){
-                    echo "<button onclick='javascript:history.back()' class='ui-btn ui-corner-all ui-shadow'>Retroceder</button>";
-                  }
-                  ?>
-                  <form method='get' id='searchForm' action='afaturar.php'>
+                  <form method='get' data-ajax='false' id='searchForm' action=''>
                     <input type='search' id='searchBar' name='itnumero' placeholder='Pesquisar por intervenção' data-mini='true'>
                   </form>
                 <?php
                 //while($x < $i) {
                   ?>
+                  <div id='mainDiv'>
                   <?php
                     //if ($showMore == "true") {
                       //$z = 3;
+                      
                       for ($x; $x < 5; $x=$x) {
                         if(empty($ID_display[$x])){
                       break;
                         }
-                        echo "<div data-role='collapsible' data-mini='true' id='faturaI' data-theme='b' data-content-theme='b'>";
-                        echo "<h3>" . $ID_display[$x] . "</h3>";
+                        echo "<div data-role='collapsible' data-mini='true' id='faturaI'>";
+                        echo "<h3>" . "<div>Nº IT: " . $fID[$x]['itnumero'] . "</div>" . "</h3>";
                         //echo "<a href='#editarF' data-position-to='window' data-rel='popup'><input type='submit' name='getIdBtn' value='<?php $ID_display[$x]'></input></a>";
-                    echo /*"<a href='#editarF' data-position-to='window' data-rel='popup' id='editarBtn'>*/"<form method='post' action='afaturar.php' data-ajax='false' data-prefetch>
-                              "//<a href='#editarF' data-position-to='window' id='editarR' data-rel='popup'>Editar</a>
-                              .//"<input type='hidden' name='editIdT' value='" . $ID_display[$x] . "'>
-                              "<input type='hidden' name='editIDV' value='". $fID[$x]['itnumero'] ."'>
-                              <input type='submit' name='getIdBtn' id='sizeTest' value='Editar' class='ui-btn ui-corner-all ui-shadow'>";
                               
                         //echo "<table data-role='table' data-mode='reflow' id='table' class='ui-responsive' >";
                         //echo "<thead>" . "<tr>" . "<th data-priority='1'>Key</th>" . "<th data-priority='2'>Value</th>" . "</tr>" . "</thead>" . "<tbody>";
-                    echo "<div class='ui-grid-b'>"; 
+                    echo "<div class='ui-grid-b' data-mini='true'>"; 
 
                         foreach ($fID[$x] as $key => $value) {
                           //$a[$key] = $value;
@@ -385,7 +424,7 @@ if(isset($_POST['btn2'])){
                           
                         }
                     $totalV = $fID[$x]['intervencao'] + $fID[$x]['deslocacao'] + $fID[$x]['pecas'] + $fID[$x]['consumiveis'];
-                    echo "<div class='ui-grid-a'><div class='ui-block-a'><label>"."Itnumero:"."</label><input type='text' id='editITN' placeholder='".$fID[$x]['itnumero']."'></div>";
+                    echo "<div class='ui-grid-a'><div class='ui-block-a'><label>"."Itnumero:"."</label><a href='afaturar.php?itnumero=" . $fID[$x]['itnumero'] . "'></a><input type='text' id='editITN' placeholder='".$fID[$x]['itnumero']."'></div>";
                     echo "<div class='ui-block-b'><label>"."Codigo:"."</label><input type='text' id='editCOD' placeholder='".$fID[$x]['codigo']."'></div></div>";
                     echo "<div class='ui-grid-a'><div class='ui-block-a'><label>"."modelo:"."</label><input type='text' id='editMOD' placeholder='".$fID[$x]['modelo']."'></div>";
                     echo "<div class='ui-block-b'><label>"."Serie:"."</label><input type='text'id='editSER' placeholder='".$fID[$x]['serie']."'></div></div>";
@@ -400,7 +439,7 @@ if(isset($_POST['btn2'])){
                         $x += 1;
                     echo "</div></div>";
                       }
-                  //$showMore = "false";
+                     //$showMore = "false";
                     //}
                     if(empty($ID_display[$x])){
 
@@ -412,6 +451,7 @@ if(isset($_POST['btn2'])){
                     ?>
                     
                   </div>
+                </div>
                    
                  <div data-role="popup" data-history="false" id="criarF" class="ui-corner-all">
                   <form method="post" data-ajax='false' action="" onsubmit="return validateForm()">
@@ -449,60 +489,6 @@ if(isset($_POST['btn2'])){
                    </div>
                   </form>
                   </div>
-
-
-
-                      <?php if(isset($_POST['getIdBtn'])){
-                            //$idSelect = $_POST['editID'];
-                            
-                        echo "<style>
-                        #editITN,#editCOD,#editMOD,#editSER,#editDESC,#editINT,#editDESLOC,#editPECAS,#editCONS,#editTOTAL
-                        {pointer-events: auto}
-                        </style>";
-
-                      
-                      }?>
-
-
-
-                  <div data-role="popup" data-history="false" id="editarF" class="ui-corner-all">
-                  <form method="post" action="">
-                    <div>
-                      <h3>Edit <?php $idSelect = $_GET['id'];
-                      echo $idSelect ?></h3>
-                      <div class="ui-grid-a">
-                      <div class="ui-block-a"><label for="itNE">ItNumero:</label>
-                      <input type="text" name="itNE"></div>
-                      <div class="ui-block-b"><label for="CodE">Codigo:</label>
-                      <input type="text" name="CodE"></div>
-                    </div> 
-                    <div class="ui-grid-a">
-                      <div class="ui-block-a"><label for="ModE">Modelo:</label>
-                      <input type="text" name="ModE"></div>
-                      <div class="ui-block-b"><label for="SerE">Serie:</label>
-                      <input type="text" name="SerE"></div>
-                    </div>
-                    <div id="DescDiv">
-                    <label for="DescE">Descrição</label>
-                    <input type="text" name="DescE"></input>
-                  </div><br><br>
-                  <div class="ui-grid-a">
-                      <div class="ui-block-a"><label for="InterE">Intervencao:</label>
-                      <input type="text" name="InterE"></div>
-                      <div class="ui-block-b"><label for="DeslocE">Deslocacao:</label>
-                      <input type="text" name="DeslocE"></div>
-                    </div>
-                    <div class="ui-grid-a">
-                      <div class="ui-block-a"><label for="PecE">Pecas:</label>
-                      <input type="text" name="PecE"></div>
-                      <div class="ui-block-b"><label for="ConsE">Consumiveis:</label>
-                      <input type="text" name="ConsE"></div>
-                    </div>
-                    <input  type="submit" name="btn2" value="Editar"/>
-                   </div>
-                  </form>
-                  </div>
-
 
                   <?php 
 
@@ -559,13 +545,7 @@ if(isset($_POST['btn2'])){
                     //"<input type='submit' name='showMoreBtn" . $numclick . "' value='Mostrar mais'>" . "</form>" . "</div>";
                   }
                   ?>
-
-<script>
-  function search(){
-    var urlITN = document.getElementById('searchBar').value;
-    window.location.href = "estag11.php?itnumero=" + urlITN;
-  }
-</script>
+</div>
 
 </body>
 </html>
