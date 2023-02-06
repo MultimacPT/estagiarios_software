@@ -123,6 +123,35 @@ foreach($nm as $k=>$v){
         <link href="https://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
         <!-- CSS -->
         <link rel="stylesheet" href="../src/css/rescalendar.css">
+        <link rel="stylesheet" href="../src/css/base.css">
+        <link rel="stylesheet" href="../src/css/basic-style.css">
+        <link rel="stylesheet" href="../src/css/basic-style-teste.css">
+        <link rel="stylesheet" href="../src/css/basic-style_seg.css">
+        <link rel="stylesheet" href="../src/css/basic-style-abert-fich.css">
+        <link rel="stylesheet" href="../src/css/component.css">
+        <link rel="stylesheet" href="../src/css/colorblocks-style.css">
+        <link rel="stylesheet" href="../src/css/cbdb-search-form.css">
+        <link rel="stylesheet" href="../src/css/cbdb-saerch-form-jqmobile.css">
+        <link rel="stylesheet" href="../src/css/ddsmoothmenu-v.css">
+        <link rel="stylesheet" href="../src/css/ddsmoothmenu.css">
+        <link rel="stylesheet" href="../src/css/default.css">
+        <link rel="stylesheet" href="../src/css/demo.css">
+        <link rel="stylesheet" href="../src/css/easy-responsive-tabs.css">
+        <link rel="stylesheet" href="../src/css/fancydropdown.css">
+        <link rel="stylesheet" href="../src/css/flashmo_224_style.css">
+        <link rel="stylesheet" href="../src/css/font-awesome-animation.css">
+        <link rel="stylesheet" href="../src/css/jquery.mobile-1.2.1.min.css">
+        <link rel="stylesheet" href="../src/css/jquery.mmenu.all.css">
+        <link rel="stylesheet" href="../src/css/jquery.mobile.structure-1.4.5.min.css">
+        <link rel="stylesheet" href="../src/css/layout.css">
+        <link rel="stylesheet" href="../src/css/layout_script.css">
+        <link rel="stylesheet" href="../src/css/normalize.css">
+        <link rel="stylesheet" href="../src/css/site.css">
+        <link rel="stylesheet" href="../src/css/skeleton.css">
+        <link rel="stylesheet" href="../src/css/slimbox2.css">
+        <link rel="stylesheet" href="../src/css/style.css">
+        <link rel="stylesheet" href="../src/css/styleresponsivetab01.css">
+        <link rel="stylesheet" href="../src/css/templatemo_style.css">
 
         <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
         <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
