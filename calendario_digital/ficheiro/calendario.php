@@ -123,7 +123,9 @@ foreach($nm as $k=>$v){
         <link href="https://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
         <!-- CSS -->
         <link rel="stylesheet" href="../src/css/rescalendar.css">
+        <!--
         <link rel="stylesheet" href="../src/css/base.css">
+        -->
         <link rel="stylesheet" href="../src/css/basic-style.css">
         <link rel="stylesheet" href="../src/css/basic-style-teste.css">
         <link rel="stylesheet" href="../src/css/basic-style_seg.css">
@@ -143,7 +145,9 @@ foreach($nm as $k=>$v){
         <link rel="stylesheet" href="../src/css/jquery.mobile-1.2.1.min.css">
         <link rel="stylesheet" href="../src/css/jquery.mmenu.all.css">
         <link rel="stylesheet" href="../src/css/jquery.mobile.structure-1.4.5.min.css">
+        <!--
         <link rel="stylesheet" href="../src/css/layout.css">
+        -->    
         <link rel="stylesheet" href="../src/css/layout_script.css">
         <link rel="stylesheet" href="../src/css/normalize.css">
         <link rel="stylesheet" href="../src/css/site.css">
@@ -151,7 +155,9 @@ foreach($nm as $k=>$v){
         <link rel="stylesheet" href="../src/css/slimbox2.css">
         <link rel="stylesheet" href="../src/css/style.css">
         <link rel="stylesheet" href="../src/css/styleresponsivetab01.css">
+        <!--
         <link rel="stylesheet" href="../src/css/templatemo_style.css">
+        -->
 
         <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
         <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
