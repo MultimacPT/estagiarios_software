@@ -1,0 +1,60 @@
+/*
+    Document   : popdiv
+    Created on : 9/Ago/2015, 16:27:37
+    Author     : Jose Goncalves
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+.popdiv_black_overlay{
+    display: none;
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    z-index:1001;
+    -moz-opacity: 0.8;
+    opacity:.80;
+    filter: alpha(opacity=80);
+}
+.popdiv_white_content {
+    display: none;
+    position: absolute;
+    top: 5%;
+    left: 10%;
+    width: 80%;
+    height: 80%;
+    padding: 0px;
+    /*border: 1px solid orange;*/
+    background-color: white;
+    z-index:1002;
+    overflow: hidden;
+}
+
+
+
+.popdiv_wrap {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    overflow: hidden;
+}
+.popdiv_frame {
+    width:100%;
+    height: 900px;
+    border: 0;
+    -ms-transform: scale(1);
+    -moz-transform: scale(1);
+    -o-transform: scale(1);
+    -webkit-transform: scale(1);
+    transform: scale(1);
+
+    -ms-transform-origin: 0 0;
+    -moz-transform-origin: 0 0;
+    -o-transform-origin: 0 0;
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+}
+
