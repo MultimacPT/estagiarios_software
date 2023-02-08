@@ -129,10 +129,12 @@ foreach ($nm as $k => $v) {
 
 <head>
 
+    <link rel="shortcut icon" type="image/x-icon" href="mx2.ico">
+    <link rel="icon" type="image/png" href="mxtech01.png">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>jQuery Horizontal Calendar</title>
+    <title>JQuery Horizontal Calendar</title>
     <link href="https://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
     <!-- CSS -->
     <link rel="stylesheet" href="../src/css/rescalendar.css">
