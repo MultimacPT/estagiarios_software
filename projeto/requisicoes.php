@@ -250,7 +250,6 @@ foreach ($arrayREQ['list'] as $k => $v){
             </div>
             <?php
             foreach ($arrayREQ['list'] as $k => $v){
-                
             }
             echo "
             <div style='margin-left: 5px !important;' data-role='collapsible' data-theme='f' data-content-theme='b' data-mini='true'>
@@ -294,13 +293,3 @@ foreach ($arrayREQ['list'] as $k => $v){
     </form>
 </body>
 </html>
-<p>".$v['equipamentosName']."</p> </td>
-                            <td> <p>".$v['numreq']."</p> <td>
-                            <td> <p>".$v['itnum']."</p> <td>
-                            <td> <p>".$v['accountName']."</p> <td>
-                            <td> <p>".$v['numreq']."</p> <td>
-                            <td> <p>".$v['tipo']."</p> <td>
-                            <td> <p>".$v['productName']."</p> <td>
-                            <td> <p>".$v['quantidade']."</p> <td>
-                            <td> <p>".$v['createdAt']."</p> <td>
-                            <td> <p>".$v['createdByName']."</p> <td>
