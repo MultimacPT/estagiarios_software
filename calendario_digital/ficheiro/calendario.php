@@ -22,7 +22,7 @@ curl 'https://mx.multimac.pt/mxv5/api/v1/Assiduidade?select=assignedUserId%2Cass
 //header("Location: estag12.php");
 $ID="639df22a8d7e751b3";
 $ID="3";
-$curlUrl="https://mx.multimac.pt/mxv5/api/v1/Assiduidade?select=assignedUserId%2CassignedUserName%2Centrada%2Csaida&maxSize=25&offset=0&orderBy=createdAt&order=desc";
+$curlUrl="https://mx.multimac.pt/mxv5/api/v1/Assiduidade?maxSize=25&offset=0&orderBy=createdAt&order=desc";
 $curl = curl_init();
 
 curl_setopt_array($curl, [
@@ -81,6 +81,11 @@ $inicio="";
 
 foreach($out['list'] as $v){
     $counter++;
+    if ($v['tipo']=="Falta"){
+        $cor = "redClass";
+    }else{
+        $cor="greenClass";
+    }
     //echo $v['id'], $v['assignedUserName'],"<br>";
     $dados = $dados."
     {
@@ -88,7 +93,7 @@ foreach($out['list'] as $v){
         name: '".$v['assignedUserName']."',
         startDate: '".str_replace("-", "/", substr($v['entrada'],0,10))."',
         endDate: '".substr($v['saida'],0,10)."',
-        customClass: 'greenClass',
+        customClass: '".$cor."',
         title: 'Title 1'
     },";
     //if ($name==""){
