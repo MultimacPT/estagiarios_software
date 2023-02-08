@@ -377,7 +377,7 @@ if(isset($_POST['btn2'])){
     float: right;
   }
   #editITN,#editCOD,#editMOD,#editSER,#editDESC,#editINT,#editDESLOC,#editPECAS,#editCONS,#editTOTAL{
-    pointer-events: none;
+    pointer-events: none !important;
   }
   #searchForm{
     padding-left: 10%;
@@ -539,7 +539,7 @@ if(isset($_POST['btn2'])){
                       <div class="ui-block-b"><label for="Cons">Consumiveis:</label>
                       <input type="text" name="Cons" pattern="[0-9]{0,10}" title="Digite um valor válido" required></div>
                     </div>
-                    <input type="submit" name="btn1" value="Submeter" />
+                    <input type="submit" data-ajax='false' name="btn1" value="Submeter" />
                    </div>
                   </form>
                   </div>
