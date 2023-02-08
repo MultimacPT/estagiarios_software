@@ -164,13 +164,6 @@ foreach ($arrayREQ['list'] as $k => $v){
                 <div class="ui-block-a" style="display:table; margin:0 auto;">
                     <span style="display:table; margin:0 auto; font-size: 10px;text-align: center;"><br>
                         <img src="images/mxtechnovo.png" style="width: 60px"><br>
-                        <font size="1">
-                            <a href="#popupDialog" data-rel="popup" data-position-to="window" data-transition="pop"
-                                aria-haspopup="true" aria-owns="popupDialog" aria-expanded="false" class="ui-link">
-                                <i class="fa fa-envelope faa-horizontal faa-fast fa-2x animated" style="color:red;"></i>
-                            </a>
-                            <div style="display: none;" id="popupDialog-placeholder"></div>
-                        </font>
                     </span>
                 </div>
                 
@@ -197,7 +190,7 @@ foreach ($arrayREQ['list'] as $k => $v){
             </div>
         </header>
 
-        <div data-role="page" style="background-color: #C6D0E2; margin-top:70px !important;">
+        <div data-role="page" style="background-color: #C6D0E2; margin-top:67px !important;">
             <div class="parentx">   
                 <!--a href="#popupBasic" data-rel="popup" class="ui-btn ui-corner-all ui-shadow ui-btn-inline" data-transition="pop">Basic Popup</a>
                 <div data-role="popup" id="popupBasic">
@@ -214,23 +207,14 @@ foreach ($arrayREQ['list'] as $k => $v){
                                 <div style='margin-left: 5px !important;' data-role='collapsible' data-theme='c' data-content-theme='b' data-mini='true'>
                                     <h6>
                                         <span style='margin-left: 1.5%'>PEÇA ". $x ." </span>
-                                        <br><br><br>
-                                        <div class='ui-li-count' style='margin-top: -0.5em !important; width: 35% !important; font-size: 11px; right: auto !important; left: 10% !important; background-color:lightgreen; color:black;'>
-                                            Id : ". $v['id'] ." 
+                                        <br><br>
+                                        <div class='ui-li-count' style='margin-top: -0.25em !important; width: 35% !important; font-size: 11px; right: auto !important; left: 8% !important; background-color:lightgreen; color:black;'>
+                                            Ref.: ". $v['name'] ." 
                                         </div>
-                                        <div class='ui-li-count' style='margin-top: -0.5em !important; width: 25% !important; font-size: 11px; right: auto !important; left: 49% !important; background-color:lightgreen; color:black;'>
-                                            Nome : ". $v['name'] ." 
-                                        </div>
-                                        <div class='ui-li-count' style='margin-top: 1.5em !important; width: 35% !important; font-size: 11px; right: auto !important; left: 10% !important; background-color:lightgreen; color:black;'>
-                                            Peça : ". $v['description'] ." 
-                                        </div>
-                                        <div class='ui-li-count' style='margin-top: 1.5em !important; width: 25% !important; font-size: 11px; right: auto !important; left: 49% !important; background-color:lightgreen; color:black;'>
-                                            Modelo : ". $v['modelo'] ." 
+                                        <div class='ui-li-count' style='margin-top: -0.25em !important; width: 35% !important; font-size: 11px; right: auto !important; left: 49% !important; background-color:lightgreen; color:black;'>
+                                            ". $v['description'] ." 
                                         </div>
                                         &nbsp;
-                                        <span class='ui-li-count' style='width: 14% !important; margin-top: 1.1em !important;font-size: 12px; right: 8px !important; left: auto !important; background-color:lightgrey; color:black;'>
-                                            &nbsp;&nbsp;Total: 4 &nbsp;&nbsp;
-                                        </span>
                                     </h6>
                                     <h6 class='ui-collapsible-heading'>
                                         <table>
@@ -249,45 +233,74 @@ foreach ($arrayREQ['list'] as $k => $v){
                 <br>
             </div>
             <?php
-            foreach ($arrayREQ['list'] as $k => $v){
-            }
+            
             echo "
-            <div style='margin-left: 5px !important;' data-role='collapsible' data-theme='f' data-content-theme='b' data-mini='true'>
-                <h6>
-                    <span style='margin-left: 1.5%'>LISTA</span>
-                    <br><br><br>
-                </h6>
-                <h6 class='ui-collapsible-heading'>
-                    <table>
-                        <tr>
-                            <td> 
-                                <div class='ui-li-count' style='margin-top: -0.5em !important; width: 18% !important; font-size: 11px; right: auto !important; left: 1% !important; background-color:lightgrey; color:black;'>Equipamentos</div> 
-                            </td>
-                            <td> 
-                                <div class='ui-li-count' style='margin-top: -0.5em !important; width: 8% !important; font-size: 11px; right: auto !important; left: 24% !important; background-color:lightgrey; color:black;'>ItNum</div> 
-                            </td>
-                            <td> 
-                                <div class='ui-li-count' style='margin-top: -0.5em !important; width: 11% !important; font-size: 11px; right: auto !important; left: 37% !important; background-color:lightgrey; color:black;'>NumReq</div> 
-                            </td>
-                            <td> 
-                                <div class='ui-li-count' style='margin-top: -0.5em !important; width: 5% !important; font-size: 11px; right: auto !important; left: 53% !important; background-color:lightgrey; color:black;'>Tipo</div> 
-                            </td>
-                            <td> 
-                                <div class='ui-li-count' style='margin-top: -0.5em !important; width: 10% !important; font-size: 11px; right: auto !important; left: 63% !important; background-color:lightgrey; color:black;'>Produto</div> 
-                            </td>
-                            <td> 
-                                <div class='ui-li-count' style='margin-top: -0.5em !important; width: 10% !important; font-size: 11px; right: auto !important; left: 78% !important; background-color:lightgrey; color:black;'>Qntd.</div> 
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                   
-                            </td>
-                        </tr>
-                    </table>
-                    <br>
-                </h6>
-            </div>";
+                <div style='margin-left: 5px !important;' data-role='collapsible' data-theme='f' data-content-theme='b' data-mini='true'>
+                    <h6>
+                        <span style='margin-left: 1.5%'>LISTA</span>
+                    </h6>
+                    <h6 class='ui-collapsible-heading'>
+                        <table>
+                            <tr>
+                                <td> 
+                                    <div class='ui-li-count' style='margin-top: -1.5em !important; width: 18% !important; font-size: 11px; right: auto !important; left: 1% !important; background-color:orange; color:black;'>
+                                    Equipamentos</div> 
+                                </td>
+                                <td> 
+                                    <div class='ui-li-count' style='margin-top: -1.5em !important; width: 8% !important; font-size: 11px; right: auto !important; left: 24% !important; background-color:orange; color:black;'>
+                                    ItNum</div> 
+                                </td>
+                                <td> 
+                                    <div class='ui-li-count' style='margin-top: -1.5em !important; width: 11% !important; font-size: 11px; right: auto !important; left: 39% !important; background-color:orange; color:black;'>
+                                    NumReq</div> 
+                                </td>
+                                <td> 
+                                    <div class='ui-li-count' style='margin-top: -1.5em !important; width: 6% !important; font-size: 11px; right: auto !important; left: 56% !important; background-color:orange; color:black;'>
+                                    Tipo</div> 
+                                </td>
+                                <td> 
+                                    <div class='ui-li-count' style='margin-top: -1.5em !important; width: 10% !important; font-size: 11px; right: auto !important; left: 69% !important; background-color:orange; color:black;'>
+                                    Produto</div> 
+                                </td>
+                                <td> 
+                                    <div class='ui-li-count' style='margin-top: -1.5em !important; width: 10% !important; font-size: 11px; right: auto !important; left: 86% !important; background-color:orange; color:black;'>
+                                    Qntd.</div> 
+                                </td>
+                            </tr>";
+                            foreach ($arrayREQ['list'] as $k => $v){
+                                echo"
+                            <tr>
+                                <td> 
+                                    <div class='ui-li-count' style='margin-top: 0.5em !important; width: 18% !important; font-size: 11px; right: auto !important; left: 1% !important; background-color:lightgrey; color:black;'>
+                                    ".$v['equipamentosName']."</div>
+                                </td> 
+                                <td> 
+                                    <div class='ui-li-count' style='margin-top: 0.5em !important; width: 8% !important; font-size: 11px; right: auto !important; left: 24% !important; background-color:lightgrey; color:black;'>
+                                    ".$v['itnum']."</div>
+                                </td>
+                                <td> 
+                                    <div class='ui-li-count' style='margin-top: 0.5em !important; width: 11% !important; font-size: 11px; right: auto !important; left: 39% !important; background-color:lightgrey; color:black;'>
+                                    ".$v['numreq']."</div>
+                                </td>
+                                <td> 
+                                    <div class='ui-li-count' style='margin-top: 0.5em !important; width: 6% !important; font-size: 11px; right: auto !important; left: 56% !important; background-color:lightgrey; color:black;'>
+                                    ".$v['tipo']."</div>
+                                </td>
+                                <td> 
+                                    <div class='ui-li-count' style='margin-top: 0.5em !important; width: 10% !important; font-size: 11px; right: auto !important; left: 69% !important; background-color:lightgrey; color:black;'>
+                                    ".$v['productName']."</div>
+                                </td>
+                                <td> 
+                                    <div class='ui-li-count' style='margin-top: 0.5em !important; width: 10% !important; font-size: 11px; right: auto !important; left: 86% !important; background-color:lightgrey; color:black;'>
+                                    ".$v['quantidade']."</div>
+                                </td>
+                            </tr>      
+                        </table>
+                        <br><br><br>";
+                            }
+                        echo"
+                    </h6>
+                </div>";
             ?>
         </div>
     </form>
