@@ -1,0 +1,184 @@
+@charset "utf-8";
+/* CSS Document */
+
+#container
+{
+    font-size: 12px;
+    margin: 0 auto;
+    width: 100%;
+    height: 10px;
+    background: transparent;
+
+}
+
+#header
+{
+    font-size: 12px;
+    background: transparent;
+    padding: 20px;
+    height: 10px;
+}
+
+#header h1 { margin: 0; }
+
+#navigation
+{
+    font-size: 14px;
+    float: left;
+    width: 100%;
+    background: transparent;
+    font:Verdana, Arial, Helvetica, sans-serif
+
+}
+
+#navigation ul
+{
+    font-size: 12px;
+    margin: 0;
+    padding: 0;
+
+}
+
+#navigation ul li
+{
+    font-size: 12px;
+    list-style-type: none;
+    display: inline;
+
+}
+
+#navigation li a
+{
+    font-size: 12px;
+    display: block;
+    float: left;
+    padding: 5px 10px;
+    color: #fff;
+    text-decoration: none;
+    border-right: 1px solid #fff;
+
+}
+
+#navigation li a:hover { background: #383; }
+
+#content-container
+{
+    font-size: 12px;
+    float: left;
+    width: 100%;
+}
+
+#content
+{
+    font-size: 12px ;
+    font: arial;
+    clear: left;
+    float: left;
+    width: 100%;
+    padding: 0px 0;
+    margin: 0 0 0 0px;
+    display: inline;
+    color: #3333CC;
+    background:  #F7F7F7;
+}
+#content2
+{
+
+    font-size: 8px ;
+    font: arial;
+    clear: left;
+    float: left;
+    width: 100%;
+    padding: 0px 0;
+    margin: 0 0 0 0px;
+    display: inline;
+}
+#content3
+{
+
+    font-size: 8px ;
+    font: arial;
+    clear: left;
+    float: left;
+    width: 100%;
+    padding: 0px 0;
+    margin: 0 0 0 0px;
+    display: inline;
+    color: #3333CC;
+    background: #107097;
+    background:  #F7F7F7;
+
+}
+#content4
+{
+    font-size: 12px ;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    clear: left;
+    float: left;
+    width: 100%;
+    padding: 0px 0;
+    margin: 0 0 0 0px;
+    display: inline;
+    color: black;
+    background:  #107097;
+
+}
+#content5
+{
+    font-size: 12px ;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    clear: left;
+    float: left;
+    width: 1350;
+    padding: 0px 0;
+    margin: 0 0 0 0px;
+    display: inline;
+    color: black;
+
+}
+#content6
+{
+    font: arial;
+    clear: left;
+    float: left;
+    width: 100%;
+    margin: 0 0 0 0px;
+    font-size: 14px;
+    align: right;
+
+}
+#content h2 { margin: 0; }
+
+#aside
+{
+    font-size: 12px;
+    float: right;
+    width: 240px;
+    padding: 20px 0;
+    margin: 0 20px 0 0;
+    display: inline;
+}
+
+#aside h3 { font-size: 12px;
+
+            margin: 0; }
+
+#footer
+{
+    font-size: 12px;
+    clear: both;
+    background: #E9E9E9;
+    text-align: right;
+    padding: 1px;
+    height: 0,1%;
+}
+
+
+body {
+    background-color: whitesmoke;
+    /*background-image: url(../imagens/fundo.jpg);*/
+    background-size: 100%;
+}
+bodyy {
+    background-color: #EEEEEE;
+}
