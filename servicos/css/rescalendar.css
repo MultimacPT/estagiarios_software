@@ -37,8 +37,8 @@
 .rescalendar_day_cells span{
 	display: block;
 	padding: 0 2px 0px;
-	font-size: 14px;
-	width: 22px;
+	font-size: 8px;
+	width: 6px;
 }
 
 .rescalendar_day_cells span.day{
