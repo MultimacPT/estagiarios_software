@@ -376,9 +376,6 @@ if(isset($_POST['btn2'])){
   #totalView{
     float: right;
   }
-  #editITN,#editCOD,#editMOD,#editSER,#editDESC,#editINT,#editDESLOC,#editPECAS,#editCONS,#editTOTAL{
-    pointer-events: none !important;
-  }
   #searchForm{
     padding-left: 10%;
     padding-right: 10%;
@@ -478,16 +475,16 @@ if(isset($_POST['btn2'])){
                           
                         }
                     $totalV = $fID[$x]['intervencao'] + $fID[$x]['deslocacao'] + $fID[$x]['pecas'] + $fID[$x]['consumiveis'];
-                    echo "<div class='ui-grid-a'><div class='ui-block-a'><label>"."Itnumero:"."</label><a href='afaturar.php?itnumero=" . $fID[$x]['itnumero'] . "'></a><input type='text' id='editITN' placeholder='".$fID[$x]['itnumero']."'></div>";
-                    echo "<div class='ui-block-b'><label>"."Codigo:"."</label><input type='text' id='editCOD' placeholder='".$fID[$x]['codigo']."'></div></div>";
-                    echo "<div class='ui-grid-a'><div class='ui-block-a'><label>"."modelo:"."</label><input type='text' id='editMOD' placeholder='".$fID[$x]['modelo']."'></div>";
-                    echo "<div class='ui-block-b'><label>"."Serie:"."</label><input type='text'id='editSER' placeholder='".$fID[$x]['serie']."'></div></div>";
-                    echo "<div class='ui-grid-a'><div class='ui-block-a'><label>" . "Description"."</label><input type='text' id='editDESC' placeholder='".$fID[$x]['description']."'></div></div>";
-                    echo "<div class='ui-grid-a'><div class='ui-block-a'><label>"."Intervencao:"."</label><input type='text' id='editINT' placeholder='".$fID[$x]['intervencao']."'></div>";
-                    echo "<div class='ui-block-b'><label>"."Deslocacao:"."</label><input type='text' id='editDESLOC' placeholder='".$fID[$x]['deslocacao']."'></div></div>";
-                    echo "<div class='ui-grid-a'><div class='ui-block-a'><label>"."Pecas:"."</label><input type='text' id='editPECAS' placeholder='".$fID[$x]['pecas']."'></div>";
-                    echo "<div class='ui-block-b'><label>"."Consumiveis:"."</label><input type='text' id='editCONS' placeholder='".$fID[$x]['consumiveis']."'></div></div>";
-                    echo "<div class='ui-grid-a'><div class='ui-block-a' id='totalView'><label>Total:</label><input type='text' id='editTOTAL' placeholder='".$totalV."'></div></div>";
+                    echo "<form id='viewInputs'><div class='ui-grid-a'><div class='ui-block-a'><label>"."Itnumero:"."</label><input type='text' id='editITN' placeholder='".$fID[$x]['itnumero']."' readonly></div>";
+                    echo "<div class='ui-block-b'><label>"."Codigo:"."</label><input type='text' id='editCOD' placeholder='".$fID[$x]['codigo']."' readonly></div></div>";
+                    echo "<div class='ui-grid-a'><div class='ui-block-a'><label>"."modelo:"."</label><input type='text' id='editMOD' placeholder='".$fID[$x]['modelo']."' readonly></div>";
+                    echo "<div class='ui-block-b'><label>"."Serie:"."</label><input type='text'id='editSER' placeholder='".$fID[$x]['serie']."' readonly></div></div>";
+                    echo "<div class='ui-grid-a'><div class='ui-block-a'><label>" . "Description"."</label><input type='text' id='editDESC' placeholder='".$fID[$x]['description']."' readonly></div></div>";
+                    echo "<div class='ui-grid-a'><div class='ui-block-a'><label>"."Intervencao:"."</label><input type='text' id='editINT' placeholder='".$fID[$x]['intervencao']."' readonly></div>";
+                    echo "<div class='ui-block-b'><label>"."Deslocacao:"."</label><input type='text' id='editDESLOC' placeholder='".$fID[$x]['deslocacao']."' readonly></div></div>";
+                    echo "<div class='ui-grid-a'><div class='ui-block-a'><label>"."Pecas:"."</label><input type='text' id='editPECAS' placeholder='".$fID[$x]['pecas']."' readonly></div>";
+                    echo "<div class='ui-block-b'><label>"."Consumiveis:"."</label><input type='text' id='editCONS' placeholder='".$fID[$x]['consumiveis']."' readonly></div></div>";
+                    echo "<div class='ui-grid-a'><div class='ui-block-a' id='totalView'><label>Total:</label><input type='text' id='editTOTAL' placeholder='".$totalV."' readonly></div></div></form>";
                     echo "</form>";
                         //echo "</tbody>" . "</table>" . "</div>";
                         $x += 1;
@@ -563,8 +560,6 @@ if(isset($_POST['btn2'])){
                       echo "<h3> Nº IT: " . $fID[$x]['itnumero'] . "</h3>";
                       //echo "<a href='#editarF' data-position-to='window' data-rel='popup'><input type='submit' name='getIdBtn' value='<?php $ID_display[$x]'></input></a>";
                       //echo "<a href='#editarF' data-prefetch data-position-to='window' data-rel='popup' id='editarBtn' class='ui-btn ui-corner-all ui-shadow'>Editar</a>";
-                      echo "<form method='post' action='' data-prefetch> <input type='hidden' name='editIdT' id='editIdT' value='" . $ID_display[$x] . "'>
-                              <input type='submit' name='getIdBtn' value='Editar' class='ui-btn ui-corner-all ui-shadow'></form>";
                       echo "<div class='ui-grid-b'>";
 
                       foreach ($fID[$x] as $key => $value) {
@@ -583,16 +578,16 @@ if(isset($_POST['btn2'])){
                         }
                       }
                       $totalV = $fID[$x]['intervencao'] + $fID[$x]['deslocacao'] + $fID[$x]['pecas'] + $fID[$x]['consumiveis'];
-                        echo "<div class='ui-grid-a'><div class='ui-block-a'><label>" . "Itnumero:" . "</label><input type='text' placeholder='" . $fID[$x]['itnumero'] . "'disabled></div>";
-                        echo "<div class='ui-block-b'><label>" . "Codigo:" . "</label><input type='text' placeholder='" . $fID[$x]['codigo'] . "'disabled></div></div>";
-                        echo "<div class='ui-grid-a'><div class='ui-block-a'><label>" . "modelo:" . "</label><input type='text' placeholder='" . $fID[$x]['modelo'] . "'disabled></div>";
-                        echo "<div class='ui-block-b'><label>" . "Serie:" . "</label><input type='text' placeholder='" . $fID[$x]['serie'] . "'disabled></div></div>";
-                        echo "<div class='ui-grid-a'><div class='ui-block-a'><label>" . "Description" . "</label><input type='text' name='descView' placeholder='" . $fID[$x]['description'] . "'disabled></div></div>";
-                        echo "<div class='ui-grid-a'><div class='ui-block-a'><label>" . "Intervencao:" . "</label><input type='text' placeholder='" . $fID[$x]['intervencao'] . "'disabled></div>";
-                        echo "<div class='ui-block-b'><label>" . "Deslocacao:" . "</label><input type='text' placeholder='" . $fID[$x]['deslocacao'] . "'disabled></div></div>";
-                        echo "<div class='ui-grid-a'><div class='ui-block-a'><label>" . "Pecas:" . "</label><input type='text' placeholder='" . $fID[$x]['pecas'] . "'disabled></div>";
-                        echo "<div class='ui-block-b'><label>" . "Consumiveis:" . "</label><input type='text' placeholder='" . $fID[$x]['consumiveis'] . "'disabled></div></div>";
-                        echo "<div class='ui-grid-a'><div class='ui-block-a' id='totalView'><label>Total:</label><input type='text' placeholder='" . $totalV . "'disabled></div></div>";
+                        echo "<div class='ui-grid-a'><div class='ui-block-a'><label>" . "Itnumero:" . "</label><input type='text' placeholder='" . $fID[$x]['itnumero'] . "'readonly></div>";
+                        echo "<div class='ui-block-b'><label>" . "Codigo:" . "</label><input type='text' placeholder='" . $fID[$x]['codigo'] . "'readonly></div></div>";
+                        echo "<div class='ui-grid-a'><div class='ui-block-a'><label>" . "modelo:" . "</label><input type='text' placeholder='" . $fID[$x]['modelo'] . "'readonly></div>";
+                        echo "<div class='ui-block-b'><label>" . "Serie:" . "</label><input type='text' placeholder='" . $fID[$x]['serie'] . "'readonly></div></div>";
+                        echo "<div class='ui-grid-a'><div class='ui-block-a'><label>" . "Description" . "</label><input type='text' name='descView' placeholder='" . $fID[$x]['description'] . "'readonly></div></div>";
+                        echo "<div class='ui-grid-a'><div class='ui-block-a'><label>" . "Intervencao:" . "</label><input type='text' placeholder='" . $fID[$x]['intervencao'] . "'readonly></div>";
+                        echo "<div class='ui-block-b'><label>" . "Deslocacao:" . "</label><input type='text' placeholder='" . $fID[$x]['deslocacao'] . "'readonly></div></div>";
+                        echo "<div class='ui-grid-a'><div class='ui-block-a'><label>" . "Pecas:" . "</label><input type='text' placeholder='" . $fID[$x]['pecas'] . "'readonly></div>";
+                        echo "<div class='ui-block-b'><label>" . "Consumiveis:" . "</label><input type='text' placeholder='" . $fID[$x]['consumiveis'] . "'readonly></div></div>";
+                        echo "<div class='ui-grid-a'><div class='ui-block-a' id='totalView'><label>Total:</label><input type='text' placeholder='" . $totalV . "'readonly></div></div>";
                         echo "</div></div>";
                       }
                     //echo "<div id='showBtn'>" . "<form action='' id='showMore" . $numclick . "'method='post'>" .
