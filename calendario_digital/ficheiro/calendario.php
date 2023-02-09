@@ -95,11 +95,10 @@ foreach ($out['list'] as $v) {
         $cor = "greenClass";
     }
 }
-
 foreach ($out['list'] as $v) {
     $counter++;
     if ($v['tipo'] == "1") {
-        $cor = "purpleClass";
+        $cor = "blackClass";
     } else {
         $cor = "greenClass";
     }
@@ -198,6 +197,10 @@ foreach ($nm as $k => $v) {
 
 
     <style>
+        header {
+            box-shadow: 0px 3px 7px 0px rgba(0, 0, 0, 0.4);
+        }
+
         body {
             text-align: center;
             font-family: 'Roboto';
@@ -229,8 +232,8 @@ foreach ($nm as $k => $v) {
             background: red;
         }
 
-        .purpleClass {
-            background: purple;
+        .blackClass {
+            background: black;
         }
 
         .orangeClass {
@@ -252,8 +255,8 @@ foreach ($nm as $k => $v) {
                 </span>
             </div>
             <div class="ui-block-b">
-                <a
-                    href="http://192.168.30.198/estagiarios/estagiarios_software/duartebarros/assiduidades.php"><button>Registar Assiduidades</button></a>
+                <a href="http://192.168.30.198/estagiarios/estagiarios_software/duartebarros/assiduidades.php"><button>Registar
+                        Assiduidades</button></a>
 
             </div>
     </header>
@@ -325,10 +328,9 @@ google_ad_client = "ca-pub-2783044520727903";
 
     </script>
 
-
 </body>
 
-<div data-role="footer">
+<div data-role="footer" data-position="fixed">
     <h4>De João Catita</h4>
 </div>
 
