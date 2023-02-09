@@ -77,13 +77,14 @@ $list = json_decode($list,true);
 
 // Definição de variáveis a serem usadas mais tarde no código
 $i = 0;
-$z = 3;
 $x = 0;
+$z = 0;
 $showMore = "true";// = true;
 $dataS;
 $idSelect;
 $numclick = 0;
 $numEdit = 0;
+$valid = true;
 //--------------------------------------------FOREACH para ler os dados de cada ID obtido no bloco acima---------------------------------------------------
 foreach ($list as $item) {
   $ID = $item['id'];
@@ -155,46 +156,60 @@ if(isset($_POST['btn1'])){
     $cons = 0;
   }
   $totalF = $desloc + $pecas + $cons + $inter;
-  echo "<script type='javascript'>alert('Email enviado com Sucesso!');";
+
+  for ($z; $z < $i;$z++){
+    if($fID[$z]['itnumero'] == $numIt){
+      $valid = false;
+      break;
+    }
+  }
+
+  
+  /*echo "<script type='javascript'>alert('Email enviado com Sucesso!');";
   echo "javascript:window.location='index.php';</script>";
 
-  log($numIt);
+  log($numIt);*/
 
 
-  $curlS = curl_init();
+  if ($valid == true) {
+    $curlS = curl_init();
 
-  curl_setopt_array($curlS, [
-    CURLOPT_URL => "https://mx.multimac.pt/mxv5/api/v1/Afaturar",
-    CURLOPT_RETURNTRANSFER => true,
-    CURLOPT_ENCODING => "",
-    CURLOPT_MAXREDIRS => 10,
-    CURLOPT_TIMEOUT => 30,
-    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-    CURLOPT_CUSTOMREQUEST => "POST",
-    CURLOPT_POSTFIELDS => "{\"assignedUserId\":\"63bbf945cfbab4a54\",\"assignedUserName\":\"rsebastiao\",\"teamsIds\":[\"63bbf88d567391e32\"],\"teamsNames\":{\"63bbf88d567391e32\":\"Estagiarios\"},\"itnumero\":".$numIt.",\"codigo\":". $codg .",\"modelo\":\"". $modelo ."\",\"serie\":\"". $serie ."\",\"intervencao\":". $inter .",\"intervencaoCurrency\":\"EUR\",\"pecas\":". $pecas .",\"pecasCurrency\":\"EUR\",\"deslocacao\":". $desloc .",\"deslocacaoCurrency\":\"EUR\",\"consumiveis\":". $cons .",\"consumiveisCurrency\":\"EUR\",\"total\":". $totalF .",\"totalCurrency\":\"EUR\",\"description\":\"". $desc ."\"}",
-    CURLOPT_HTTPHEADER => [
-      "Accept: application/json, text/javascript, */*; q=0.01",
-      "Accept-Encoding: gzip, deflate, br",
-      "Accept-Language: pt-PT,pt;q=0.8,en;q=0.5,en-US;q=0.3",
-      "Content-Type: application/json",
-      "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/109.0",
-      "X-Api-Key: 4551D74F0502A6409445E49961896B49"
-    ],
-  ]);
+    curl_setopt_array($curlS, [
+      CURLOPT_URL => "https://mx.multimac.pt/mxv5/api/v1/Afaturar",
+      CURLOPT_RETURNTRANSFER => true,
+      CURLOPT_ENCODING => "",
+      CURLOPT_MAXREDIRS => 10,
+      CURLOPT_TIMEOUT => 30,
+      CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+      CURLOPT_CUSTOMREQUEST => "POST",
+      CURLOPT_POSTFIELDS => "{\"assignedUserId\":\"63bbf945cfbab4a54\",\"assignedUserName\":\"rsebastiao\",\"teamsIds\":[\"63bbf88d567391e32\"],\"teamsNames\":{\"63bbf88d567391e32\":\"Estagiarios\"},\"itnumero\":" . $numIt . ",\"codigo\":" . $codg . ",\"modelo\":\"" . $modelo . "\",\"serie\":\"" . $serie . "\",\"intervencao\":" . $inter . ",\"intervencaoCurrency\":\"EUR\",\"pecas\":" . $pecas . ",\"pecasCurrency\":\"EUR\",\"deslocacao\":" . $desloc . ",\"deslocacaoCurrency\":\"EUR\",\"consumiveis\":" . $cons . ",\"consumiveisCurrency\":\"EUR\",\"total\":" . $totalF . ",\"totalCurrency\":\"EUR\",\"description\":\"" . $desc . "\"}",
+      CURLOPT_HTTPHEADER => [
+        "Accept: application/json, text/javascript, */*; q=0.01",
+        "Accept-Encoding: gzip, deflate, br",
+        "Accept-Language: pt-PT,pt;q=0.8,en;q=0.5,en-US;q=0.3",
+        "Content-Type: application/json",
+        "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/109.0",
+        "X-Api-Key: 4551D74F0502A6409445E49961896B49"
+      ],
+    ]);
 
 
-  // Desactiva o certificado SSL
-  curl_setopt($curlS, CURLOPT_SSL_VERIFYHOST, false);
-  curl_setopt($curlS, CURLOPT_SSL_VERIFYPEER, false);
-  $responseS = curl_exec($curlS);
-  $errS = curl_error($curlS);
+    // Desactiva o certificado SSL
+    curl_setopt($curlS, CURLOPT_SSL_VERIFYHOST, false);
+    curl_setopt($curlS, CURLOPT_SSL_VERIFYPEER, false);
+    $responseS = curl_exec($curlS);
+    $errS = curl_error($curlS);
 
-  curl_close($curlS);
+    curl_close($curlS);
 
-  if ($errS) {
-    echo "cURL Error #:" . $errS;
-  } else {
-    echo $responseS;
+    if ($errS) {
+      echo "cURL Error #:" . $errS;
+    } else {
+      echo $responseS;
+    }
+  }
+  else{
+    echo '<script>alert("Numero de intervenção já existe")</script>';
   }
 }
 //-----------------------------------------------------------Fim do bloco de criação de fatura------------------------------------
