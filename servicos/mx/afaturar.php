@@ -141,8 +141,20 @@ if(isset($_POST['btn1'])){
   $pecas = $_POST['Pec'];
   $cons = $_POST['Cons'];
   $desc = $_POST['Desc'];
+  
+  if(empty($inter)){
+    $inter = 0;
+  }
+  if(empty($desloc)){
+    $desloc = 0;
+  }
+  if(empty($pecas)){
+    $pecas = 0;
+  }
+  if(empty($cons)){
+    $cons = 0;
+  }
   $totalF = $desloc + $pecas + $cons + $inter;
-
   echo "<script type='javascript'>alert('Email enviado com Sucesso!');";
   echo "javascript:window.location='index.php';</script>";
 
@@ -248,6 +260,7 @@ if(isset($_POST['btn2'])){
     <!--meta name = "theme-color" content = "#F0B032"/-->
     <meta name="theme-color" content="black">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Rodrigo Sebastiao">
     <meta charset="UTF-8">
 
 
@@ -450,7 +463,7 @@ if(isset($_POST['btn2'])){
                       break;
                         }
                         echo "<div data-role='collapsible' data-mini='true' id='faturaI'>";
-                        echo "<h3>" . "<div>Nº IT: " . $fID[$x]['itnumero'] . "</div>" . "</h3>";
+                        echo "<h3>" . "<div>Nº IT: " . $fID[$x]['itnumero'] . "<br>Desc: " . $fID[$x]['description'] . "</div>" . "</h3>";
                         //echo "<a href='#editarF' data-position-to='window' data-rel='popup'><input type='submit' name='getIdBtn' value='<?php $ID_display[$x]'></input></a>";
                               
                         //echo "<table data-role='table' data-mode='reflow' id='table' class='ui-responsive' >";
@@ -522,19 +535,19 @@ if(isset($_POST['btn2'])){
                     </div>
                     <div id="DescDiv">
                     <label for="Desc">Descrição</label>
-                    <input type="text" name="Desc" pattern="[a-zA-Z0-9\s]{0,100}" title="Máximo de 100 caracteres" ></input>
+                    <input type="text" name="Desc" pattern="[a-zA-Z0-9\s]{0,100}" title="Máximo de 100 caracteres" required></input>
                   </div><br><br>
                   <div class="ui-grid-a">
                       <div class="ui-block-a"><label for="Inter">Intervencao:</label>
-                      <input type="text" name="Inter" pattern="[0-9]{0,10}" title="Digite um valor válido" required></div>
+                      <input type="text" name="Inter" pattern="[0-9]{0,10}" title="Digite um valor válido" ></div>
                       <div class="ui-block-b"><label for="Desloc">Deslocacao:</label>
-                      <input type="text" name="Desloc" pattern="[0-9]{0,10]" title="Digite um valor válido" required></div>
+                      <input type="text" name="Desloc" pattern="[0-9]{0,10]" title="Digite um valor válido" ></div>
                     </div>
                     <div class="ui-grid-a">
                       <div class="ui-block-a"><label for="Pec">Pecas:</label>
-                      <input type="text" name="Pec" pattern="[0-9]{0,10}" title="Digite um valor válido" required></div>
+                      <input type="text" name="Pec" pattern="[0-9]{0,10}" title="Digite um valor válido" ></div>
                       <div class="ui-block-b"><label for="Cons">Consumiveis:</label>
-                      <input type="text" name="Cons" pattern="[0-9]{0,10}" title="Digite um valor válido" required></div>
+                      <input type="text" name="Cons" pattern="[0-9]{0,10}" title="Digite um valor válido" ></div>
                     </div>
                     <input type="submit" data-ajax='false' name="btn1" value="Submeter" />
                    </div>
@@ -557,7 +570,7 @@ if(isset($_POST['btn2'])){
                   
                     for ($x; $x < $i; $x++) {
                       echo "<div data-role='collapsible' data-mini='true' id='faturaI'>";
-                      echo "<h3> Nº IT: " . $fID[$x]['itnumero'] . "</h3>";
+                      echo "<h3> Nº IT: " . $fID[$x]['itnumero'] . "<br>Desc: " . $fID[$x]['description'] . "</h3>";
                       //echo "<a href='#editarF' data-position-to='window' data-rel='popup'><input type='submit' name='getIdBtn' value='<?php $ID_display[$x]'></input></a>";
                       //echo "<a href='#editarF' data-prefetch data-position-to='window' data-rel='popup' id='editarBtn' class='ui-btn ui-corner-all ui-shadow'>Editar</a>";
                       echo "<div class='ui-grid-b'>";
