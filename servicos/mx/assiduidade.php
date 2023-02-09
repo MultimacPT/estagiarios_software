@@ -132,6 +132,20 @@
                     </span>
                 </div>
 
+                <div class="ui-block-b">
+                    <a href="http://192.168.30.198/estagiarios/estagiarios_software/joaocatita/calendario_digital/ficheiro/calendario.php" data-role="button" data-mini="true"
+                        class="ui-link ui-btn ui-shadow ui-corner-all ui-mini" role="button">Calendário</a>
+                </div>
+                <div class="ui-block-c">
+                    <!--a data-ajax="true" href="javascript:location.reload(true);" data-role="button" data-mini="true" data-theme="a">Actualiza</a-->
+                    <!--a href="temp.php?v=_" data-role="button" data-mini="true" data-theme="a" >Actualiza</a-->
+                    <a href="temp?v=" data-ajax="false"
+                        class="ui-link-inherit ui-link ui-btn ui-btn-a ui-shadow ui-corner-all ui-mini"
+                        data-role="button" data-mini="true" data-theme="a" role="button">Actualiza</a>
+
+                </div>
+
+
                 <div class="ui-block-d">
                     <button style="position: relative;" type="submit" form="form1" value="Submit" data-mini="true" data-theme="c"
                         class=" ui-btn ui-btn-c ui-shadow ui-corner-all ui-mini">Submete</button>
@@ -149,10 +163,15 @@
                     
                     <label><b>Funcionário:</b></label>
                     <input type="text" width="50" required name="assignedUserName"><br>
+                    <label><b>Tipo:</b></label>
+                    <input type="text" width="50" required name="tipo"><br>
+                    <br>
+                    <div style="display:flex; float: center; width="50"; display: inline-block; justify-content: space-between;">
                     <label><b>Entrada:</b></label>
-                    <input width="50" required type="time" name="entrada" />
+                    <input  type="time" required name="entrada" />
                     <label><b>Saída:</b></label>
-                    <input width="50" required type="time" name="saida" /><br>
+                    <input  type="time" required name="saida" /><br>
+                    </div>          
                     <label><b>Data:</b></label>
                     <input width="50" required type="date" name="data">
                     <input type="hidden" name="button3"value="Submeter"/>
