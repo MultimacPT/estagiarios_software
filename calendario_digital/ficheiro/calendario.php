@@ -87,13 +87,31 @@ foreach ($out['list'] as $v) {
         $cor = "greenClass";
     }
 }
-    foreach ($out['list'] as $v) {
-        $counter++;
-        if ($v['tipo'] == "Férias") {
-            $cor = "blueClass";
-        } else {
-            $cor = "greenClass";
-        }
+foreach ($out['list'] as $v) {
+    $counter++;
+    if ($v['tipo'] == "Férias") {
+        $cor = "blueClass";
+    } else {
+        $cor = "greenClass";
+    }
+}
+
+foreach ($out['list'] as $v) {
+    $counter++;
+    if ($v['tipo'] == "1") {
+        $cor = "purpleClass";
+    } else {
+        $cor = "greenClass";
+    }
+}
+foreach ($out['list'] as $v) {
+    $counter++;
+    if ($v['tipo'] == "2") {
+        $cor = "orangeClass";
+    } else {
+        $cor = "greenClass";
+    }
+
     //echo $v['id'], $v['assignedUserName'],"<br>";
     $dados = $dados . "
     {
@@ -210,6 +228,14 @@ foreach ($nm as $k => $v) {
         .redClass {
             background: red;
         }
+
+        .purpleClass {
+            background: purple;
+        }
+
+        .orangeClass {
+            background: orange;
+        }
     </style>
 
 </head>
@@ -224,6 +250,11 @@ foreach ($nm as $k => $v) {
                     <img src="mxtechnovo.png" style="width: 60px">
                     <br>
                 </span>
+            </div>
+            <div class="ui-block-b">
+                <a
+                    href="http://192.168.30.198/estagiarios/estagiarios_software/duartebarros/assiduidades.php"><button>Registar Assiduidades</button></a>
+
             </div>
     </header>
     <div class="jquery-script-center">
@@ -294,7 +325,6 @@ google_ad_client = "ca-pub-2783044520727903";
 
     </script>
 
-    <a href="http://192.168.30.198/estagiarios/estagiarios_software/duartebarros/assiduidades.php"><button>Assiduidades</button></a>
 
 </body>
 
