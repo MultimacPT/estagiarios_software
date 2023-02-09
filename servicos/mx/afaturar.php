@@ -287,7 +287,7 @@ if(isset($_POST['btn2'])){
     <!--meta name="apple-itunes-app" content="app-id=1148137751"-->
     <meta name="keywords" content="mxtech">
     <meta name="description" content="Página dashboard.">
-    <title>mxtech</title>
+    <title>Afaturar</title>
     <!--link rel="shortcut icon" href="images/mx2.ico"></link-->
 
 
@@ -447,11 +447,7 @@ if(isset($_POST['btn2'])){
                 <button onclick='javascript:history.back()' data-theme='c' class='ui-btn ui-corner-all ui-shadow ui-mini'>Voltar</button>
                 </div>
                 <div class="ui-block-c">
-                    <!--a data-ajax="true" href="javascript:location.reload(true);" data-role="button" data-mini="true" data-theme="a">Actualiza</a-->
-                    <!--a href="temp.php?v=_" data-role="button" data-mini="true" data-theme="a" >Actualiza</a-->
-                    <a href="temp?v=" data-ajax="false"
-                        class="ui-link-inherit ui-link ui-btn ui-btn-a ui-shadow ui-corner-all ui-mini"
-                        data-role="button" data-mini="true" data-theme="a" role="button">Actualiza</a>
+                <button onclick='window.location.reload()' data-theme='c' class='ui-btn ui-corner-all ui-shadow ui-mini'>Atualizar</button>
 
                 </div>
                 <div class="ui-block-d">
