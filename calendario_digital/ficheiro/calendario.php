@@ -245,20 +245,40 @@ foreach ($nm as $k => $v) {
 
 <body>
 
-    <header>
+    <header style="padding-top: 5px; padding-bottom: 5px;">
         <div class="ui-grid-c" style="padding-right: 20px;">
             <div class="ui-block-a" style="display:table; margin:0 auto;">
-                <span style="display:table; margin:0 auto; font-size: 10px;text-align: center;">
-                    <br>
-                    <img src="mxtechnovo.png" style="width: 60px">
-                    <br>
+                <span style="display:table; margin:0 auto; font-size: 13px;text-align: center;"><br>
+                    <img src="mxtechnovo.png" style="width: 70px">
                 </span>
             </div>
+
             <div class="ui-block-b">
-                <a href="http://192.168.30.198/estagiarios/estagiarios_software/duartebarros/assiduidades.php"><button>Registar
-                        Assiduidades</button></a>
+                <!-- <a href="" data-role="button" data-mini="true" class="ui-link ui-btn ui-btn-a ui-shadow ui-corner-all ui-mini" role="button" data-theme="a">Menu</a> -->
+            </div>
+
+            <div class="ui-block-c">
+                <a href="" data-ajax="false"
+                    class="ui-link-inherit ui-link ui-btn ui-btn-a ui-shadow ui-corner-all ui-mini" data-role="button"
+                    data-mini="true" data-theme="a" role="button" onclick="limparInput()">Atualizar</a>
+            </div>
+
+            <div class="ui-block-d">
+                <a href="http://192.168.30.198/estagiarios/estagiarios_software/duartebarros/assiduidades.php"
+                    data-ajax="false" class="ui-link-inherit ui-link ui-btn ui-btn-a ui-shadow ui-corner-all ui-mini"
+                    data-role="button" data-mini="true" data-theme="a" role="button"
+                    style="background-color:#0071bc !important; color:white !important;border-color: #003e67 !important; text-shadow: 0 1px 0 #444444 !important;">Registar
+                    Assiduidades</a>
+
 
             </div>
+
+            <script>
+                function limparInput() {
+                    window.location.href = 'calendario.php';
+                } 
+            </script>
+        </div>
     </header>
     <div class="jquery-script-center">
         <ul>
