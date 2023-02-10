@@ -134,7 +134,7 @@
 
                 <div class="ui-block-b">
                     <a href="http://192.168.30.198/estagiarios/estagiarios_software/joaocatita/calendario_digital/ficheiro/calendario.php" data-role="button" data-mini="true"
-                        class="ui-link ui-btn ui-shadow ui-corner-all ui-mini" role="button">Calendário</a>
+                        class="ui-link ui-btn ui-shadow ui-corner-all ui-mini" role="button" target="_self">Calendário</a>
                 </div>
                 <div class="ui-block-c">
                     <!--a data-ajax="true" href="javascript:location.reload(true);" data-role="button" data-mini="true" data-theme="a">Actualiza</a-->
