@@ -139,9 +139,9 @@
                 <div class="ui-block-c">
                     <!--a data-ajax="true" href="javascript:location.reload(true);" data-role="button" data-mini="true" data-theme="a">Actualiza</a-->
                     <!--a href="temp.php?v=_" data-role="button" data-mini="true" data-theme="a" >Actualiza</a-->
-                    <a href="temp?v=" data-ajax="false"
+                    <a href="" data-ajax="false"
                         class="ui-link-inherit ui-link ui-btn ui-btn-a ui-shadow ui-corner-all ui-mini"
-                        data-role="button" data-mini="true" data-theme="a" role="button">Actualiza</a>
+                        data-role="button" data-mini="true" data-theme="a" role="button" onclick="limparInput()">Actualiza</a>
 
                 </div>
 
@@ -150,7 +150,16 @@
                     <button style="position: relative;" type="submit" form="form1" value="Submit" data-mini="true" data-theme="c"
                         class=" ui-btn ui-btn-c ui-shadow ui-corner-all ui-mini">Submete</button>
                 </div>
+
+                <script>
+                        function limparInput() 
+                        {
+                            window.location.href = 'assiduidade.php';
+                        } 
+                </script>
+                
             </div>
+
         </header>
 
 

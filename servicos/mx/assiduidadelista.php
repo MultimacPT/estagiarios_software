@@ -350,7 +350,7 @@ if ($gravar==true){
                     <!--a href="temp.php?v=_" data-role="button" data-mini="true" data-theme="a" >Actualiza</a-->
                     <a href="temp?v=" data-ajax="false"
                         class="ui-link-inherit ui-link ui-btn ui-btn-a ui-shadow ui-corner-all ui-mini"
-                        data-role="button" data-mini="true" data-theme="a" role="button">Actualiza</a>
+                        data-role="button" data-mini="true" data-theme="a" role="button" onclick="limparInput()">Actualiza</a>
 
                 </div>
 
@@ -360,6 +360,13 @@ if ($gravar==true){
                         class=" ui-btn ui-btn-c ui-shadow ui-corner-all ui-mini">Voltar</button>
                         
                 </div>
+
+                <script>
+                        function limparInput() 
+                        {
+                            window.location.href = 'assiduidade.php';
+                        } 
+                </script>
 
             </div>
 
