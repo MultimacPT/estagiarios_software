@@ -264,7 +264,7 @@ foreach ($nm as $k => $v) {
             </div>
 
             <div class="ui-block-d">
-                <a href="http://192.168.30.198/estagiarios/estagiarios_software/duartebarros/assiduidades.php"
+                <a href="http://192.168.30.198/estagiarios/estagiarios_software/duartebarros/servicos/mx/assiduidade.php"
                     data-ajax="false" class="ui-link-inherit ui-link ui-btn ui-btn-a ui-shadow ui-corner-all ui-mini"
                     data-role="button" data-mini="true" data-theme="a" role="button"
                     style="background-color:#0071bc !important; color:white !important;border-color: #003e67 !important; text-shadow: 0 1px 0 #444444 !important;">Registar
