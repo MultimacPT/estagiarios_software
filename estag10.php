@@ -30,13 +30,13 @@
                     <fieldset data-role="controlgroup">
                         <legend>Suas informações:</legend>
                         <label for="nome">Nome:</label>
-                        <input type="text" name="nome" id="nome" placeholder="Manuel Pereira">
+                        <input type="text" name="nome" id="nome" placeholder="João Catita">
                         <br>
                         <label for="bday">Aniversário:</label>
                         <input type="date" name="bday" id="bday">
                         <br>       
                         <label for="email">E-mail:</label>
-                        <input type="email" name="email" id="email" placeholder="Seu email...">
+                        <input type="email" name="email" id="email" placeholder="Email:">
                         <br>
                         <label for="male">Masculino</label>
                         <input type="radio" name="gender" id="male" value="male">
@@ -49,7 +49,7 @@
                         <label for="data">Data de hoje:</label>
                         <input type="date" name="data" id="data">
                         <br>
-                        <label for="day">Dia da semana</label>
+                        <label for="day">Dia da semana:</label>
                         <select name="day" id="day" data-native-menu="false">
                         <option value="mon">Segunda</option>
                         <option value="tue">Terça</option>
@@ -78,7 +78,7 @@
             </div>
 
             <div data-role="footer">
-                <p>Feito por:<br>Manuel Pereira</p>
+                <p>Feito por:<br>João Catita</p>
             </div>
         </div> 
     </body>

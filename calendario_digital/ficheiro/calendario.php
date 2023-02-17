@@ -94,22 +94,7 @@ foreach ($out['list'] as $v) {
     } else {
         $cor = "greenClass";
     }
-}
-foreach ($out['list'] as $v) {
-    $counter++;
-    if ($v['tipo'] == "1") {
-        $cor = "blackClass";
-    } else {
-        $cor = "greenClass";
-    }
-}
-foreach ($out['list'] as $v) {
-    $counter++;
-    if ($v['tipo'] == "2") {
-        $cor = "orangeClass";
-    } else {
-        $cor = "greenClass";
-    }
+
 
     //echo $v['id'], $v['assignedUserName'],"<br>";
     $dados = $dados . "
