@@ -10,6 +10,10 @@ git clone https://github.com/MultimacPT/estagiarios_software.git
 git status
 
 
+-------------------- Criar numa Branch  --------------------
+
+ git checkout -b "nome da branch"
+
 
 -------------------- Entrar numa Branch  --------------------
 
